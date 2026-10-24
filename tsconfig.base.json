@@ -25,6 +25,7 @@
       "@chassix/ui/*": ["packages/ui/src/*"],
       "@chassix/db": ["packages/db/src/index.ts"],
       "@chassix/db/*": ["packages/db/src/*"],
+      "@chassix/planner": ["apps/planner/src/index.ts"],
       "@chassix/fixtures": ["packages/fixtures/src/index.ts"]
     }
   }

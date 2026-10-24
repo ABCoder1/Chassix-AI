@@ -13,6 +13,7 @@ export default defineConfig({
       "@chassix/shared": r("./packages/shared/src/index.ts"),
       "@chassix/ui": r("./packages/ui/src/index.ts"),
       "@chassix/db": r("./packages/db/src/index.ts"),
+      "@chassix/planner": r("./apps/planner/src/index.ts"),
       "@chassix/fixtures": r("./packages/fixtures/src/index.ts"),
     },
   },
