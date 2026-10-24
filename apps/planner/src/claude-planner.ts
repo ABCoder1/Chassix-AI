@@ -3,8 +3,13 @@ import { GoalVersionDraftSchema, type GoalVersionDraft } from "@chassix/shared";
 import { type Planner, PlannerError } from "./planner.js";
 import { GOAL_INTERPRETATION_SYSTEM } from "./prompt.js";
 
-/** Default model per the Claude API guidance; override with ANTHROPIC_MODEL. */
-const DEFAULT_MODEL = "claude-opus-5-5";
+/**
+ * Default model: Opus 4.8 at medium effort (override with ANTHROPIC_MODEL). Opus 4.8 has
+ * narrower safety classifiers than the 5.x line, so it handles legitimate strain-engineering
+ * goals directly without the `bio` false-positive that required a server-side fallback on
+ * Opus 5.5 — the request can stay on the plain (non-beta) Messages endpoint.
+ */
+const DEFAULT_MODEL = "claude-opus-4-8";
 
 export interface ClaudePlannerOptions {
   client?: Anthropic;
@@ -14,8 +19,8 @@ export interface ClaudePlannerOptions {
 /**
  * Planner backed by the Claude API (ADR-D9). Credentials come from the environment
  * (ANTHROPIC_API_KEY) via the SDK's default resolution — never passed from the client and
- * never logged. Uses adaptive thinking at medium effort and asks for strict JSON, which we
- * validate against the shared schema (no `temperature`: rejected on current models).
+ * never logged. Uses Opus 4.8 with adaptive thinking at medium effort and asks for strict JSON,
+ * which we validate against the shared schema (no `temperature`: rejected on current models).
  */
 export class ClaudePlanner implements Planner {
   private readonly client: Anthropic;
@@ -30,18 +35,13 @@ export class ClaudePlanner implements Planner {
     const trimmed = prompt.trim();
     if (!trimmed) throw new PlannerError("Goal prompt is empty.");
 
-    // Server-side refusal fallback (ADR-D9): the `bio` safety classifier on current models can
-    // decline legitimate strain-engineering goals. `fallbacks: "default"` re-runs the request on
-    // a fallback model in the same call, routed by refusal category. Claude API only.
-    let response: Anthropic.Beta.BetaMessage;
+    let response: Anthropic.Message;
     try {
-      response = await this.client.beta.messages.create({
+      response = await this.client.messages.create({
         model: this.model,
         max_tokens: 8000,
         thinking: { type: "adaptive" },
         output_config: { effort: "medium" },
-        betas: ["server-side-fallback-2026-07-01"],
-        fallbacks: "default",
         system: GOAL_INTERPRETATION_SYSTEM,
         messages: [{ role: "user", content: trimmed }],
       });
@@ -56,7 +56,7 @@ export class ClaudePlanner implements Planner {
     }
 
     const text = response.content
-      .filter((b): b is Anthropic.Beta.BetaTextBlock => b.type === "text")
+      .filter((b): b is Anthropic.TextBlock => b.type === "text")
       .map((b) => b.text)
       .join("")
       .trim();
