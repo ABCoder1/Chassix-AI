@@ -64,6 +64,21 @@ importers:
         specifier: ^3.25.0
         version: 3.25.76
 
+  apps/executor:
+    dependencies:
+      '@chassix/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
+
+  apps/orchestrator:
+    dependencies:
+      '@chassix/db':
+        specifier: workspace:*
+        version: link:../../packages/db
+      '@chassix/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
+
   apps/planner:
     dependencies:
       '@anthropic-ai/sdk':

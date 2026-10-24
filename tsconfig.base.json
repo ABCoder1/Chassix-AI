@@ -27,6 +27,8 @@
       "@chassix/db/*": ["packages/db/src/*"],
       "@chassix/planner": ["apps/planner/src/index.ts"],
       "@chassix/datasets": ["apps/datasets/src/index.ts"],
+      "@chassix/executor": ["apps/executor/src/index.ts"],
+      "@chassix/orchestrator": ["apps/orchestrator/src/index.ts"],
       "@chassix/fixtures": ["packages/fixtures/src/index.ts"]
     }
   }
