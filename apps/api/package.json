@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@chassix/db": "workspace:*",
+    "@chassix/executor": "workspace:*",
+    "@chassix/orchestrator": "workspace:*",
     "@chassix/shared": "workspace:*",
     "@fastify/cookie": "11.0.2",
     "fastify": "5.0.0",

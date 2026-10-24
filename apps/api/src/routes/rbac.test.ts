@@ -30,9 +30,9 @@ const ALL_ROLES: Role[] = ["scientist", "computational_biologist", "research_lea
 
 /** Representative guarded mutations and the roles the matrix allows. */
 const ROUTES: Array<{ path: string; allowed: Role[] }> = [
+  // `runs` (run.launch) RBAC is covered by the real launch route in runs.test.ts.
   { path: "goals", allowed: ["scientist", "research_lead", "admin"] },
   { path: "plans", allowed: ["computational_biologist", "admin"] },
-  { path: "runs", allowed: ["computational_biologist", "admin"] },
   { path: "exports", allowed: ["scientist", "research_lead", "admin"] },
 ];
 

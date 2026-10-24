@@ -164,6 +164,15 @@ export function CanvasPage() {
                 Selections ({selectedHostIds.length} hosts, {selectedDatasetIds.length} datasets)
                 are saved to this browser and survive tab changes and reload.
               </p>
+
+              <div className="canvaspage__nav" role="group" aria-label="Workflow navigation">
+                <Button type="button" variant="secondary" onClick={() => navigate("/plan")}>
+                  Review plan
+                </Button>
+                <Button type="button" variant="ghost" onClick={() => navigate("/run")}>
+                  View running analyses
+                </Button>
+              </div>
             </section>
           </aside>
         </div>

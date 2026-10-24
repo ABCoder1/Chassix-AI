@@ -36,10 +36,11 @@ const addMemberSchema = z.object({
 });
 
 /** Representative per-workspace mutations wired to their RBAC action (persistence: later steps). */
+// NOTE: `runs` is intentionally absent — the real run-launch route (routes/runs.ts, Step 3.3)
+// owns `POST /workspaces/:id/runs` and its own RBAC (`run.launch`) tests.
 const DOMAIN_MUTATIONS: ReadonlyArray<{ path: string; action: Action }> = [
   { path: "goals", action: "goal.write" },
   { path: "plans", action: "plan.create" },
-  { path: "runs", action: "run.launch" },
   { path: "exports", action: "export.request" },
 ];
 

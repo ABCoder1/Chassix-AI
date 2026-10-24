@@ -231,6 +231,13 @@
   color: var(--color-text-subtle);
 }
 
+.canvaspage__nav {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-top: var(--space-4);
+}
+
 /* ---- Narrow screens: hide spatial canvas, rely on the linear list ---- */
 @media (max-width: 900px) {
   .canvaspage__layout {

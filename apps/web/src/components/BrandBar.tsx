@@ -29,6 +29,12 @@ export function BrandBar() {
         <NavLink to="/canvas" className="brandbar__link bf-focusable">
           Canvas
         </NavLink>
+        <NavLink to="/plan" className="brandbar__link bf-focusable">
+          Plan
+        </NavLink>
+        <NavLink to="/run" className="brandbar__link bf-focusable">
+          Runs
+        </NavLink>
         <NavLink to="/gallery" className="brandbar__link bf-focusable">
           Components
         </NavLink>

@@ -8,6 +8,8 @@ import { createInMemoryRepositories } from "./repositories/memory.js";
 import type { Repositories } from "./repositories/types.js";
 import { registerAuthRoutes } from "./routes/auth.js";
 import { registerWorkspaceRoutes } from "./routes/workspaces.js";
+import { registerRunRoutes } from "./routes/runs.js";
+import { createRunOrchestrator, type RunOrchestratorBundle } from "./runs/service.js";
 
 export interface BuildServerOptions {
   /** Persistence ports. Defaults to in-memory repositories (no Postgres needed). */
@@ -16,6 +18,8 @@ export interface BuildServerOptions {
   sessionSecret?: string;
   /** Pre-built session manager (overrides `sessionSecret`); mainly for tests. */
   sessions?: SessionManager;
+  /** Run orchestrator bundle (in-memory stack + FakeExecutor). Defaults to a fresh one; override for tests. */
+  orchestrator?: RunOrchestratorBundle;
 }
 
 /**
@@ -36,6 +40,8 @@ export function buildServer(options: BuildServerOptions = {}): FastifyInstance {
       options.sessionSecret ?? process.env.JWT_SECRET ?? randomBytes(32).toString("hex"),
     );
 
+  const orchestrator = options.orchestrator ?? createRunOrchestrator();
+
   app.register(cookie);
 
   const guards = createAuthGuards({ repos, sessions });
@@ -44,6 +50,7 @@ export function buildServer(options: BuildServerOptions = {}): FastifyInstance {
 
   registerAuthRoutes(app, { repos, sessions, guards });
   registerWorkspaceRoutes(app, { repos, guards });
+  registerRunRoutes(app, { guards, bundle: orchestrator });
 
   app.setNotFoundHandler((req, reply) => {
     reply.status(404).send(
