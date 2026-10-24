@@ -1,0 +1,101 @@
+/**
+ * Chassix AI — design tokens (PRD §9 visual direction, Design Guide).
+ * Single source of truth for color, type, spacing, radii. Components reference
+ * these variables only; no component defines a raw hex/rgb color.
+ *
+ * Contrast: body/label text colors are chosen for WCAG-AA (>= 4.5:1) on the
+ * navy surface tokens; accent-on-surface pairings below meet >= 3:1 for the
+ * large/graphical use (status dots, borders) and >= 4.5:1 where used as text.
+ */
+
+:root {
+  /* ---- Surfaces: deep navy ---- */
+  --color-bg: #080c17; /* app canvas base (deep navy/near-black) */
+  --color-surface: #111931; /* primary panel */
+  --color-surface-2: #1a2444; /* elevated panel / rows */
+  --color-surface-3: #223057; /* hover / selected row */
+  --color-border: #2c3a63; /* hairline on navy */
+  --color-border-strong: #3d4e82;
+
+  /* ---- Text (AA on the surfaces above) ---- */
+  --color-text: #eef2fb; /* ~16:1 on --color-bg */
+  --color-text-muted: #b4bfdc; /* ~8:1 on --color-surface */
+  --color-text-subtle: #8c99bd; /* ~4.6:1 on --color-surface, labels only */
+
+  /* ---- Accents ---- */
+  --color-primary: #35d79a; /* mint — primary actions */
+  --color-primary-hover: #4de3a9;
+  --color-primary-contrast: #042016; /* dark text on mint, AA */
+  --color-info: #6aa8ff; /* blue — analytical signals */
+  --color-warning: #f3b64c; /* amber — caveats */
+  --color-accent: #b197ff; /* violet — integration accents */
+  --color-danger: #ff7a85; /* red — failure (see note) */
+  --color-neutral: #94a0c2; /* slate — inert / not configured */
+
+  /* Soft tints for badge/tag backgrounds (color + text always paired) */
+  --tint-primary: rgba(53, 215, 154, 0.14);
+  --tint-info: rgba(106, 168, 255, 0.14);
+  --tint-warning: rgba(243, 182, 76, 0.16);
+  --tint-accent: rgba(177, 151, 255, 0.16);
+  --tint-danger: rgba(255, 122, 133, 0.16);
+  --tint-neutral: rgba(148, 160, 194, 0.16);
+
+  /* ---- Dotted canvas ---- */
+  --canvas-dot: rgba(120, 140, 200, 0.18);
+  --canvas-dot-size: 1.5px;
+  --canvas-gap: 24px;
+  --canvas-bg: radial-gradient(
+    var(--canvas-dot) var(--canvas-dot-size),
+    transparent var(--canvas-dot-size)
+  );
+
+  /* ---- Spacing: 8px rhythm ---- */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* ---- Radii: 12–16px rounded panels ---- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  /* ---- Typography: Inter, differentiated headings/labels/numeric ---- */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  --font-numeric: "Inter", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-md: 15px;
+  --text-lg: 18px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --tracking-label: 0.04em; /* uppercase labels */
+
+  /* ---- Elevation ---- */
+  --shadow-panel: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-overlay: 0 16px 48px rgba(0, 0, 0, 0.55);
+
+  /* ---- Focus (visible for keyboard users) ---- */
+  --focus-ring-color: #8fd6ff;
+  --focus-ring: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--focus-ring-color);
+
+  /* ---- Overlay scrim ---- */
+  --scrim: rgba(6, 9, 18, 0.66);
+}

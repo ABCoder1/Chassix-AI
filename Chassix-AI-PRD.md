@@ -1,12 +1,12 @@
-# BioForge AI — Product Requirements Document
+# Chassix AI — Product Requirements Document
 
 Version 1.0 · 22 October 2026 · Status: implementation proposal
 
 ## 1. Product intent and source of truth
 
-BioForge AI turns a scientist’s plain-language experimental goal into a reviewable, reproducible bioinformatics workflow. Scientists choose hosts and evidence, run independent remote analyses, and explore an integrated interpretation with citations, limitations, and an AI assistant.
+Chassix AI turns a scientist’s plain-language experimental goal into a reviewable, reproducible bioinformatics workflow. Scientists choose hosts and evidence, run independent remote analyses, and explore an integrated interpretation with citations, limitations, and an AI assistant.
 
-This document incorporates the detailed user requirements retrieved from the BioForgeAI conversation and the continuation request. Earlier assistant responses containing the implementation blueprint were returned only as inaccessible content-reference markers. Architecture, delivery phases, scoring details, and thresholds below are proposed decisions rather than claims about that unavailable blueprint. Scientific examples in the design are illustrative, not validated findings.
+This document incorporates the detailed user requirements retrieved from the ChassixAI conversation and the continuation request. Earlier assistant responses containing the implementation blueprint were returned only as inaccessible content-reference markers. Architecture, delivery phases, scoring details, and thresholds below are proposed decisions rather than claims about that unavailable blueprint. Scientific examples in the design are illustrative, not validated findings.
 
 ### Required experience
 

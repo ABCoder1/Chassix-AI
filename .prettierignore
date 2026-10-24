@@ -3,6 +3,6 @@ node_modules
 **/dist
 
 # Pre-existing planning documents — authored upstream, not reformatted by tooling.
-BioForge-AI-PRD.md
-BioForge-AI-Design-Guide.md
-BioForge-AI-Implementation-Guide.md
+Chassix-AI-PRD.md
+Chassix-AI-Design-Guide.md
+Chassix-AI-Implementation-Guide.md

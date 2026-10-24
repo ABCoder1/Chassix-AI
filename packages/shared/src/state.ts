@@ -59,6 +59,17 @@ export const ConnectivityStatus = {
 } as const;
 export type ConnectivityStatus = (typeof ConnectivityStatus)[keyof typeof ConnectivityStatus];
 
+/**
+ * Critic disposition for a recommendation (PRD §F / Implementation Guide Step 1.3, 5.3).
+ * These are the published review outcomes, distinct from branch execution state.
+ */
+export const CriticDisposition = {
+  Ready: "ready",
+  ReadyWithCaveats: "ready_with_caveats",
+  NeedsReview: "needs_review",
+} as const;
+export type CriticDisposition = (typeof CriticDisposition)[keyof typeof CriticDisposition];
+
 export const BRANCH_TERMINAL_STATES: ReadonlySet<BranchState> = new Set([
   BranchState.Succeeded,
   BranchState.Failed,

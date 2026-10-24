@@ -1,5 +1,5 @@
 {
-  "name": "@bioforge/fixtures",
+  "name": "@chassix/fixtures",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -9,6 +9,6 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
-    "@bioforge/shared": "workspace:*"
+    "@chassix/shared": "workspace:*"
   }
 }

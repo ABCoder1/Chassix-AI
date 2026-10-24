@@ -2,9 +2,10 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "target": "ES2022",
-    "lib": ["ES2022"],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    "jsx": "react-jsx",
     "strict": true,
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
@@ -18,10 +19,13 @@
     "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "@bioforge/shared": ["packages/shared/src/index.ts"],
-      "@bioforge/shared/*": ["packages/shared/src/*"],
-      "@bioforge/ui": ["packages/ui/src/index.ts"],
-      "@bioforge/fixtures": ["packages/fixtures/src/index.ts"]
+      "@chassix/shared": ["packages/shared/src/index.ts"],
+      "@chassix/shared/*": ["packages/shared/src/*"],
+      "@chassix/ui": ["packages/ui/src/index.ts"],
+      "@chassix/ui/*": ["packages/ui/src/*"],
+      "@chassix/db": ["packages/db/src/index.ts"],
+      "@chassix/db/*": ["packages/db/src/*"],
+      "@chassix/fixtures": ["packages/fixtures/src/index.ts"]
     }
   }
 }

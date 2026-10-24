@@ -1,5 +1,5 @@
 import { describe, it, expect, afterAll } from "vitest";
-import { ApiErrorSchema } from "@bioforge/shared";
+import { ApiErrorSchema } from "@chassix/shared";
 import { buildServer } from "./server.js";
 
 const app = buildServer();

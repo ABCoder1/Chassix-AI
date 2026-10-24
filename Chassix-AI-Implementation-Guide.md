@@ -1,20 +1,20 @@
-# BioForge AI — Step-by-Step Implementation Guide
+# Chassix AI — Step-by-Step Implementation Guide
 
-Version 1.0 · follows BioForge-AI-PRD.md v1.0 and BioForge-AI-Design-Guide.md v1.0
+Version 1.0 · follows Chassix-AI-PRD.md v1.0 and Chassix-AI-Design-Guide.md v1.0
 Status: implementation plan. Architecture and phases are **proposals** (see PRD §7) — Step 0 validates them.
 
 ## How an agent uses this guide
 
 1. Read this guide's **Step 0** and commit the chosen stack to the decision log before writing app code.
 2. Pick **one step** (e.g. "Step 1.3"). Each step is self-contained: it names its goal, what to build, and a Definition of Done (DoD) with concrete acceptance checks.
-3. Work in a branch (`feature/bioforge-step-X-Y` — or `step-X-Y` when a single agent owns the whole phase).
+3. Work in a branch (`feature/chassix-step-X-Y` — or `step-X-Y` when a single agent owns the whole phase).
 4. Implement, then run the step's DoD checks (unit/integration tests plus the manual scenarios listed under "Verify"). Add tests as you go — DoD is not met without them.
 5. Mark the step done in the **progress tracker** table below and commit. Do not start the next step while the current one's DoD is unmet.
 6. Keep the PRD as behavioral truth. If the PRD and this guide conflict, the PRD wins — raise the conflict instead of improvising.
 
 Sources of truth:
-- **Behavior + acceptance criteria:** `BioForge-AI-PRD.md` (cited below as PRD §n or BF-xx)
-- **Visuals + flows:** `BioForge-AI-Design-Guide.md` and the editable Figma file (screens 1–12, desktop 1440×1000)
+- **Behavior + acceptance criteria:** `Chassix-AI-PRD.md` (cited below as PRD §n or BF-xx)
+- **Visuals + flows:** `Chassix-AI-Design-Guide.md` and the editable Figma file (screens 1–12, desktop 1440×1000)
 - **This guide:** the ordered execution plan. It does not add requirements.
 
 ---
@@ -319,10 +319,10 @@ Load test: ordinary metadata API p95 <2s excluding external repos; navigation/fi
 
 | Step | Owner | Status | Notes |
 |---|---|---|---|
-| 0 – Spike & contracts | | ☐ | |
-| 1.1 Scaffold/CI | | ☐ | |
-| 1.2 Data model | | ☐ | |
-| 1.3 Design system | | ☐ | |
+| 0 – Spike & contracts | claude | ☑ | D1–D9 recorded in docs/decisions.md; D10 + scientific contracts OPEN (owner sign-off) |
+| 1.1 Scaffold/CI | claude | ☑ | pnpm monorepo, TS strict, ESLint/Prettier/Vitest, docker-compose, CI, runbook |
+| 1.2 Data model | claude | ☑ | @chassix/db: 23 entities, pgEnums from shared, WorkspaceScope helper, initial migration |
+| 1.3 Design system | claude | ☑ | @chassix/ui: tokens + 10 a11y components + gallery; live-DB apply + Figma visual match pending |
 | 1.4 Auth/RBAC | | ☐ | |
 | 1.5 Welcome | | ☐ | |
 | 1.6 Goal interpretation | | ☐ | |

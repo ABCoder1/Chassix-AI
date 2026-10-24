@@ -1,8 +1,10 @@
-# BioForge AI — Decision Log (ADRs)
+# Chassix AI — Decision Log (ADRs)
 
 Step 0 of the Implementation Guide. One ADR per open decision from PRD §12 / Implementation Guide D1–D10.
 
 Status legend: **Accepted** (frozen for the pilot), **Proposed** (default chosen; revisable in a new draft before the dependent step lands), **Open** (needs an owner's sign-off before code depends on it).
+
+> D1–D9 ratified 2026-10-24: all technical defaults approved and frozen for the pilot. D10 remains **Open** pending scientific-owner sign-off.
 
 Cross-cutting architecture (from project architecture decision): a **TypeScript control plane** (web + API + orchestration + most services) plus a **single isolated Python service** for agentic/ML work and gene-ID harmonization; real bioinformatics compute runs as **containerized tools via Nextflow over bioconda**, invoked through executor adapters. No service imports another service's internals — `packages/shared` is the only seam.
 
@@ -18,7 +20,7 @@ Cross-cutting architecture (from project architecture decision): a **TypeScript 
 
 ## ADR-D2 — API + auth
 
-- **Status:** Proposed
+- **Status:** Accepted (ratified 2026-10-24)
 - **Decision:** Fastify (TypeScript) REST API; session via signed JWT (httpOnly cookie); per-request workspace context; workspace RBAC enforced on every mutation.
 - **Options considered:** Fastify vs. NestJS vs. Express; JWT vs. server session store.
 - **Rationale:** Fastify is light and fast for a hackathon while supporting schema validation (shares zod contracts). Machine-readable error envelope (code, message, retryability, correlationId) per PRD §7. Grounds: PRD §7, BF-14.
@@ -42,7 +44,7 @@ Cross-cutting architecture (from project architecture decision): a **TypeScript 
 
 ## ADR-D5 — Relational DB + migrations
 
-- **Status:** Proposed
+- **Status:** Accepted (ratified 2026-10-24)
 - **Decision:** PostgreSQL + Drizzle ORM (TypeScript-native) with Drizzle Kit migrations.
 - **Options considered:** Drizzle vs. Prisma.
 - **Rationale:** Drizzle is TS-first, typed end-to-end, lightweight migrations; integrates with the shared-contracts approach. Postgres also serves FTS (D7). Grounds: PRD §7.
@@ -50,14 +52,14 @@ Cross-cutting architecture (from project architecture decision): a **TypeScript 
 
 ## ADR-D6 — Object storage + artifact URLs
 
-- **Status:** Proposed
+- **Status:** Accepted (ratified 2026-10-24)
 - **Decision:** S3-compatible storage (MinIO locally via docker-compose, S3 in deploy); short-lived signed URLs for artifact access.
 - **Rationale:** PRD §8 requires short-lived signed URLs and encrypted storage; MinIO gives a local S3 for fixtures without cloud dependencies. Grounds: PRD §8.
 - **Owner:** _unassigned_
 
 ## ADR-D7 — Full-text / index store
 
-- **Status:** Proposed
+- **Status:** Accepted (ratified 2026-10-24)
 - **Decision:** Postgres full-text search for literature/dataset metadata; optional vector index later, which must **not** replace exact accession lookup.
 - **Options considered:** Postgres FTS vs. OpenSearch.
 - **Rationale:** One datastore for the pilot; PRD §7 notes vector index is optional and must not replace exact accession lookup. Grounds: PRD §7.

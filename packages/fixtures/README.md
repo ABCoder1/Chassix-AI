@@ -1,4 +1,4 @@
-# @bioforge/fixtures
+# @chassix/fixtures
 
 The fixture corpus for deterministic, reproducible testing (PRD §11, Step 0).
 

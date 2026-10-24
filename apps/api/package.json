@@ -1,5 +1,5 @@
 {
-  "name": "@bioforge/api",
+  "name": "@chassix/api",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -9,7 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@bioforge/shared": "workspace:*",
+    "@chassix/shared": "workspace:*",
     "fastify": "5.0.0",
     "zod": "3.23.8"
   },

@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import Fastify, { type FastifyInstance } from "fastify";
-import { apiError } from "@bioforge/shared";
+import { apiError } from "@chassix/shared";
 
 /**
  * Builds the API server. No routes beyond /health yet — auth, RBAC, plans, runs and
