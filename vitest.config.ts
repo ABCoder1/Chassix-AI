@@ -17,6 +17,7 @@ export default defineConfig({
       "@chassix/datasets": r("./apps/datasets/src/index.ts"),
       "@chassix/executor": r("./apps/executor/src/index.ts"),
       "@chassix/orchestrator": r("./apps/orchestrator/src/index.ts"),
+      "@chassix/realtime": r("./apps/realtime/src/index.ts"),
       "@chassix/fixtures": r("./packages/fixtures/src/index.ts"),
     },
   },
