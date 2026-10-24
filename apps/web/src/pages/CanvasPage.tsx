@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Card, Tag } from "@chassix/ui";
 import { ProjectFlow } from "@chassix/shared";
 import { STAGES } from "../stages";
@@ -22,6 +23,7 @@ const clampZoom = (z: number) => Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, Math.roun
  * selection store so choices survive navigation and reload.
  */
 export function CanvasPage() {
+  const navigate = useNavigate();
   const [activeStageId, setActiveStageId] = useState<string>(STAGES[0]!.id);
   const [zoom, setZoom] = useState(1);
 
@@ -126,6 +128,14 @@ export function CanvasPage() {
                       </label>
                     ))}
                     <p className="canvaspage__count">{selectedHostIds.length} selected</p>
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      size="sm"
+                      onClick={() => navigate("/hosts")}
+                    >
+                      Open full host discovery
+                    </Button>
                   </fieldset>
                 )}
 

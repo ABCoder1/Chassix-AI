@@ -325,14 +325,14 @@ Load test: ordinary metadata API p95 <2s excluding external repos; navigation/fi
 | 1.3 Design system | claude | ☑ | @chassix/ui: tokens + 10 a11y components + gallery; live-DB apply + Figma visual match pending |
 | 1.4 Auth/RBAC | claude | ☑ | apps/api: role×action matrix, per-request workspace ctx, cross-workspace denial, scrypt+JWT sessions, audit events |
 | 1.5 Welcome | claude | ☑ | apps/web Screen 1: goal composer, exact copy, disabled-until-typed, module cards, example flow |
-| 1.6 Goal interpretation | | ☐ | needs planner (Anthropic) interface — Wave C |
+| 1.6 Goal interpretation | claude | ◑ | @chassix/planner live Anthropic (claude-opus-5-5 + refusal fallback) + apps/web /goal review UI; API persistence (GoalVersion→Project) pending |
 | 1.7 Canvas/navigation | claude | ☑ | apps/web Screen 2: dotted canvas + linear list parity, persistent selection store, a11y/zoom/reduced-motion |
-| 2.1 Literature retrieval | | ☐ | |
-| 2.2 Ranking rubric | | ☐ | |
-| 2.3 Host discovery screen | | ☐ | |
-| 2.4 Public metadata | | ☐ | |
-| 2.5 Upload & validation | | ☐ | |
-| 2.6 Compatibility checks | | ☐ | |
+| 2.1 Literature retrieval | claude | ☑ | @chassix/planner: citation-first RetrievalProvider + fixtures; dedup, not-read, empty-state; live Apify deferred |
+| 2.2 Ranking rubric | claude | ☑ | @chassix/planner: immutable versioned rubric + scorer; missing-data surfaced, suitability estimate (advisory); weights illustrative pending ADR-D10 |
+| 2.3 Host discovery screen | claude | ☑ | apps/web /hosts: ranked cards, citation drawer, compare, persistent selection, continue-gated |
+| 2.4 Public metadata | claude | ☑ | @chassix/datasets: RepositoryAdapter + fixtures, timestamped cache (cached-with-age), distinct empty/error, exact accession lookup |
+| 2.5 Upload & validation | claude | ☑ | @chassix/datasets: resumable upload (no dup version), sha256 checksum block, format inspection + concrete remedies, workspace-scoped |
+| 2.6 Compatibility checks | claude | ☑ | @chassix/datasets: warn-vs-block policy table, 8 checks, audited acknowledgement, coverage matrix, unreachable blocked branches |
 | 3.1 Executor adapter | | ☐ | |
 | 3.2 Plan review & manifest | | ☐ | |
 | 3.3 Launch/idempotency | | ☐ | |

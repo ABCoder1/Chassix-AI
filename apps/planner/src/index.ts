@@ -3,6 +3,11 @@ export * from "./claude-planner.js";
 export * from "./fake-planner.js";
 export { GOAL_INTERPRETATION_SYSTEM } from "./prompt.js";
 
+// Step 2.1 — host literature retrieval (citation-first, behind RetrievalProvider).
+export * from "./retrieval/index.js";
+// Step 2.2 — versioned, inspectable host ranking rubric + scorer.
+export * from "./ranking/index.js";
+
 import { type Planner } from "./planner.js";
 import { ClaudePlanner } from "./claude-planner.js";
 import { FakePlanner } from "./fake-planner.js";

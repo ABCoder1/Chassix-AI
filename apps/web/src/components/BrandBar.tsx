@@ -20,6 +20,12 @@ export function BrandBar() {
         <NavLink to="/" end className="brandbar__link bf-focusable">
           Welcome
         </NavLink>
+        <NavLink to="/goal" className="brandbar__link bf-focusable">
+          Goal
+        </NavLink>
+        <NavLink to="/hosts" className="brandbar__link bf-focusable">
+          Hosts
+        </NavLink>
         <NavLink to="/canvas" className="brandbar__link bf-focusable">
           Canvas
         </NavLink>

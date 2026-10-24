@@ -27,7 +27,7 @@ export function WelcomePage() {
   const submit = () => {
     if (!canSubmit) return;
     setGoalPrompt(trimmed);
-    navigate("/canvas");
+    navigate("/goal");
   };
 
   const chooseExample = () => setPrompt(EXAMPLE_GOAL);
