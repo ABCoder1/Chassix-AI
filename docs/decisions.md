@@ -99,3 +99,9 @@ Cross-cutting architecture (from project architecture decision): a **TypeScript 
 - [ ] Scientific owner signs off contracts (ADR-D10 + scientific contracts) — **blocked on owner**
 - [x] Fixture corpus exists and is versioned — _skeleton; illustrative_
 - [x] Decisions D1–D9 recorded; D10 explicitly deferred with owner
+
+## Implementation notes & deferred reconciliations (Phase 1)
+
+- **Design tokens** extended the PRD §9 palette with a restrained `danger` (red) and a `neutral`/slate tone, because Failed/Cancelled/Not-configured/Skipped need a signal distinct from caveat-amber. Mapping: success=mint, in-progress=blue, caveat=amber, failure=red, inactive=neutral; violet reserved for integration accents.
+- **Membership role vocabulary (deferred):** `@chassix/db` `memberships.role` is `owner|admin|member|viewer`; the app (Step 1.4) speaks the PRD §2 roles (scientist, computational biologist, research lead, admin) via a lossless bijection in `apps/api/src/rbac/roles.ts`. Reconcile the db enum to the PRD vocabulary in a later `@chassix/db` change to drop the bijection.
+- **Live DB apply (deferred):** migrations `0000` + `0001` (adds `users.password_hash`) are generated but not yet applied to a live Postgres. Before live sign-in: `pnpm dev:stack` then `pnpm db:migrate`. Tests use in-memory repositories and need no database.

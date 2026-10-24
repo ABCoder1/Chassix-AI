@@ -323,10 +323,10 @@ Load test: ordinary metadata API p95 <2s excluding external repos; navigation/fi
 | 1.1 Scaffold/CI | claude | ☑ | pnpm monorepo, TS strict, ESLint/Prettier/Vitest, docker-compose, CI, runbook |
 | 1.2 Data model | claude | ☑ | @chassix/db: 23 entities, pgEnums from shared, WorkspaceScope helper, initial migration |
 | 1.3 Design system | claude | ☑ | @chassix/ui: tokens + 10 a11y components + gallery; live-DB apply + Figma visual match pending |
-| 1.4 Auth/RBAC | | ☐ | |
-| 1.5 Welcome | | ☐ | |
-| 1.6 Goal interpretation | | ☐ | |
-| 1.7 Canvas/navigation | | ☐ | |
+| 1.4 Auth/RBAC | claude | ☑ | apps/api: role×action matrix, per-request workspace ctx, cross-workspace denial, scrypt+JWT sessions, audit events |
+| 1.5 Welcome | claude | ☑ | apps/web Screen 1: goal composer, exact copy, disabled-until-typed, module cards, example flow |
+| 1.6 Goal interpretation | | ☐ | needs planner (Anthropic) interface — Wave C |
+| 1.7 Canvas/navigation | claude | ☑ | apps/web Screen 2: dotted canvas + linear list parity, persistent selection store, a11y/zoom/reduced-motion |
 | 2.1 Literature retrieval | | ☐ | |
 | 2.2 Ranking rubric | | ☐ | |
 | 2.3 Host discovery screen | | ☐ | |

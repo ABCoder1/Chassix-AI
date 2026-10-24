@@ -110,6 +110,9 @@ export const users = pgTable("users", {
   id: pk(),
   email: text("email").notNull().unique(),
   displayName: text("display_name"),
+  // Server-side credential (scrypt hash) for password sign-in; null for identity-only
+  // accounts (e.g. future SSO). Never exposed to the client (Step 1.4 / BF-14).
+  passwordHash: text("password_hash"),
   ...stamps(),
 });
 
