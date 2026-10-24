@@ -1,0 +1,39 @@
+# Local dev stack for BioForge AI (ADR-D5 Postgres, ADR-D6 S3-compatible storage).
+# Start with: pnpm dev:stack   (docker compose up -d)
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: bioforge
+      POSTGRES_PASSWORD: bioforge
+      POSTGRES_DB: bioforge
+    ports:
+      - "5432:5432"
+    volumes:
+      - bioforge_db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bioforge"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  storage:
+    image: minio/minio:RELEASE.2024-09-22T00-33-43Z
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: bioforge
+      MINIO_ROOT_PASSWORD: bioforge-dev-secret
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - bioforge_storage:/data
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  bioforge_db:
+  bioforge_storage:
