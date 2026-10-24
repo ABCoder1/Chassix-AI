@@ -333,12 +333,12 @@ Load test: ordinary metadata API p95 <2s excluding external repos; navigation/fi
 | 2.4 Public metadata | claude | ☑ | @chassix/datasets: RepositoryAdapter + fixtures, timestamped cache (cached-with-age), distinct empty/error, exact accession lookup |
 | 2.5 Upload & validation | claude | ☑ | @chassix/datasets: resumable upload (no dup version), sha256 checksum block, format inspection + concrete remedies, workspace-scoped |
 | 2.6 Compatibility checks | claude | ☑ | @chassix/datasets: warn-vs-block policy table, 8 checks, audited acknowledgement, coverage matrix, unreachable blocked branches |
-| 3.1 Executor adapter | | ☐ | |
-| 3.2 Plan review & manifest | | ☐ | |
-| 3.3 Launch/idempotency | | ☐ | |
-| 3.4 Events & replay | | ☐ | |
-| 3.5 Logs & validation | | ☐ | |
-| 3.6 Cancel | | ☐ | |
+| 3.1 Executor adapter | claude | ☑ | @chassix/executor: ExecutorAdapter FakeExecutor (scenarios incl. heartbeat-loss→unknown) + Nextflow stub (creds redacted); status mapping |
+| 3.2 Plan review & manifest | claude | ◑ | @chassix/orchestrator: immutable hash-verified RunManifest (freeze on launch); plan-review UI (Screen 4) = Wave 3B |
+| 3.3 Launch/idempotency | claude | ☑ | @chassix/orchestrator: idempotent launch (persist-before-ack, no dup submit), run/branch/attempt, reconciliation on restart |
+| 3.4 Events & replay | claude | ◑ | orchestrator: append-only event log + cursor, stale/dup rejection, replayFrom/snapshot, EventTransport; SSE API endpoint + SpaceTimeDB transport = Wave 3B |
+| 3.5 Logs & validation | claude | ◑ | orchestrator: artifact-validation gate (Succeeded only after validation); per-attempt log access + UI = Wave 3B |
+| 3.6 Cancel | claude | ☑ | orchestrator: audited terminal Cancelled (client-loss ≠ cancel), retry forks new attempt |
 | 4.1 Orchestrator | | ☐ | |
 | 4.2 Remaining branches | | ☐ | |
 | 4.3 Barrier | | ☐ | |
