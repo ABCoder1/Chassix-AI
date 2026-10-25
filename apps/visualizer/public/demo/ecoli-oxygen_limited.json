@@ -1,0 +1,3990 @@
+{
+  "schemaVersion": "1.0.0",
+  "run": {
+    "id": "poc-ecoli-oxygen_limited",
+    "workflowId": "flux",
+    "workflowVersion": "1.0.0",
+    "status": "completed",
+    "createdAt": null,
+    "completedAt": "2026-10-25T13:28:50Z",
+    "modelVersions": []
+  },
+  "organism": {
+    "chassisId": "bacterium",
+    "taxonId": "511145",
+    "taxonName": "Escherichia coli",
+    "strainId": "MG1655",
+    "strainName": "K-12 MG1655"
+  },
+  "condition": {
+    "id": "oxygen_limited",
+    "temperatureC": null,
+    "salinityMolL": null,
+    "pH": null,
+    "timepoint": null,
+    "media": "glucose minimal",
+    "oxygenation": "oxygen-limited",
+    "other": {}
+  },
+  "artifacts": [
+    {
+      "id": "flux_table",
+      "uri": "file:///Users/pradeep/.claude/jobs/d68194de/tmp/poc/ecoli_oxygen_limited/flux.csv",
+      "mediaType": "text/csv",
+      "sha256": "5198f1324e26fa4f74786cf7b315900d7fcb6efd9a5d3c6e3872475bf02bf350",
+      "role": "flux-distribution-table"
+    }
+  ],
+  "analyses": {
+    "flux": {
+      "status": "available",
+      "method": "COBRApy 0.32.1 pFBA",
+      "notAvailableReason": null,
+      "artifactIds": [
+        "flux_table"
+      ],
+      "modelId": "iML1515",
+      "objective": "1.0*BIOMASS_Ec_iML1515_core_75p37M - 1.0*BIOMASS_Ec_iML1515_core_75p37M_reverse_35685",
+      "results": [
+        {
+          "reactionId": "SHK3Dr",
+          "reactionName": "Shikimate dehydrogenase",
+          "flux": 0.08996210611523721,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DHORTS",
+          "reactionName": "Dihydroorotase",
+          "flux": -0.07808326242562041,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "OMPDC",
+          "reactionName": "Orotidine-5'-phosphate decarboxylase",
+          "flux": 0.07808326242562041,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "G5SD",
+          "reactionName": "Glutamate-5-semialdehyde dehydrogenase",
+          "flux": 0.05217943310961628,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CS",
+          "reactionName": "Citrate synthase",
+          "flux": 0.25379615500212416,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ICDHyr",
+          "reactionName": "Isocitrate dehydrogenase (NADP)",
+          "flux": 0.25379615500212416,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACALD",
+          "reactionName": "Acetaldehyde dehydrogenase (acetylating)",
+          "flux": -6.199619972404755,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PPA",
+          "reactionName": "Inorganic diphosphatase",
+          "flux": 0.8265344477058049,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "APRAUR",
+          "reactionName": "5-amino-6-(5-phosphoribosylamino)uracil reductase",
+          "flux": 0.00010527709016709223,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "TRPAS2",
+          "reactionName": "Tryptophanase (L-tryptophan)",
+          "flux": -0.013417635955983434,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DB4PS",
+          "reactionName": "3,4-Dihydroxy-2-butanone-4-phosphate synthase",
+          "flux": 0.0002105541803341845,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ALAR",
+          "reactionName": "Alanine racemase",
+          "flux": 0.009838923032164057,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "RBFK",
+          "reactionName": "Riboflavin kinase",
+          "flux": 5.263854508354096e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ALATA_L",
+          "reactionName": "L-alanine transaminase",
+          "flux": -0.1373426978726181,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PPM",
+          "reactionName": "Phosphopentomutase",
+          "flux": -0.00015885982439879838,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ASPTA",
+          "reactionName": "Aspartate transaminase",
+          "flux": -0.6911046770500551,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "RBFSb",
+          "reactionName": "Riboflavin synthase",
+          "flux": 0.00010527709016709226,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_pi_e",
+          "reactionName": "Phosphate exchange",
+          "flux": -0.2276926296809955,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "SHCHD2",
+          "reactionName": "Sirohydrochlorin dehydrogenase (NAD)",
+          "flux": 5.263854508355128e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_co2_e",
+          "reactionName": "CO2 exchange",
+          "flux": -0.007920094634184041,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "A5PISO",
+          "reactionName": "Arabinose-5-phosphate isomerase",
+          "flux": 0.009185072046148646,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PMDPHT",
+          "reactionName": "Pyrimidine phosphatase",
+          "flux": 0.00010527709016709223,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CPPPGO",
+          "reactionName": "Coproporphyrinogen oxidase (O2 required)",
+          "flux": 5.2638545083551287e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ILETA",
+          "reactionName": "Isoleucine transaminase",
+          "flux": -0.06857858235237253,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "VALTA",
+          "reactionName": "Valine transaminase",
+          "flux": -0.09988624221814223,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "IPPMIb",
+          "reactionName": "2-isopropylmalate hydratase",
+          "flux": -0.10634662042617689,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ORPT",
+          "reactionName": "Orotate phosphoribosyltransferase",
+          "flux": -0.07808326242562041,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "RBFSa",
+          "reactionName": "Riboflavin synthase",
+          "flux": 0.0002105541803341845,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACHBS",
+          "reactionName": "2-aceto-2-hydroxybutanoate synthase",
+          "flux": 0.06857858235237252,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DHAD2",
+          "reactionName": "Dihydroxy-acid dehydratase (2,3-dihydroxy-3-methylpentanoate)",
+          "flux": 0.06857858235237253,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACLS",
+          "reactionName": "Acetolactate synthase",
+          "flux": 0.20639195851600636,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PSCVT",
+          "reactionName": "3-phosphoshikimate 1-carboxyvinyltransferase",
+          "flux": 0.0899621061152372,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PFL",
+          "reactionName": "Pyruvate formate lyase",
+          "flux": 17.449052701877264,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ANS",
+          "reactionName": "Anthranilate synthase",
+          "flux": 0.013417635955983429,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ANPRT",
+          "reactionName": "Anthranilate phosphoribosyltransferase",
+          "flux": 0.013417635955983429,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CHORM",
+          "reactionName": "Chorismate mutase",
+          "flux": 0.07633391597891995,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PTAr",
+          "reactionName": "Phosphotransacetylase",
+          "flux": 10.110857694652232,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CHORS",
+          "reactionName": "Chorismate synthase",
+          "flux": 0.0899621061152372,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "IGPS",
+          "reactionName": "Indole-3-glycerol-phosphate synthase",
+          "flux": 0.013417635955983434,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACKr",
+          "reactionName": "Acetate kinase",
+          "flux": -10.110857694652232,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_fe3_e",
+          "reactionName": "Fe3+ exchange",
+          "flux": -0.0018430572197864056,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "LEUTAi",
+          "reactionName": "Leucine transaminase (irreversible)",
+          "flux": 0.1063466204261769,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_h_e",
+          "reactionName": "H+ exchange",
+          "flux": 29.84248200026434,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DMATT",
+          "reactionName": "Dimethylallyltranstransferase",
+          "flux": 6.56211458884655e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GRTT",
+          "reactionName": "Geranyltranstransferase",
+          "flux": 6.56211458884655e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "UPP3S",
+          "reactionName": "Uroporphyrinogen-III synthase",
+          "flux": 0.00010527709016710257,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "UPPDC1",
+          "reactionName": "Uroporphyrinogen decarboxylase (uroporphyrinogen III)",
+          "flux": 5.263854508355128e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_mn2_e",
+          "reactionName": "Mn2+ exchange",
+          "flux": -0.00016310867557279795,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_ac_e",
+          "reactionName": "Acetate exchange",
+          "flux": 10.24828112069713,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MOAT",
+          "reactionName": "3-deoxy-D-manno-octulosonic acid transferase",
+          "flux": 0.004592536023074323,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "UDCPDPS",
+          "reactionName": "Undecaprenyl diphosphate synthase",
+          "flux": 1.2982600805358272e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ECOAH6",
+          "reactionName": "3-hydroxyacyl-CoA dehydratase (3-hydroxytetradecanoyl-CoA)",
+          "flux": 0.06563436453700422,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "USHD",
+          "reactionName": "UDP-sugar hydrolase",
+          "flux": 0.004592536023074323,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ENO",
+          "reactionName": "Enolase",
+          "flux": 19.03954026836568,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "FBA",
+          "reactionName": "Fructose-bisphosphate aldolase",
+          "flux": 1.9852549382656648,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "HCO3E",
+          "reactionName": "HCO3 equilibration reaction",
+          "flux": 0.12407211937667534,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "IMPC",
+          "reactionName": "IMP cyclohydrolase",
+          "flux": -0.12806320691153047,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "IMPD",
+          "reactionName": "IMP dehydrogenase",
+          "flux": 0.05741330961247535,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ECOAH4",
+          "reactionName": "3-hydroxyacyl-CoA dehydratase (3-hydroxydecanoyl-CoA)",
+          "flux": 0.08400450862930152,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "LPADSS",
+          "reactionName": "Lipid A disaccaride synthase",
+          "flux": 0.004592536023074323,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GLUTRS",
+          "reactionName": "Glutamyl-tRNA synthetase",
+          "flux": 0.0008422167213368203,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "TDSK",
+          "reactionName": "Tetraacyldisaccharide 4'kinase",
+          "flux": 0.004592536023074322,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PGI",
+          "reactionName": "Glucose-6-phosphate isomerase",
+          "flux": 10.000000000000002,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "TMPPP",
+          "reactionName": "Thiamine-phosphate diphosphorylase",
+          "flux": 5.2638545083551287e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PGK",
+          "reactionName": "Phosphoglycerate kinase",
+          "flux": -19.432234672864197,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "RPE",
+          "reactionName": "Ribulose 5-phosphate 3-epimerase",
+          "flux": -0.1830915734148423,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DHQTi",
+          "reactionName": "3-dehydroquinate dehydratase, irreversible",
+          "flux": 0.08996210611523721,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "IPMD",
+          "reactionName": "3-isopropylmalate dehydrogenase",
+          "flux": 0.1063466204261769,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "AIRC3",
+          "reactionName": "Phosphoribosylaminoimidazole carboxylase (mutase rxn)",
+          "flux": -0.10570055900065384,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "TALA",
+          "reactionName": "Transaldolase",
+          "flux": -0.0466173721948861,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PUNP1",
+          "reactionName": "Purine-nucleoside phosphorylase (Adenosine)",
+          "flux": -0.00015885982439879838,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ADSL2r",
+          "reactionName": "Adenylosuccinate lyase",
+          "flux": 0.10570055900065385,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "TKT1",
+          "reactionName": "Transketolase",
+          "flux": -0.0466173721948861,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_fe2_e",
+          "reactionName": "Fe2+ exchange",
+          "flux": -0.0019480982626661379,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ALCD2x",
+          "reactionName": "Alcohol dehydrogenase (ethanol)",
+          "flux": -6.199619972404755,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "TMDS",
+          "reactionName": "Thymidylate synthase",
+          "flux": 0.006176413321328263,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PPCDC",
+          "reactionName": "Phosphopantothenoylcysteine decarboxylase",
+          "flux": 0.0001590958716871858,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_glc__D_e",
+          "reactionName": "D-Glucose exchange",
+          "flux": -10.0,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -10.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DHAD1",
+          "reactionName": "Dihydroxy-acid dehydratase (2,3-dihydroxy-3-methylbutanoate)",
+          "flux": 0.20639195851600634,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "IPPMIa",
+          "reactionName": "3-isopropylmalate dehydratase",
+          "flux": -0.10634662042617692,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MDH",
+          "reactionName": "Malate dehydrogenase",
+          "flux": 0.24614822289134852,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "FUM",
+          "reactionName": "Fumarase",
+          "flux": 0.2461482228913485,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "FMNAT",
+          "reactionName": "FMN adenylyltransferase",
+          "flux": 5.263854508354096e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "OHPBAT",
+          "reactionName": "O-Phospho-4-hydroxy-L-threonine:2-oxoglutarate aminotransferase",
+          "flux": -0.00010527709016709973,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "KARA1",
+          "reactionName": "Ketol-acid reductoisomerase (2,3-dihydroxy-3-methylbutanoate)",
+          "flux": -0.20639195851600636,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "KARA2",
+          "reactionName": "Ketol-acid reductoisomerase (2-Acetolactate)",
+          "flux": 0.06857858235237252,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_for_e",
+          "reactionName": "Formate exchange",
+          "flux": 17.423461163122443,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACCOAC",
+          "reactionName": "Acetyl-CoA carboxylase",
+          "flux": 0.018371560376021508,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "NADK",
+          "reactionName": "NAD kinase",
+          "flux": 0.00010551313745330578,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GLUTRR",
+          "reactionName": "Glutamyl-tRNA reductase",
+          "flux": 0.0008422167213368204,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "HACD6",
+          "reactionName": "3-hydroxyacyl-CoA dehydrogenase (3-oxotetradecanoyl-CoA)",
+          "flux": 0.0656343645370042,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ECOAH1",
+          "reactionName": "3-hydroxyacyl-CoA dehydratase (3-hydroxybutanoyl-CoA)",
+          "flux": 0.0840045086293015,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ECOAH2",
+          "reactionName": "3-hydroxyacyl-CoA dehydratase (3-hydroxyhexanoyl-CoA)",
+          "flux": 0.08400450862930152,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ARGSS",
+          "reactionName": "Argininosuccinate synthase",
+          "flux": 0.06982089922580181,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "AGPR",
+          "reactionName": "N-acetyl-g-glutamyl-phosphate reductase",
+          "flux": -0.0698208992258018,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "G1SAT",
+          "reactionName": "Glutamate-1-semialdehyde aminotransferase",
+          "flux": 0.0008422167213368204,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "KDOCT2",
+          "reactionName": "3-deoxy-manno-octulosonate cytidylyltransferase",
+          "flux": 0.009185072046148645,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ECOAH3",
+          "reactionName": "3-hydroxyacyl-CoA dehydratase (3-hydroxyoctanoyl-CoA)",
+          "flux": 0.08400450862930152,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DXPS",
+          "reactionName": "1-deoxy-D-xylulose 5-phosphate synthase",
+          "flux": 0.0006691940596909014,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CDPMEK",
+          "reactionName": "4-(cytidine 5'-diphospho)-2-C-methyl-D-erythritol kinase",
+          "flux": 0.0005639169695237988,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MECDPS",
+          "reactionName": "2-C-methyl-D-erythritol 2,4-cyclodiphosphate synthase",
+          "flux": 0.0005639169695237987,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PGAMT",
+          "reactionName": "Phosphoglucosamine mutase",
+          "flux": -0.02230363608903406,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "UAGDP",
+          "reactionName": "UDP-N-acetylglucosamine diphosphorylase",
+          "flux": 0.02230363608903406,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "UAGCVT",
+          "reactionName": "UDP-N-acetylglucosamine 1-carboxyvinyltransferase",
+          "flux": 0.006559282021442704,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GLUR",
+          "reactionName": "Glutamate racemase",
+          "flux": -0.006559282021442706,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "NNDPR",
+          "reactionName": "Nicotinate-nucleotide diphosphorylase (carboxylating)",
+          "flux": 0.0005377157206286223,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PPC",
+          "reactionName": "Phosphoenolpyruvate carboxylase",
+          "flux": 0.6987526091608308,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "HACD4",
+          "reactionName": "3-hydroxyacyl-CoA dehydrogenase (3-oxodecanoyl-CoA)",
+          "flux": 0.08400450862930152,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_zn2_e",
+          "reactionName": "Zinc exchange",
+          "flux": -8.049212499323313e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "HACD5",
+          "reactionName": "3-hydroxyacyl-CoA dehydrogenase (3-oxododecanoyl-CoA)",
+          "flux": 0.08400450862930152,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "HACD7",
+          "reactionName": "3-hydroxyacyl-CoA dehydrogenase (3-oxohexadecanoyl-CoA)",
+          "flux": 0.0656343645370042,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DNMPPA",
+          "reactionName": "Dihydroneopterin monophosphate dephosphorylase",
+          "flux": 0.00015791563525065097,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "HPPK2",
+          "reactionName": "6-hydroxymethyl-dihydropterin pyrophosphokinase",
+          "flux": 0.00015791563525065097,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PTPATi",
+          "reactionName": "Pantetheine-phosphate adenylyltransferase",
+          "flux": 0.00015909587168718583,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DXPRIi",
+          "reactionName": "1-deoxy-D-xylulose reductoisomerase",
+          "flux": 0.0005639169695237988,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GTPCII2",
+          "reactionName": "GTP cyclohydrolase II (25drapp)",
+          "flux": 0.00010527709016709223,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "SADT2",
+          "reactionName": "Sulfate adenyltransferase",
+          "flux": 0.05841745477294786,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "OPHBDC",
+          "reactionName": "Octaprenyl-hydroxybenzoate decarboxylase",
+          "flux": 5.263854508310721e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GHMT2r",
+          "reactionName": "Glycine hydroxymethyltransferase, reversible",
+          "flux": 0.2505226512208835,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DHORD2",
+          "reactionName": "Dihydoorotic acid dehydrogenase (quinone8)",
+          "flux": 0.07808326242562041,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "SDPDS",
+          "reactionName": "Succinyl-diaminopimelate desuccinylase",
+          "flux": 0.08756150520268279,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ADCS",
+          "reactionName": "4-amino-4-deoxychorismate synthase",
+          "flux": 0.000157915635250651,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ADCL",
+          "reactionName": "4-aminobenzoate synthase",
+          "flux": 0.000157915635250651,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DHAPT",
+          "reactionName": "Dihydroxyacetone phosphotransferase",
+          "flux": 7.80934985223046,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "UMPK",
+          "reactionName": "UMP kinase",
+          "flux": 0.08923508047013745,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "UAPGR",
+          "reactionName": "UDP-N-acetylenolpyruvoylglucosamine reductase",
+          "flux": 0.006559282021442704,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CTPS2",
+          "reactionName": "CTP synthase (glutamine)",
+          "flux": 0.03789149080509899,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PAPPT3",
+          "reactionName": "Phospho-N-acetylmuramoyl-pentapeptide-transferase (meso-2,6-diaminopimelate)",
+          "flux": 0.006559282021442705,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "UAGPT3",
+          "reactionName": "UDP-N-acetylglucosamine-N-acetylmuramyl-(pentapeptide)pyrophosphoryl-undecaprenol N-acetylglucosamine transferase",
+          "flux": 0.006559282021442706,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "TRPS3",
+          "reactionName": "Tryptophan synthase (indoleglycerol phosphate)",
+          "flux": 0.013417635955983434,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "F6PA",
+          "reactionName": "Fructose 6-phosphate aldolase",
+          "flux": 7.80934985223046,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "FADRx",
+          "reactionName": "FAD reductase",
+          "flux": 0.5159734049896141,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ADK1",
+          "reactionName": "Adenylate kinase",
+          "flux": 0.6192693502738337,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACODA",
+          "reactionName": "Acetylornithine deacetylase",
+          "flux": 0.06982089922580181,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "FCLT",
+          "reactionName": "Ferrochelatase",
+          "flux": 5.263854508355129e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "HBZOPT",
+          "reactionName": "Hydroxybenzoate octaprenyltransferase",
+          "flux": 5.2638545083107204e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PNTK",
+          "reactionName": "Pantothenate kinase",
+          "flux": 0.0001590958716871858,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ADSS",
+          "reactionName": "Adenylosuccinate synthase",
+          "flux": 0.07064989729905514,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "OCTDPS",
+          "reactionName": "Octaprenyl pyrophosphate synthase",
+          "flux": 5.263854508310721e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DPCOAK",
+          "reactionName": "Dephospho-CoA kinase",
+          "flux": 0.0001590958716871858,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ASNS2",
+          "reactionName": "Asparagine synthetase",
+          "flux": 0.056900378857019984,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ASPCT",
+          "reactionName": "Aspartate carbamoyltransferase",
+          "flux": 0.07808326242562041,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "KDOPS",
+          "reactionName": "3-deoxy -D-manno-octulosonic -acid 8-phosphate synthase",
+          "flux": 0.009185072046148645,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "KDOPP",
+          "reactionName": "3-deoxy-manno-octulosonate-8-phosphatase",
+          "flux": 0.009185072046148645,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DMPPS",
+          "reactionName": "1-hydroxy-2-methyl-2-(E)-butenyl 4-diphosphate reductase (dmpp)",
+          "flux": 6.56211458884655e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MCOATA",
+          "reactionName": "Malonyl-CoA-ACP transacylase",
+          "flux": 0.018371088281446773,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "IPDPS",
+          "reactionName": "1-hydroxy-2-methyl-2-(E)-butenyl 4-diphosphate reductase (ipdp)",
+          "flux": 0.0004982958236353333,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DAPE",
+          "reactionName": "Diaminopimelate epimerase",
+          "flux": 0.08756150520268279,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DHDPRy",
+          "reactionName": "Dihydrodipicolinate reductase (NADPH)",
+          "flux": 0.08756150520268281,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "HSK",
+          "reactionName": "Homoserine kinase",
+          "flux": 0.12846071054345268,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "SDPTA",
+          "reactionName": "Succinyldiaminopimelate transaminase",
+          "flux": -0.0875615052026828,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "THRS",
+          "reactionName": "Threonine synthase",
+          "flux": 0.12846071054345268,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "HSST",
+          "reactionName": "Homoserine O-succinyltransferase",
+          "flux": 0.036330274046432555,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PPNDH",
+          "reactionName": "Prephenate dehydratase",
+          "flux": 0.043731300694637355,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DTMPK",
+          "reactionName": "DTMP kinase",
+          "flux": 0.006176413321328263,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "TRDR",
+          "reactionName": "Thioredoxin reductase (NADPH)",
+          "flux": 0.058417454772947845,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DDPA",
+          "reactionName": "3-deoxy-D-arabino-heptulosonate 7-phosphate synthetase",
+          "flux": 0.08996210611523721,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "RHCCE",
+          "reactionName": "S-ribosylhomocysteine cleavage enzyme",
+          "flux": 0.00010574918474050674,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "G3PD2",
+          "reactionName": "Glycerol-3-phosphate dehydrogenase (NADP)",
+          "flux": -0.03281718226850211,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "AACPS3",
+          "reactionName": "Acyl-[acyl-carrier-protein] synthetase  (n-C16:0)",
+          "flux": 0.030126243192481993,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "U23GAAT",
+          "reactionName": "UDP-3-O-(3-hydroxymyristoyl)glucosamine acyltransferase",
+          "flux": 0.009185072046148646,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "UAAGDS",
+          "reactionName": "UDP-N-acetylmuramoyl-L-alanyl-D-glutamyl-meso-2,6-diaminopimelate synthetase",
+          "flux": 0.006559282021442705,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "AACPS4",
+          "reactionName": "Acyl-[acyl-carrier-protein] synthetase  (n-C16:1)",
+          "flux": 0.03550812134452222,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "UAMAS",
+          "reactionName": "UDP-N-acetylmuramoyl-L-alanine synthetase",
+          "flux": 0.006559282021442704,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "UAMAGS",
+          "reactionName": "UDP-N-acetylmuramoyl-L-alanyl-D-glutamate synthetase",
+          "flux": 0.006559282021442705,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "P5CR",
+          "reactionName": "Pyrroline-5-carboxylate reductase",
+          "flux": 0.052179433109616286,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DHPPDA2",
+          "reactionName": "Diaminohydroxyphosphoribosylaminopryrimidine deaminase (25drapp)",
+          "flux": 0.00010527709016709223,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "G5SADs",
+          "reactionName": "L-glutamate 5-semialdehyde dehydratase (spontaneous)",
+          "flux": 0.05217943310961628,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ASP1DC",
+          "reactionName": "Aspartate 1-decarboxylase",
+          "flux": 0.0001590958716871858,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "UGMDDS",
+          "reactionName": "UDP-N-acetylmuramoyl-L-alanyl-D-glutamyl-meso-2,6-diaminopimeloyl-D-alanyl-D-alanine synthetase",
+          "flux": 0.006559282021442705,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "UHGADA",
+          "reactionName": "UDP-3-O-acetylglucosamine deacetylase",
+          "flux": 0.009185072046148646,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "UAGAAT",
+          "reactionName": "UDP-N-acetylglucosamine acyltransferase",
+          "flux": 0.009185072046148646,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ATPPRT",
+          "reactionName": "ATP phosphoribosyltransferase",
+          "flux": 0.022362647910876596,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "HISTD",
+          "reactionName": "Histidinol dehydrogenase",
+          "flux": 0.0223626479108766,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DHDPS",
+          "reactionName": "Dihydrodipicolinate synthase",
+          "flux": 0.08756150520268283,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "G1PACT",
+          "reactionName": "Glucosamine-1-phosphate N-acetyltransferase",
+          "flux": 0.022303636089034056,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GART",
+          "reactionName": "GAR transformylase-T",
+          "flux": 0.02617056275073986,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GF6PTA",
+          "reactionName": "Glutamine-fructose-6-phosphate transaminase",
+          "flux": 0.022303636089034056,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "IGPDH",
+          "reactionName": "Imidazoleglycerol-phosphate dehydratase",
+          "flux": 0.0223626479108766,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PRPPS",
+          "reactionName": "Phosphoribosylpyrophosphate synthetase",
+          "flux": 0.22015445955884677,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PRATPP",
+          "reactionName": "Phosphoribosyl-ATP pyrophosphatase",
+          "flux": 0.0223626479108766,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PRMICI",
+          "reactionName": "1-(5-phosphoribosyl)-5-[(5-phosphoribosylamino)methylideneamino)imidazole-4-carboxamide isomerase",
+          "flux": 0.022362647910876603,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GLUPRT",
+          "reactionName": "Glutamine phosphoribosyldiphosphate amidotransferase",
+          "flux": 0.10575319754573738,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "SERAT",
+          "reactionName": "Serine O-acetyltransferase",
+          "flux": 0.05841745477294785,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CYSS",
+          "reactionName": "Cysteine synthase",
+          "flux": 0.05841745477294785,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "NADS1",
+          "reactionName": "NAD synthase (nh3)",
+          "flux": 0.0005377157206286222,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "BPNT",
+          "reactionName": "3',5'-bisphosphate nucleotidase",
+          "flux": 0.05841745477294786,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PAPSR",
+          "reactionName": "Phosphoadenylyl-sulfate reductase (thioredoxin)",
+          "flux": 0.05841745477294786,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ASPK",
+          "reactionName": "Aspartate kinase",
+          "flux": 0.2523524897925681,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ASAD",
+          "reactionName": "Aspartate-semialdehyde dehydrogenase",
+          "flux": -0.2523524897925681,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DAPDC",
+          "reactionName": "Diaminopimelate decarboxylase",
+          "flux": 0.08100222318124012,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "OCBT",
+          "reactionName": "Ornithine carbamoyltransferase",
+          "flux": 0.0698208992258018,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GARFT",
+          "reactionName": "Phosphoribosylglycinamide formyltransferase",
+          "flux": 0.07958263479499753,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PHETA1",
+          "reactionName": "Phenylalanine transaminase",
+          "flux": -0.043731300694637355,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PPND",
+          "reactionName": "Prephenate dehydrogenase",
+          "flux": 0.0326026152842826,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "METAT",
+          "reactionName": "Methionine adenosyltransferase",
+          "flux": 0.00021197046405708737,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PRAMPC",
+          "reactionName": "Phosphoribosyl-AMP cyclohydrolase",
+          "flux": 0.022362647910876603,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "TMPK",
+          "reactionName": "Thiamine-phosphate kinase",
+          "flux": 5.263854508355127e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACOTA",
+          "reactionName": "Acetylornithine transaminase",
+          "flux": -0.06982089922580181,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PDX5PS",
+          "reactionName": "Pyridoxine 5'-phosphate synthase",
+          "flux": 5.263854508355129e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PPBNGS",
+          "reactionName": "Porphobilinogen synthase",
+          "flux": 0.00042110836066841024,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "SULR",
+          "reactionName": "Sulfite reductase (NADPH2)",
+          "flux": 0.05841745477294786,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CBMKr",
+          "reactionName": "Carbamate kinase",
+          "flux": 0.14790416165142223,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PPNCL2",
+          "reactionName": "Phosphopantothenate-cysteine ligase",
+          "flux": 0.0001590958716871858,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PRAGSr",
+          "reactionName": "Phosphoribosylglycinamide synthase",
+          "flux": 0.10575319754573738,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PRFGS",
+          "reactionName": "Phosphoribosylformylglycinamidine synthase",
+          "flux": 0.10575319754573738,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "NNATr",
+          "reactionName": "Nicotinate-nucleotide adenylyltransferase",
+          "flux": 0.0005377157206286223,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PSERT",
+          "reactionName": "Phosphoserine transaminase",
+          "flux": 0.39269440449852033,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "AIRC2",
+          "reactionName": "Phosphoribosylaminoimidazole carboxylase",
+          "flux": 0.10570055900065384,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GAPD",
+          "reactionName": "Glyceraldehyde-3-phosphate dehydrogenase",
+          "flux": 19.432234672864194,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MOAT2",
+          "reactionName": "3-deoxy-D-manno-octulosonic acid transferase",
+          "flux": 0.004592536023074323,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ARGSL",
+          "reactionName": "Argininosuccinate lyase",
+          "flux": 0.06982089922580181,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GLU5K",
+          "reactionName": "Glutamate 5-kinase",
+          "flux": 0.05217943310961627,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "IPPS",
+          "reactionName": "2-isopropylmalate synthase",
+          "flux": 0.10634662042617689,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_mg2_e",
+          "reactionName": "Mg exchange",
+          "flux": -0.0020477102179363564,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MOHMT",
+          "reactionName": "3-methyl-2-oxobutanoate hydroxymethyltransferase",
+          "flux": 0.00015909587168718578,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "AHCYSNS",
+          "reactionName": "S-adenosylhomocysteine nucleosidase",
+          "flux": 0.00010574918474050674,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GMPS",
+          "reactionName": "GMP synthase",
+          "flux": 0.057413309612475344,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACtex",
+          "reactionName": "Acetate transport via diffusion (extracellular to periplasm)",
+          "flux": -10.24828112069713,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CHRPL",
+          "reactionName": "Chorismate pyruvate lyase",
+          "flux": 5.2638545083107204e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PMPK",
+          "reactionName": "Phosphomethylpyrimidine kinase",
+          "flux": 5.263854508355129e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACACT7r",
+          "reactionName": "Acetyl-CoA C-acyltransferase (tetradecanoyl-CoA) (r)",
+          "flux": 0.0656343645370042,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PSP_L",
+          "reactionName": "Phosphoserine phosphatase (L-serine)",
+          "flux": 0.39269440449852044,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACACT2r",
+          "reactionName": "Acetyl-CoA C-acyltransferase (butanoyl-CoA) (r)",
+          "flux": 0.08400450862930152,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ADSK",
+          "reactionName": "Adenylyl-sulfate kinase",
+          "flux": 0.05841745477294786,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACACT3r",
+          "reactionName": "Acetyl-CoA C-acyltransferase (hexanoyl-CoA) (r)",
+          "flux": 0.0840045086293015,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACACT4r",
+          "reactionName": "Acetyl-CoA C-acyltransferase (octanoyl-CoA) (r)",
+          "flux": 0.0840045086293015,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "HSDy",
+          "reactionName": "Homoserine dehydrogenase (NADPH)",
+          "flux": -0.16479098458988525,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CYSTL",
+          "reactionName": "Cystathionine b-lyase",
+          "flux": 0.03633027404643256,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "SHSL1",
+          "reactionName": "O-succinylhomoserine lyase (L-cysteine)",
+          "flux": 0.036330274046432555,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_ca2_e",
+          "reactionName": "Calcium exchange",
+          "flux": -0.001228626130761814,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "Kt2pp",
+          "reactionName": "Potassium transport in via proton symport (periplasm)",
+          "flux": 0.04607477816364855,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "Htex",
+          "reactionName": "Proton transport via diffusion (extracellular to periplasm)",
+          "flux": -29.84248200026434,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "H2Otex",
+          "reactionName": "H2O transport via diffusion (extracellular to periplasm)",
+          "flux": -0.024894593048262803,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "O2tpp",
+          "reactionName": "O2 transport via diffusion (periplasm)",
+          "flux": 2.0,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "THD2pp",
+          "reactionName": "NAD(P) transhydrogenase (periplasm)",
+          "flux": 2.887574255959965,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GTPCI",
+          "reactionName": "GTP cyclohydrolase I",
+          "flux": 0.00015791563525065092,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "TKT2",
+          "reactionName": "Transketolase",
+          "flux": -0.1364742012199562,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "UDCPDP",
+          "reactionName": "Undecaprenyl-diphosphatase",
+          "flux": 0.006559282021442705,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ATPS4rpp",
+          "reactionName": "ATP synthase (four protons for one ATP) (periplasm)",
+          "flux": 0.515774067077695,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CYTK1",
+          "reactionName": "Cytidylate kinase (CMP)",
+          "flux": 0.042725267155861724,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CO2tpp",
+          "reactionName": "CO2 transporter via diffusion (periplasm)",
+          "flux": 0.007920094634184041,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GK1",
+          "reactionName": "Guanylate kinase (GMP:ATP)",
+          "flux": 0.05741330961247535,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "HACD1",
+          "reactionName": "3-hydroxyacyl-CoA dehydrogenase (acetoacetyl-CoA)",
+          "flux": 0.08400450862930149,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "Ktex",
+          "reactionName": "Potassium transport via diffusion (extracellular to periplasm)",
+          "flux": 0.04607477816364854,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "O2tex",
+          "reactionName": "Oxygen transport via diffusion (extracellular to periplasm)",
+          "flux": 2.0,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "HACD2",
+          "reactionName": "3-hydroxyacyl-CoA dehydrogenase (3-oxohexanoyl-CoA)",
+          "flux": 0.08400450862930152,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ECOAH5",
+          "reactionName": "3-hydroxyacyl-CoA dehydratase (3-hydroxydodecanoyl-CoA)",
+          "flux": 0.08400450862930152,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DHFS",
+          "reactionName": "Dihydrofolate synthase",
+          "flux": 0.00015791563525065097,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_ni2_e",
+          "reactionName": "Ni2+ exchange",
+          "flux": -7.624327382056982e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GLCtex_copy1",
+          "reactionName": "Glucose transport via diffusion (extracellular to periplasm)",
+          "flux": 10.0,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PItex",
+          "reactionName": "Phosphate transport via diffusion (extracellular to periplasm)",
+          "flux": 0.2276926296809955,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACt2rpp",
+          "reactionName": "Acetate reversible transport via proton symport (periplasm)",
+          "flux": -10.248281120697131,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "METS",
+          "reactionName": "Methionine synthase",
+          "flux": 0.036436023231173065,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ASPO3",
+          "reactionName": "L-aspartate oxidase",
+          "flux": 0.0005377157206286223,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_cu2_e",
+          "reactionName": "Cu2+ exchange",
+          "flux": -0.00016735752674546127,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACACT5r",
+          "reactionName": "Acetyl-CoA C-acyltransferase (decanoyl-CoA) (r)",
+          "flux": 0.0840045086293015,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PRASCSi",
+          "reactionName": "Phosphoribosylaminoimidazolesuccinocarboxamide synthase",
+          "flux": 0.10570055900065385,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "FE2tex",
+          "reactionName": "Iron (II) transport via diffusion (extracellular to periplasm)",
+          "flux": 0.0019480982626661379,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DHPS2",
+          "reactionName": "Dihydropteroate synthase",
+          "flux": 0.00015791563525065097,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MTHFC",
+          "reactionName": "Methenyltetrahydrofolate cyclohydrolase",
+          "flux": 0.20769848025161153,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MTHFD",
+          "reactionName": "Methylenetetrahydrofolate dehydrogenase (NADP)",
+          "flux": 0.20769848025161153,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "QULNS",
+          "reactionName": "Quinolinate synthase",
+          "flux": 0.0005377157206286223,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_cobalt2_e",
+          "reactionName": "Co2+ exchange",
+          "flux": -5.90118218425463e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACACT6r",
+          "reactionName": "Acetyl-CoA C-acyltransferase (dodecanoyl-CoA) (r)",
+          "flux": 0.0656343645370042,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "FORtppi",
+          "reactionName": "Formate transport via diffusion (cytoplasm to periplasm)",
+          "flux": 17.423461163122443,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "SO4tex",
+          "reactionName": "Sulfate transport via diffusion (extracellular to periplasm)",
+          "flux": 0.05944142790555971,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "FACOAE160",
+          "reactionName": "Fatty-acid-CoA thioesterase (hexadecanoate)",
+          "flux": 0.030126243192481986,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "NH4tpp",
+          "reactionName": "Ammonia reversible transport (periplasm)",
+          "flux": 2.549290639578617,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PROt2rpp",
+          "reactionName": "L-proline reversible transport via proton symport (periplasm)",
+          "flux": -0.0012286261307618137,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PROt4pp",
+          "reactionName": "Na+/Proline-L symporter (periplasm)",
+          "flux": 0.0012286261307618137,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MOBDabcpp",
+          "reactionName": "Molybdate transport via ABC system (periplasm)",
+          "flux": 1.6523310115912963e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MOBDtex",
+          "reactionName": "Molybdate transport via diffusion (extracellular to periplasm)",
+          "flux": 1.6523310115912963e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "NI2tex",
+          "reactionName": "Nickel transport via diffusion (extracellular to periplasm)",
+          "flux": 7.624327382056982e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DNTPPA",
+          "reactionName": "Dihydroneopterin triphosphate pyrophosphatase",
+          "flux": 0.00015791563525065097,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "NH4tex",
+          "reactionName": "Ammonia transport via diffusion (extracellular to periplasm)",
+          "flux": 2.549290639578617,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "FE3tex",
+          "reactionName": "Iron (III) transport via diffusion (extracellular to periplasm)",
+          "flux": 0.0018430572197864056,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MG2tex",
+          "reactionName": "Magnesium (Mg+2) transport via diffusion (extracellular to periplasm)",
+          "flux": 0.0020477102179363564,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "Zn2tex",
+          "reactionName": "Zinc (Zn+2) transport via diffusion (extracellular to periplasm)",
+          "flux": 8.049212499323313e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "H2Otpp",
+          "reactionName": "H2O transport via diffusion (periplasm)",
+          "flux": -0.024894593048262803,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CO2tex",
+          "reactionName": "CO2 transport via diffusion (extracellular to periplasm)",
+          "flux": 0.007920094634184041,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACGK",
+          "reactionName": "Acetylglutamate kinase",
+          "flux": 0.06982089922580181,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "COBALT2tex",
+          "reactionName": "Cobalt (Co+2) transport via diffusion (extracellular to periplasm)",
+          "flux": 5.90118218425463e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "HMBS",
+          "reactionName": "Hydroxymethylbilane synthase",
+          "flux": 0.00010527709016710255,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MEPCT",
+          "reactionName": "2-C-methyl-D-erythritol 4-phosphate cytidylyltransferase",
+          "flux": 0.0005639169695237989,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GLUDy",
+          "reactionName": "Glutamate dehydrogenase (NADP)",
+          "flux": -2.0057230706481235,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GLCptspp",
+          "reactionName": "D-glucose transport via PEP:Pyr PTS (periplasm)",
+          "flux": 10.0,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_h2o_e",
+          "reactionName": "H2O exchange",
+          "flux": 0.0248945930482628,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "HSTPT",
+          "reactionName": "Histidinol-phosphate transaminase",
+          "flux": 0.0223626479108766,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "THDPS",
+          "reactionName": "Tetrahydrodipicolinate succinylase",
+          "flux": 0.0875615052026828,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ATPM",
+          "reactionName": "ATP maintenance requirement",
+          "flux": 6.86,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 6.86,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "THRD_L",
+          "reactionName": "L-threonine deaminase",
+          "flux": 0.06857858235237252,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ETOHtex",
+          "reactionName": "Ethanol transport via diffusion (extracellular to periplasm)",
+          "flux": -6.199619972404754,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DHFR",
+          "reactionName": "Dihydrofolate reductase",
+          "flux": 0.006334328956578915,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PRAIi",
+          "reactionName": "Phosphoribosylanthranilate isomerase (irreversible)",
+          "flux": 0.013417635955983432,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "HACD3",
+          "reactionName": "3-hydroxyacyl-CoA dehydrogenase (3-oxooctanoyl-CoA)",
+          "flux": 0.08400450862930152,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "TYRTA",
+          "reactionName": "Tyrosine transaminase",
+          "flux": -0.0326026152842826,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "SHKK",
+          "reactionName": "Shikimate kinase",
+          "flux": 0.08996210611523721,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_mobd_e",
+          "reactionName": "Molybdate exchange",
+          "flux": -1.6523310115912963e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_so4_e",
+          "reactionName": "Sulfate exchange",
+          "flux": -0.05944142790555971,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "OMCDC",
+          "reactionName": "2-Oxo-4-methyl-3-carboxypentanoate decarboxylation",
+          "flux": 0.1063466204261769,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "E4PD",
+          "reactionName": "Erythrose 4-phosphate dehydrogenase",
+          "flux": -0.00010527709016709971,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "IG3PS",
+          "reactionName": "Imidazole-glycerol-3-phosphate synthase",
+          "flux": 0.022362647910876603,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MTHFR2",
+          "reactionName": "5,10-methylenetetrahydrofolate reductase (NADH)",
+          "flux": 0.036436023231173065,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_nh4_e",
+          "reactionName": "Ammonia exchange",
+          "flux": -2.549290639578617,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DUTPDP",
+          "reactionName": "DUTP diphosphatase",
+          "flux": 0.006176413321328263,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DPR",
+          "reactionName": "2-dehydropantoate 2-reductase",
+          "flux": 0.00015909587168718578,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_etoh_e",
+          "reactionName": "Ethanol exchange",
+          "flux": 6.199619972404754,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "GLNS",
+          "reactionName": "Glutamine synthetase",
+          "flux": 0.36975792563205645,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_k_e",
+          "reactionName": "K+ exchange",
+          "flux": -0.04607477816364854,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACACT1r",
+          "reactionName": "Acetyl-CoA C-acetyltransferase",
+          "flux": 0.08400450862930149,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACGS",
+          "reactionName": "N-acetylglutamate synthase",
+          "flux": 0.0698208992258018,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CU2tex",
+          "reactionName": "Copper (Cu+2) transport via diffusion (extracellular to periplasm)",
+          "flux": 0.0001673575267454613,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ALAALAr",
+          "reactionName": "D-alanine-D-alanine ligase (reversible)",
+          "flux": 0.006559282021442705,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CLtex",
+          "reactionName": "Chloride (Cl-1) transport via diffusion (extracellular to periplasm)",
+          "flux": 0.001228626130761814,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ADNK1",
+          "reactionName": "Adenosine kinase",
+          "flux": 0.00015885982439879838,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MNtex",
+          "reactionName": "Manganese (Mn+2) transport via diffusion (extracellular to periplasm)",
+          "flux": 0.00016310867557279795,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "SHCHF",
+          "reactionName": "Sirohydrochlorin ferrochelatase",
+          "flux": 5.2638545083551287e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "SUCOAS",
+          "reactionName": "Succinyl-CoA synthetase (ADP-forming)",
+          "flux": 0.12391491188327763,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PRAIS",
+          "reactionName": "Phosphoribosylaminoimidazole synthase",
+          "flux": 0.10575319754573738,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "AACPS7",
+          "reactionName": "Acyl-[acyl-carrier-protein] synthetase  (n-C12:0)",
+          "flux": 0.018370144092297296,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PANTS",
+          "reactionName": "Pantothenate synthase",
+          "flux": 0.0001590958716871858,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ECOAH7",
+          "reactionName": "3-hydroxyacyl-CoA dehydratase (3-hydroxyhexadecanoyl-CoA)",
+          "flux": 0.06563436453700422,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "HISTP",
+          "reactionName": "Histidinol-phosphatase",
+          "flux": 0.0223626479108766,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "UPP3MT",
+          "reactionName": "Uroporphyrinogen methyltransferase",
+          "flux": 5.263854508355128e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DHQS",
+          "reactionName": "3-dehydroquinate synthase",
+          "flux": 0.08996210611523721,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DASYN160",
+          "reactionName": "CDP-diacylglycerol synthetase (n-C16:0)",
+          "flux": 0.015063121596240991,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DASYN161",
+          "reactionName": "CDP-diacylglycerol synthetase (n-C16:1)",
+          "flux": 0.01775406067226111,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PGCD",
+          "reactionName": "Phosphoglycerate dehydrogenase",
+          "flux": 0.39269440449852033,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "FACOAE161",
+          "reactionName": "Fatty-acid-CoA thioesterase (hexadecenoate)",
+          "flux": 0.03550812134452223,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ADSL1r",
+          "reactionName": "Adenylsuccinate lyase",
+          "flux": 0.07064989729905514,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "AICART",
+          "reactionName": "Phosphoribosylaminoimidazolecarboxamide formyltransferase",
+          "flux": 0.12806320691153047,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_cl_e",
+          "reactionName": "Chloride exchange",
+          "flux": -0.001228626130761814,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "FORtex",
+          "reactionName": "Formate transport via diffusion (extracellular to periplasm)",
+          "flux": -17.423461163122443,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PPPGO3",
+          "reactionName": "Protoporphyrinogen oxidase (anaerobic)",
+          "flux": 5.2638545083551287e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PFK",
+          "reactionName": "Phosphofructokinase",
+          "flux": 1.9852549382656648,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PDX5PO2",
+          "reactionName": "Pyridoxine 5'-phosphate oxidase (anaerboic",
+          "flux": 5.263854508355129e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PGM",
+          "reactionName": "Phosphoglycerate mutase",
+          "flux": -19.03954026836568,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CYTBO3_4pp",
+          "reactionName": "Cytochrome oxidase bo3 (ubiquinol-8: 4 protons) (periplasm)",
+          "flux": 3.999894722909834,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "TPI",
+          "reactionName": "Triose-phosphate isomerase",
+          "flux": 9.761355641691736,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MPTG",
+          "reactionName": "Murein polymerizing transglycosylase",
+          "flux": 0.0032796410107213524,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "RPI",
+          "reactionName": "Ribose-5-phosphate isomerase",
+          "flux": -0.17369594718835946,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MCTP1App",
+          "reactionName": "Murein crosslinking transpeptidase 1A:(A2pm->D-ala) (periplasm)",
+          "flux": 0.0032796410107213524,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PERD",
+          "reactionName": "Erythronate 4-phosphate (4per) dehydrogenase",
+          "flux": -0.00010527709016709971,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "5DOAN",
+          "reactionName": "5'-deoxyadenosine nuclosidase",
+          "flux": 5.311063965829166e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DM_5drib_c",
+          "reactionName": "Sink needed to allow 5'-deoxyribose to leave system",
+          "flux": 5.311063965829166e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "K2L4Aabcpp",
+          "reactionName": "KDO(2)-lipid IV A transport via ABC system (periplasm)",
+          "flux": 0.004592536023074323,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "FACOAE120",
+          "reactionName": "Fatty-acid-CoA thioesterase (dodecanoate)",
+          "flux": 0.018370144092297296,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "SO4t2pp",
+          "reactionName": "Sulfate transport in via proton symport (periplasm to cytoplasm)",
+          "flux": 0.059441427905559716,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "AMPMS2",
+          "reactionName": "4-amino-2-methyl-5-phosphomethylpyrimidine synthetase",
+          "flux": 5.26385450835513e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PSSA161",
+          "reactionName": "Phosphatidylserine syntase (n-C16:1)",
+          "flux": 0.017754060672261106,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PSD160",
+          "reactionName": "Phosphatidylserine decarboxylase (n-C16:0)",
+          "flux": 0.015063121596240995,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PSD161",
+          "reactionName": "Phosphatidylserine decarboxylase (n-C16:1)",
+          "flux": 0.01775406067226111,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACONTb",
+          "reactionName": "Aconitase (half-reaction B, Isocitrate hydro-lyase)",
+          "flux": 0.25379615500212416,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CA2tex",
+          "reactionName": "Calcium (Ca+2) transport via diffusion (extracellular to periplasm)",
+          "flux": 0.001228626130761814,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "SUCDi",
+          "reactionName": "Succinate dehydrogenase (irreversible)",
+          "flux": 0.00013478300108837234,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "EX_o2_e",
+          "reactionName": "O2 exchange",
+          "flux": -2.0,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -2.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "G3PAT160",
+          "reactionName": "Glycerol-3-phosphate acyltransferase (C16:0)",
+          "flux": 0.015063121596240993,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "G3PAT161",
+          "reactionName": "Glycerol-3-phosphate acyltransferase (C16:1)",
+          "flux": 0.017754060672261106,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "AGPAT160",
+          "reactionName": "1-hexadecanoyl-sn-glycerol 3-phosphate O-acyltransferase (n-C16:0)",
+          "flux": 0.015063121596240995,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "3OAS140",
+          "reactionName": "3-oxoacyl-[acyl-carrier-protein] synthase (n-C14:0)",
+          "flux": 0.018370144092297293,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "3OAR140",
+          "reactionName": "3-oxoacyl-[acyl-carrier-protein] reductase (n-C14:0)",
+          "flux": 0.018370144092297293,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PE160abcpp",
+          "reactionName": "Phosphatidylethanolamine transport via ABC system (n-C16:0, periplasm)",
+          "flux": 0.015063121596240996,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PE161abcpp",
+          "reactionName": "Phosphatidylethanolamine transport via ABC system (n-C16:1, periplasm)",
+          "flux": 0.017754060672261106,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACONTa",
+          "reactionName": "Aconitase (half-reaction A, Citrate hydro-lyase)",
+          "flux": 0.25379615500212416,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PSSA160",
+          "reactionName": "Phosphatidylserine syntase (n-C16:0)",
+          "flux": 0.015063121596240995,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "AGPAT161",
+          "reactionName": "1-hexadec-7-enoyl-sn-glycerol 3-phosphate O-acyltransferase (n-C16:1)",
+          "flux": 0.017754060672261106,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ZN2tpp",
+          "reactionName": "Zinc transport in via permease (no H+)",
+          "flux": 8.049212499323313e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "NI2tpp",
+          "reactionName": "Nickel (+2) transport in via permease (no H+)",
+          "flux": 7.624327382056982e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACOAD7f",
+          "reactionName": "Acyl-CoA dehydrogenase (hexadecanoyl-CoA)",
+          "flux": -0.030126243192481986,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACOAD5f",
+          "reactionName": "Acyl-CoA dehydrogenase (dodecanoyl-CoA)",
+          "flux": -0.0840045086293015,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CAt6pp",
+          "reactionName": "Calcium / sodium antiporter (1:1)",
+          "flux": -0.001228626130761814,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACOAD3f",
+          "reactionName": "Acyl-CoA dehydrogenase (octanoyl-CoA)",
+          "flux": -0.0840045086293015,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACOAD2f",
+          "reactionName": "Acyl-CoA dehydrogenase (hexanoyl-CoA)",
+          "flux": -0.0840045086293015,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACOAD4f",
+          "reactionName": "Acyl-CoA dehydrogenase (decanoyl-CoA)",
+          "flux": -0.0840045086293015,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACOAD6f",
+          "reactionName": "Acyl-CoA dehydrogenase (tetradecanoyl-CoA)",
+          "flux": -0.0656343645370042,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "NADH16pp",
+          "reactionName": "NADH dehydrogenase (ubiquinone-8 & 3 protons) (periplasm)",
+          "flux": 3.9211389617624963,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "OPHHX3",
+          "reactionName": "2-Octaprenylphenol hydroxylase (anaerobic)",
+          "flux": 5.263854508310721e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "COBALT2tpp",
+          "reactionName": "Cobalt transport in via permease (no H+)",
+          "flux": 5.90118218425463e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DALAt2pp",
+          "reactionName": "D-alanine transport in via proton symport (periplasm)",
+          "flux": 0.0032796410107213524,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "FE2tpp",
+          "reactionName": "Iron (+2) transport in via permease (no H+)",
+          "flux": 0.0019480982626661379,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MN2tpp",
+          "reactionName": "Manganese transport in via permease (no H+)",
+          "flux": 0.00016310867557279795,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CLt3_2pp",
+          "reactionName": "Chloride transport out via proton antiport (2:1) (periplasm)",
+          "flux": 0.000614313065380907,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "POR5",
+          "reactionName": "Pyruvate synthase",
+          "flux": 0.025671322737940913,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CU2tpp",
+          "reactionName": "Copper transport in via permease (no H+)",
+          "flux": 0.0001673575267454613,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MG2t3_2pp",
+          "reactionName": "Magnesium (Mg+2) transport in/out via proton antiport (periplasm)",
+          "flux": 0.0020477102179363564,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "FE3abcpp",
+          "reactionName": "Iron (III) transport via ABC system (periplasm to cytoplasm)",
+          "flux": 0.0018430572197864058,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "CTECOAI7",
+          "reactionName": "3-cis-2-trans-enoyl-CoA isomerase",
+          "flux": -0.03550812134452223,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "K2L4Aabctex",
+          "reactionName": "KDO(2)-lipid IV A transport via ABC system (periplasm to extracellular)",
+          "flux": 0.004592536023074323,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ETOHtrpp",
+          "reactionName": "Ethanol reversible transport via diffusion (periplasm)",
+          "flux": -6.199619972404754,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ICYSDS",
+          "reactionName": "ISC Cysteine desulfuration",
+          "flux": 0.00031087427746653384,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "MECDPDH5",
+          "reactionName": "2C-methyl-D-erythritol 2,4 cyclodiphosphate dehydratase",
+          "flux": 0.0005639169695237987,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "RNTR1c2",
+          "reactionName": "Ribonucleoside-triphosphate reductase (ATP) (flavodoxin)",
+          "flux": 0.006176413321328265,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "RNTR2c2",
+          "reactionName": "Ribonucleoside-triphosphate reductase (GTP) (flavodoxin)",
+          "flux": 0.006377289562880293,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "I4FE4SR",
+          "reactionName": "ISC [4Fe-4S] Reduction",
+          "flux": 6.137229471624813e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "RNTR3c2",
+          "reactionName": "Ribonucleoside-triphosphate reductase (CTP) (flavodoxin)",
+          "flux": 0.006377289562880292,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "RNTR4c2",
+          "reactionName": "Ribonucleoside-triphosphate reductase (UTP) (flavodoxin)",
+          "flux": 0.006176413321328264,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "I2FE2SS",
+          "reactionName": "ISC [2Fe-2S] Synthesis",
+          "flux": 6.750952418787295e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "I2FE2ST",
+          "reactionName": "ISC [2Fe-2S] Transfer",
+          "flux": 6.609324046365185e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "I2FE2SS2",
+          "reactionName": "ISC [2Fe-2S] Synthesis II",
+          "flux": 6.137229471624813e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "I4FE4ST",
+          "reactionName": "ISC [4Fe-4S] Transfer",
+          "flux": 6.137229471624813e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PYK4",
+          "reactionName": "Pyruvate kinase(4)",
+          "flux": 0.042725267155861724,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DM_4crsol_c",
+          "reactionName": "Sink needed to allow p-Cresol to leave system",
+          "flux": 5.2638545083551287e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "ACOAD1fr",
+          "reactionName": "Acyl-CoA dehydrogenase (butanoyl-CoA)",
+          "flux": 0.08400450862930152,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "AI2K",
+          "reactionName": "Autoinducer-2 kinase",
+          "flux": 0.00010574918474050674,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "DHNPA2r",
+          "reactionName": "Dihydroneopterin aldolase reversible",
+          "flux": 0.00015791563525065097,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PYK2",
+          "reactionName": "Pyruvate kinase(2)",
+          "flux": 0.10038689851465449,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PYK3",
+          "reactionName": "Pyruvate kinase(3)",
+          "flux": 0.18648066168447763,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PYK6",
+          "reactionName": "RE2954",
+          "flux": 0.006176413321328265,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PIt2rpp",
+          "reactionName": "Phosphate reversible transport via symport (periplasm)",
+          "flux": 0.2276926296809955,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PAI2I",
+          "reactionName": "Phospho-AI-2 isomerase",
+          "flux": 0.00010574918474050677,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "4HTHRA",
+          "reactionName": "4-hydroxy-L-threonine aldolase",
+          "flux": -0.000157915635250651,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "TYRL",
+          "reactionName": "Tyrosine lyase",
+          "flux": 5.2638545083551287e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "THZPSN3",
+          "reactionName": "Thiazole phosphate synthesis",
+          "flux": 5.2638545083551287e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "PAI2T",
+          "reactionName": "3-hydroxy-2,4-pentadione 5-phosphate thiolase",
+          "flux": 0.00010574918474050677,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "4HTHRK",
+          "reactionName": "4-Hydroxy-L-threonine kinase",
+          "flux": 0.00015791563525065103,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "BIOMASS_Ec_iML1515_core_75p37M",
+          "reactionName": "E. coli biomass objective function (iML1515) - core - with 75.37 GAM estimate",
+          "flux": 0.23604728737018515,
+          "unit": "mmol/gDW/h",
+          "conditionId": "oxygen_limited",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        }
+      ],
+      "pathwaySummaries": []
+    },
+    "yield": {
+      "status": "available",
+      "method": "COBRApy 0.32.1 pFBA",
+      "notAvailableReason": null,
+      "artifactIds": [
+        "flux_table"
+      ],
+      "results": [
+        {
+          "metricId": "EX_etoh_e_per_glucose",
+          "name": "ethanol yield",
+          "value": 0.6199619972404754,
+          "unit": "mol/mol",
+          "kind": "predicted",
+          "conditionId": "oxygen_limited"
+        },
+        {
+          "metricId": "EX_ac_e_per_glucose",
+          "name": "acetate yield",
+          "value": 1.024828112069713,
+          "unit": "mol/mol",
+          "kind": "predicted",
+          "conditionId": "oxygen_limited"
+        },
+        {
+          "metricId": "EX_succ_e_per_glucose",
+          "name": "succinate yield",
+          "value": 0.0,
+          "unit": "mol/mol",
+          "kind": "predicted",
+          "conditionId": "oxygen_limited"
+        }
+      ]
+    },
+    "geneExpression": {
+      "status": "available",
+      "method": "ILLUSTRATIVE (literature-informed, POC) \u2014 representative values, NOT a computed result; informed by PRECISE-1K (E. coli compendium) and PXD016519 / ProteomICA",
+      "notAvailableReason": null,
+      "contrastId": "oxygen_limited_vs_aerobic_glucose",
+      "results": [
+        {
+          "featureId": "b1241",
+          "symbol": "adhE",
+          "featureType": "gene",
+          "log2FoldChange": 2.6,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "b4151",
+          "symbol": "frdA",
+          "featureType": "gene",
+          "log2FoldChange": 2.1,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "b1380",
+          "symbol": "ldhA",
+          "featureType": "gene",
+          "log2FoldChange": 1.8,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "b2297",
+          "symbol": "pta",
+          "featureType": "gene",
+          "log2FoldChange": 1.1,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "b0720",
+          "symbol": "gltA",
+          "featureType": "gene",
+          "log2FoldChange": -1.7,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "b0721",
+          "symbol": "sdhC",
+          "featureType": "gene",
+          "log2FoldChange": -2.0,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "b1136",
+          "symbol": "icd",
+          "featureType": "gene",
+          "log2FoldChange": -1.3,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "b3236",
+          "symbol": "mdh",
+          "featureType": "gene",
+          "log2FoldChange": -1.1,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "P0A9Q7",
+          "symbol": "AdhE",
+          "featureType": "protein",
+          "log2FoldChange": 1.9,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "P00363",
+          "symbol": "FrdA",
+          "featureType": "protein",
+          "log2FoldChange": 1.5,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "P0ABH7",
+          "symbol": "GltA",
+          "featureType": "protein",
+          "log2FoldChange": -1.2,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        }
+      ]
+    },
+    "metabolomics": {
+      "status": "available",
+      "method": "ILLUSTRATIVE (literature-informed, POC) \u2014 representative values, NOT a computed result; informed by ST001421",
+      "notAvailableReason": null,
+      "results": [
+        {
+          "featureId": "hmdb:HMDB0000108",
+          "name": "Ethanol",
+          "value": 3.4,
+          "unit": "mM",
+          "change": 2.8,
+          "changeUnit": "log2FoldChange",
+          "conditionId": "oxygen_limited"
+        },
+        {
+          "featureId": "hmdb:HMDB0000042",
+          "name": "Acetate",
+          "value": 5.1,
+          "unit": "mM",
+          "change": 1.9,
+          "changeUnit": "log2FoldChange",
+          "conditionId": "oxygen_limited"
+        },
+        {
+          "featureId": "hmdb:HMDB0000243",
+          "name": "Pyruvate",
+          "value": 0.9,
+          "unit": "mM",
+          "change": -0.4,
+          "changeUnit": "log2FoldChange",
+          "conditionId": "oxygen_limited"
+        },
+        {
+          "featureId": "hmdb:HMDB0000254",
+          "name": "Succinate",
+          "value": 1.2,
+          "unit": "mM",
+          "change": 0.7,
+          "changeUnit": "log2FoldChange",
+          "conditionId": "oxygen_limited"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "note": "Flux/growth are real COBRApy pFBA on iML1515 and yeast-GEM; transcriptomics/proteomics/metabolomics in the bundles are illustrative (literature-informed), labelled in each section.",
+  "bundles": [
+    {
+      "organism": "Escherichia coli",
+      "strain": "K-12 MG1655",
+      "conditionId": "aerobic_glucose",
+      "growthRate_per_h": 0.877,
+      "url": "/demo/ecoli-aerobic_glucose.json",
+      "open": "/?bundleUrl=/demo/ecoli-aerobic_glucose.json"
+    },
+    {
+      "organism": "Escherichia coli",
+      "strain": "K-12 MG1655",
+      "conditionId": "oxygen_limited",
+      "growthRate_per_h": 0.236,
+      "url": "/demo/ecoli-oxygen_limited.json",
+      "open": "/?bundleUrl=/demo/ecoli-oxygen_limited.json"
+    },
+    {
+      "organism": "Saccharomyces cerevisiae",
+      "strain": "S288C",
+      "conditionId": "aerobic_glucose",
+      "growthRate_per_h": 0.8386,
+      "url": "/demo/yeast-aerobic_glucose.json",
+      "open": "/?bundleUrl=/demo/yeast-aerobic_glucose.json"
+    },
+    {
+      "organism": "Saccharomyces cerevisiae",
+      "strain": "S288C",
+      "conditionId": "oxygen_limited",
+      "growthRate_per_h": 0.2515,
+      "url": "/demo/yeast-oxygen_limited.json",
+      "open": "/?bundleUrl=/demo/yeast-oxygen_limited.json"
+    }
+  ]
+}

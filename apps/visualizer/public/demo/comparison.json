@@ -1,0 +1,68 @@
+{
+  "generatedBy": "scripts/poc/build_demo.py",
+  "note": "Flux/growth are real COBRApy pFBA on iML1515 and yeast-GEM; transcriptomics/proteomics/metabolomics in the bundles are illustrative (literature-informed), labelled in each section.",
+  "organisms": [
+    {
+      "organism": "Escherichia coli",
+      "strain": "K-12 MG1655",
+      "model": "iML1515.xml",
+      "conditions": [
+        {
+          "conditionId": "aerobic_glucose",
+          "growthRate_per_h": 0.877,
+          "activeReactions": 432,
+          "totalReactions": 2712,
+          "secretion_mmol_gDW_h": {
+            "ethanol": 0.0,
+            "acetate": 0.0,
+            "succinate": 0.0
+          },
+          "bundle": "apps/visualizer/public/demo/ecoli-aerobic_glucose.json"
+        },
+        {
+          "conditionId": "oxygen_limited",
+          "growthRate_per_h": 0.236,
+          "activeReactions": 417,
+          "totalReactions": 2712,
+          "secretion_mmol_gDW_h": {
+            "ethanol": 6.1996,
+            "acetate": 10.2483,
+            "succinate": 0.0
+          },
+          "bundle": "apps/visualizer/public/demo/ecoli-oxygen_limited.json"
+        }
+      ]
+    },
+    {
+      "organism": "Saccharomyces cerevisiae",
+      "strain": "S288C",
+      "model": "yeast-GEM.xml",
+      "conditions": [
+        {
+          "conditionId": "aerobic_glucose",
+          "growthRate_per_h": 0.8386,
+          "activeReactions": 485,
+          "totalReactions": 4105,
+          "secretion_mmol_gDW_h": {
+            "ethanol": 0.0,
+            "acetate": 0.0,
+            "succinate": 0.0
+          },
+          "bundle": "apps/visualizer/public/demo/yeast-aerobic_glucose.json"
+        },
+        {
+          "conditionId": "oxygen_limited",
+          "growthRate_per_h": 0.2515,
+          "activeReactions": 489,
+          "totalReactions": 4105,
+          "secretion_mmol_gDW_h": {
+            "ethanol": 15.5617,
+            "acetate": 0.0,
+            "succinate": 0.0
+          },
+          "bundle": "apps/visualizer/public/demo/yeast-oxygen_limited.json"
+        }
+      ]
+    }
+  ]
+}

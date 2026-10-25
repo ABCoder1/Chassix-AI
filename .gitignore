@@ -48,3 +48,6 @@ gcp-key.json
 *-sa.json
 *.serviceaccount.json
 service-account*.json
+
+# Apify retrieval actor — separate repo (ABCoder1/apify-retrieval-actor), deployed via apify push.
+/apify-retrieval-actor/
