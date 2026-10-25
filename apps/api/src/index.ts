@@ -1,10 +1,42 @@
+import { fileURLToPath } from "node:url";
 import { buildServer } from "./server.js";
 import { createInMemoryRepositories } from "./repositories/memory.js";
 import { createDrizzleRepositories } from "./repositories/drizzle.js";
 import type { Repositories } from "./repositories/types.js";
 import type { DbClient } from "@chassix/db";
+import type { ExecutorAdapter } from "@chassix/shared";
+import type { BundleSource } from "./runs/bundle.js";
 
 const port = Number(process.env.API_PORT ?? 3001);
+
+/**
+ * When GCP is configured (project + region + bucket), wire the live GCP Batch executor (submits the
+ * `workflows/<branch>/batch-<branch>.json` jobs) and the GCS bundle source (ingests each run's
+ * `bundle.<branch>.json` outputs into `GET …/runs/:id/bundle`). The heavy Google SDKs load only
+ * here, only when configured. Credentials come from Application Default Credentials.
+ */
+async function buildGcp(): Promise<{ executor?: ExecutorAdapter; bundleSource?: BundleSource }> {
+  const projectId = process.env.GCP_PROJECT_ID;
+  const region = process.env.GCP_REGION;
+  const gcsBucket = process.env.GCS_BUCKET;
+  if (!projectId || !region || !gcsBucket) return {};
+
+  const { GcpBatchExecutor } = await import("@chassix/executor");
+  const { createBatchJobsClient } = await import("@chassix/executor/gcp");
+  const { createGcsObjectStore } = await import("./runs/gcs-store.js");
+  const { GcsBundleSource } = await import("./runs/gcs-bundle-source.js");
+
+  const workflowsDir = fileURLToPath(new URL("../../../workflows", import.meta.url));
+  const executor = new GcpBatchExecutor({
+    client: createBatchJobsClient(),
+    config: { projectId, region, gcsBucket, workflowsDir },
+  });
+  const bundleSource = new GcsBundleSource(createGcsObjectStore(gcsBucket));
+  console.log(
+    `[api] GCP Batch executor + GCS bundle ingest enabled (project=${projectId}, region=${region}, bucket=${gcsBucket}).`,
+  );
+  return { executor, bundleSource };
+}
 
 /**
  * Wire Drizzle/Supabase-backed persistence when `DATABASE_URL` is configured: the auth/workspace
@@ -28,7 +60,19 @@ async function main(): Promise<void> {
     repos = createInMemoryRepositories();
   }
 
-  const app = buildServer({ repos, ...(dbClient ? { dbClient } : {}) });
+  const { executor, bundleSource } = await buildGcp();
+  if (!executor) {
+    console.warn(
+      "[api] GCP_* not set — run launches use the FakeExecutor (no real jobs submitted).",
+    );
+  }
+
+  const app = buildServer({
+    repos,
+    ...(dbClient ? { dbClient } : {}),
+    ...(executor ? { executor } : {}),
+    ...(bundleSource ? { bundleSource } : {}),
+  });
   const address = await app.listen({ port, host: "0.0.0.0" });
   console.log(`[api] listening on ${address}`);
 }

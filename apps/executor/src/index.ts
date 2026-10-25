@@ -21,3 +21,15 @@ export {
   executorStatusToBranchState,
 } from "./status-mapping.js";
 export { NotImplementedError, UnknownExecutorRefError, CannotCancelError } from "./errors.js";
+
+// Live GCP Batch executor (ADR-D4). `createBatchJobsClient` (the SDK-backed client) is imported
+// from "@chassix/executor/gcp" so the heavy @google-cloud/batch SDK loads only when wired.
+export { GcpBatchExecutor } from "./gcp-batch/executor.js";
+export {
+  batchStateToExecutorStatus,
+  renderBatchJob,
+  substitutionsFor,
+  sanitizeJobId,
+  type Substitutions,
+} from "./gcp-batch/template.js";
+export type { BatchJobsClient, BatchJobState, GcpBatchConfig } from "./gcp-batch/types.js";

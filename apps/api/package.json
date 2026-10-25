@@ -12,6 +12,7 @@
     "@chassix/analysis-bundle": "workspace:*",
     "@chassix/db": "workspace:*",
     "@chassix/executor": "workspace:*",
+    "@google-cloud/storage": "8.4.0",
     "@chassix/orchestrator": "workspace:*",
     "@chassix/shared": "workspace:*",
     "@fastify/cookie": "11.0.2",

@@ -93,13 +93,24 @@ to Cloud Storage. Details and the per-branch table are in `[workflows/README.md]
    in each branch's `README.md` (pathways needs an organism `OrgDb`; metabolomics pins a MetaboAnalystR
    tag; genomics takes `CHASSIX_NOVEL_MICROBE=true|false`).
 
-**Hand back:** `GCP_PROJECT_ID`, `GCP_REGION`, `GCS_BUCKET` (set in `.env`), and confirm the SA key path
-is set. With those, I'll wire the executor to submit these Batch jobs and ingest the output bundles into
-the `GET …/runs/:runId/bundle` endpoint the dashboard reads.
+**Wired (2026-10-25):** when `GCP_PROJECT_ID` + `GCP_REGION` + `GCS_BUCKET` are set, the API now uses
+the live **GcpBatchExecutor** — a run launch renders `workflows/<branch>/batch-<branch>.json` and
+submits it as a GCP Batch job, and the **GcsBundleSource** reads each run's
+`gs://GCS_BUCKET/studies/<runId>/outputs/bundle.<branch>.json` back into `GET …/runs/:runId/bundle`
+(the dashboard's data). No `GCP_*` → it falls back to the `FakeExecutor` (no real jobs). Auth is
+Application Default Credentials (`GOOGLE_APPLICATION_CREDENTIALS`, or `gcloud auth application-default login`).
 
-> Decision needed: **GCP Batch directly** (what `workflows/` targets) vs. **Nextflow** (ADR-D4) as the
-> orchestration engine. Batch is ready now; if you prefer Nextflow, give me an endpoint + token
-> (`NEXTFLOW_ENDPOINT`/`NEXTFLOW_TOKEN`) and I'll wire that executor instead.
+**Still required on your side before a real launch runs end-to-end:**
+
+1. **Build + push the branch images** to Artifact Registry (step 3 above) — Batch pulls
+   `REGION-docker.pkg.dev/PROJECT_ID/chassix/<branch>:latest`.
+2. **Credentials** reachable by the API process (SA key via `GOOGLE_APPLICATION_CREDENTIALS`, or ADC).
+3. **Per-run organism/condition** on the launch (the plan's branch `parameters.organism` /
+   `parameters.condition`) so the Batch job is tagged correctly; otherwise they default to `unspecified`.
+
+> Engine choice: we use **GCP Batch directly** (what `workflows/` + the executor target). Nextflow
+> (ADR-D4) stays optional/unused — `NEXTFLOW_*` blank. If you ever prefer it, give me an endpoint +
+> token and I'll add that adapter behind the same `ExecutorAdapter` seam.
 
 ---
 

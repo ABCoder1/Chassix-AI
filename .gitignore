@@ -42,3 +42,9 @@ tmp/
 # Published via the `spacetime` CLI, not built by our monorepo; the reference module source lives
 # at apps/realtime/module/run_events.ts. Keep it out of our git/tooling.
 /chassix-realtime/
+
+# GCP service-account key files — SECRETS, never commit (GOOGLE_APPLICATION_CREDENTIALS points here).
+gcp-key.json
+*-sa.json
+*.serviceaccount.json
+service-account*.json

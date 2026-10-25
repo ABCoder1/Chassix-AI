@@ -12,11 +12,13 @@ import { registerRunRoutes } from "./routes/runs.js";
 import {
   createRunOrchestratorProvider,
   providerFromBundle,
+  type CreateRunOrchestratorProviderOptions,
   type RunOrchestratorBundle,
   type RunOrchestratorProvider,
 } from "./runs/service.js";
 import type { BundleSource } from "./runs/bundle.js";
 import type { DbClient } from "@chassix/db";
+import type { ExecutorAdapter } from "@chassix/shared";
 
 export interface BuildServerOptions {
   /** Persistence ports. Defaults to in-memory repositories (no Postgres needed). */
@@ -31,6 +33,8 @@ export interface BuildServerOptions {
   runProvider?: RunOrchestratorProvider;
   /** When set (and no override above), runs + the event log persist to Postgres per workspace. */
   dbClient?: DbClient;
+  /** Engine seam for the run provider (e.g. the live GcpBatchExecutor). Defaults to FakeExecutor. */
+  executor?: ExecutorAdapter;
   /** Supplies ingested analysis fragments for the run bundle endpoint. Defaults to none ingested. */
   bundleSource?: BundleSource;
 }
@@ -53,12 +57,16 @@ export function buildServer(options: BuildServerOptions = {}): FastifyInstance {
       options.sessionSecret ?? process.env.JWT_SECRET ?? randomBytes(32).toString("hex"),
     );
 
-  // Resolve the run-orchestrator provider: explicit override > test bundle > DB-backed > in-memory.
+  // Resolve the run-orchestrator provider: explicit override > test bundle > DB/executor-backed.
+  const providerOpts: CreateRunOrchestratorProviderOptions = {
+    ...(options.dbClient ? { dbClient: options.dbClient } : {}),
+    ...(options.executor ? { executor: options.executor } : {}),
+  };
   const runProvider: RunOrchestratorProvider =
     options.runProvider ??
     (options.orchestrator
       ? providerFromBundle(options.orchestrator)
-      : createRunOrchestratorProvider(options.dbClient ? { dbClient: options.dbClient } : {}));
+      : createRunOrchestratorProvider(providerOpts));
 
   app.register(cookie);
 
