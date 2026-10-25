@@ -1,0 +1,29 @@
+{
+  "name": "@chassix/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@chassix/analysis-bundle": "workspace:*",
+    "@chassix/datasets": "workspace:*",
+    "@chassix/db": "workspace:*",
+    "@chassix/executor": "workspace:*",
+    "@chassix/planner": "workspace:*",
+    "@chassix/realtime": "workspace:*",
+    "@google-cloud/storage": "8.4.0",
+    "@chassix/orchestrator": "workspace:*",
+    "@chassix/shared": "workspace:*",
+    "@fastify/cookie": "11.0.2",
+    "fastify": "5.0.0",
+    "jose": "5.9.6",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "tsx": "4.19.1"
+  }
+}

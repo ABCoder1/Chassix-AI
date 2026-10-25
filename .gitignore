@@ -1,0 +1,53 @@
+# Secrets / environment
+.env
+.env.*
+!.env.example
+
+# Node / TypeScript
+node_modules/
+dist/
+build/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Logs / coverage / tmp
+logs/
+*.log
+coverage/
+.coverage
+htmlcov/
+tmp/
+
+# Local SpaceTimeDB module project created by `spacetime init` (docs/spacetimedb-setup.md).
+# Published via the `spacetime` CLI, not built by our monorepo; the reference module source lives
+# at apps/realtime/module/run_events.ts. Keep it out of our git/tooling.
+/chassix-realtime/
+
+# GCP service-account key files — SECRETS, never commit (GOOGLE_APPLICATION_CREDENTIALS points here).
+gcp-key.json
+*-sa.json
+*.serviceaccount.json
+service-account*.json
+
+# Apify retrieval actor — separate repo (ABCoder1/apify-retrieval-actor), deployed via apify push.
+/apify-retrieval-actor/

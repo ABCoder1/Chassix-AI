@@ -1,0 +1,4593 @@
+{
+  "schemaVersion": "1.0.0",
+  "run": {
+    "id": "poc-yeast-aerobic_glucose",
+    "workflowId": "flux",
+    "workflowVersion": "1.0.0",
+    "status": "completed",
+    "createdAt": null,
+    "completedAt": "2026-10-25T13:28:57Z",
+    "modelVersions": []
+  },
+  "organism": {
+    "chassisId": "yeast",
+    "taxonId": "559292",
+    "taxonName": "Saccharomyces cerevisiae",
+    "strainId": "S288C",
+    "strainName": "S288C"
+  },
+  "condition": {
+    "id": "aerobic_glucose",
+    "temperatureC": null,
+    "salinityMolL": null,
+    "pH": null,
+    "timepoint": null,
+    "media": "glucose minimal",
+    "oxygenation": "aerobic",
+    "other": {}
+  },
+  "artifacts": [
+    {
+      "id": "flux_table",
+      "uri": "file:///Users/pradeep/.claude/jobs/d68194de/tmp/poc/yeast_aerobic_glucose/flux.csv",
+      "mediaType": "text/csv",
+      "sha256": "84f22ad4a533d8e4cfda54df9325ffff80cc763d07a5be8adbb38b6ed381c3ff",
+      "role": "flux-distribution-table"
+    }
+  ],
+  "analyses": {
+    "flux": {
+      "status": "available",
+      "method": "COBRApy 0.32.1 pFBA",
+      "notAvailableReason": null,
+      "artifactIds": [
+        "flux_table"
+      ],
+      "modelId": "yeastGEM_v9__46__1__46__1",
+      "objective": "1.0*r_2111 - 1.0*r_2111_reverse_58b69",
+      "results": [
+        {
+          "reactionId": "r_0005",
+          "reactionName": "1,3-beta-glucan synthase",
+          "flux": 0.6198666585722196,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0006",
+          "reactionName": "1,6-beta-glucan synthase",
+          "flux": 0.20710862624265408,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0007",
+          "reactionName": "1-(5-phosphoribosyl)-5-[(5-phosphoribosylamino)methylideneamino)imidazole-4-carboxamide isomerase",
+          "flux": 0.07008205668407719,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0013",
+          "reactionName": "2,3-diketo-5-methylthio-1-phosphopentane degradation reaction",
+          "flux": 0.000159340137076073,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0014",
+          "reactionName": "2,5-diamino-6-ribitylamino-4(3H)-pyrimidinone 5'-phosphate deaminase",
+          "flux": 0.000838632249178788,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0015",
+          "reactionName": "2,5-diamino-6-ribosylamino-4(3H)-pyrimidinone 5'-phosphate reductase (NADPH)",
+          "flux": 0.000838632249178788,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0016",
+          "reactionName": "2-aceto-2-hydroxybutanoate synthase",
+          "flux": 0.22264875077745006,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0018",
+          "reactionName": "2-aminoadipate transaminase",
+          "flux": 0.2762451690028131,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0019",
+          "reactionName": "2-dehydropantoate 2-reductase",
+          "flux": 0.00015934013707609196,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0020",
+          "reactionName": "2-deoxy-D-arabino-heptulosonate 7-phosphate synthetase",
+          "flux": 0.2805433214261634,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0023",
+          "reactionName": "2-isopropylmalate hydratase",
+          "flux": -0.30402373416718675,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0025",
+          "reactionName": "2-isopropylmalate synthase",
+          "flux": 0.3040237341671868,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0026",
+          "reactionName": "2-keto-4-methylthiobutyrate transamination",
+          "flux": 0.00015934013707609034,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0027",
+          "reactionName": "2-methylcitrate dehydratase",
+          "flux": 0.27624516900281315,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0029",
+          "reactionName": "2-oxo-4-methyl-3-carboxypentanoate decarboxylation",
+          "flux": 0.30402373416718675,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0032",
+          "reactionName": "3',5'-bisphosphate nucleotidase",
+          "flux": 0.10000619929930071,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0038",
+          "reactionName": "3,4-dihydroxy-2-butanone-4-phosphate synthase",
+          "flux": 0.0016772644983575756,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0039",
+          "reactionName": "3-dehydroquinate dehydratase",
+          "flux": 0.2805433214261634,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0040",
+          "reactionName": "3-dehydroquinate synthase",
+          "flux": 0.2805433214261634,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0045",
+          "reactionName": "3-hydroxy-L-kynurenine hydrolase",
+          "flux": 0.005090497877815413,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0058",
+          "reactionName": "3-hydroxyanthranilate 3,4-dioxygenase",
+          "flux": 0.005090497877815413,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0060",
+          "reactionName": "3-isopropylmalate dehydratase",
+          "flux": -0.30402373416718675,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0061",
+          "reactionName": "3-isopropylmalate dehydrogenase",
+          "flux": 0.30402373416718675,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0063",
+          "reactionName": "3-methyl-2-oxobutanoate hydroxymethyltransferase",
+          "flux": 0.0001593401370760508,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0065",
+          "reactionName": "3-phosphoshikimate 1-carboxyvinyltransferase",
+          "flux": 0.2805433214261635,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0066",
+          "reactionName": "4-amino-4-deoxychorismate synthase",
+          "flux": 5.3169288269384395e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0067",
+          "reactionName": "4-aminobenzoate synthase",
+          "flux": 5.3169288269384395e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0075",
+          "reactionName": "5'-methylthioadenosine phosphorylase",
+          "flux": 0.00015934013707616365,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0079",
+          "reactionName": "5'-phosphoribosylformyl glycinamidine synthetase",
+          "flux": 0.08587952060208259,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0080",
+          "reactionName": "5,10-methylenetetrahydrofolate reductase (NADPH)",
+          "flux": 0.1859262134413575,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0081",
+          "reactionName": "5-aminolevulinate synthase",
+          "flux": 6.709058170384034e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0086",
+          "reactionName": "5-methylthio-5-deoxy-D-ribulose 1-phosphate dehydratase",
+          "flux": 0.00015934013707607296,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0087",
+          "reactionName": "5-methylthioribose-1-phosphate isomerase",
+          "flux": 0.00015934013707607296,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0091",
+          "reactionName": "6-phosphogluconolactonase",
+          "flux": 5.803892453810821,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0096",
+          "reactionName": "acetohydroxy acid isomeroreductase",
+          "flux": 0.5680206031087652,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0097",
+          "reactionName": "acetolactate synthase",
+          "flux": 0.5680206031087651,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0104",
+          "reactionName": "acetyl-CoA C-acetyltransferase",
+          "flux": 0.1855621459694646,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0109",
+          "reactionName": "acetyl-CoA carboxylase, reaction",
+          "flux": 0.9929139288387507,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0112",
+          "reactionName": "acetyl-CoA synthetase",
+          "flux": 1.2499168518430561,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0115",
+          "reactionName": "acetylglutamate kinase",
+          "flux": 0.16294306828028787,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0118",
+          "reactionName": "acteylornithine transaminase",
+          "flux": 0.16294306828028787,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0127",
+          "reactionName": "acyl-CoA:sterol acyltransferase (oleoyl-CoA:ergosterol), ER membrane",
+          "flux": 0.008633326942762342,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0142",
+          "reactionName": "adenosine kinase",
+          "flux": 0.11773914799280717,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0144",
+          "reactionName": "adenosylhomocysteinase",
+          "flux": 0.11757980785573093,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0145",
+          "reactionName": "adenosylmethionine decarboxylase",
+          "flux": 0.0001593401370762255,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0148",
+          "reactionName": "adenylate kinase",
+          "flux": 5.989552399851567,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0151",
+          "reactionName": "adenylosuccinate lyase (AICAR)",
+          "flux": 0.0858785142433189,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0152",
+          "reactionName": "adenylosuccinate lyase",
+          "flux": 0.11570770449602542,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0153",
+          "reactionName": "adenylosuccinate synthase",
+          "flux": 0.11570770449602542,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0154",
+          "reactionName": "adenylyl-sulfate kinase",
+          "flux": 0.10000619929930073,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0157",
+          "reactionName": "alanyl-tRNA synthetase",
+          "flux": 0.29162316121122717,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0172",
+          "reactionName": "aldehyde dehydrogenase (3-aminopropanal, NAD)",
+          "flux": 0.0001593401370761263,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0195",
+          "reactionName": "alpha,alpha-trehalose-phosphate synthase (UDP-forming)",
+          "flux": 0.11451523693486562,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0202",
+          "reactionName": "anthranilate phosphoribosyltransferase",
+          "flux": 0.03743638906232033,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0203",
+          "reactionName": "anthranilate synthase",
+          "flux": 0.03743638906232033,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0207",
+          "reactionName": "argininosuccinate lyase",
+          "flux": 0.16294306828028787,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0208",
+          "reactionName": "argininosuccinate synthase",
+          "flux": 0.16294306828028784,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0209",
+          "reactionName": "arginyl-tRNA synthetase",
+          "flux": 0.16294306828028787,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0211",
+          "reactionName": "asparagine synthase (glutamine-hydrolysing)",
+          "flux": 0.16057130048896925,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0212",
+          "reactionName": "Asparaginyl-tRNA synthetase",
+          "flux": 0.16057130048896925,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0214",
+          "reactionName": "aspartate carbamoyltransferase",
+          "flux": 0.0899586886074339,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0215",
+          "reactionName": "aspartate kinase",
+          "flux": 0.2972288843083968,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0216",
+          "reactionName": "aspartate transaminase",
+          "flux": -1.1138617690004557,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0219",
+          "reactionName": "aspartate-semialdehyde dehydrogenase",
+          "flux": 0.2972288843083968,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0220",
+          "reactionName": "Aspartyl-tRNA synthetase",
+          "flux": 0.20157360857602313,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0225",
+          "reactionName": "ATP phosphoribosyltransferase",
+          "flux": 0.07008205668407719,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0226",
+          "reactionName": "ATP synthase",
+          "flux": 57.292639298722655,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0227",
+          "reactionName": "ATPase, plasma membrane",
+          "flux": 5.003907285075689,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0231",
+          "reactionName": "C-14 sterol reductase",
+          "flux": 0.03092660501210845,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0234",
+          "reactionName": "C-3 sterol dehydrogenase",
+          "flux": 0.03092660501210845,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0235",
+          "reactionName": "C-3 sterol dehydrogenase (4-methylzymosterol)",
+          "flux": 0.030926605012108453,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0236",
+          "reactionName": "C-3 sterol keto reductase (4-methylzymosterol)",
+          "flux": 0.03092660501210845,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0237",
+          "reactionName": "C-3 sterol keto reductase (zymosterol)",
+          "flux": 0.03092660501210845,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0238",
+          "reactionName": "C-4 methyl sterol oxidase",
+          "flux": 0.03092660501210845,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0239",
+          "reactionName": "C-4 methyl sterol oxidase",
+          "flux": 0.03092660501210845,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0240",
+          "reactionName": "C-4 methyl sterol oxidase",
+          "flux": 0.03092660501210845,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0241",
+          "reactionName": "C-4 sterol methyl oxidase (4,4-dimethylzymosterol)",
+          "flux": 0.030926605012108446,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0244",
+          "reactionName": "C-s24 sterol reductase",
+          "flux": 0.03092660501210846,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0250",
+          "reactionName": "carbamoyl-phosphate synthase (glutamine-hydrolysing)",
+          "flux": 0.25290175688772176,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0255",
+          "reactionName": "catalase",
+          "flux": 7.967006853807612e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0272",
+          "reactionName": "chitin synthase",
+          "flux": 0.01980010797533634,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0278",
+          "reactionName": "chorismate mutase",
+          "flux": 0.24305376307557378,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0279",
+          "reactionName": "chorismate synthase",
+          "flux": 0.28054332142616345,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0300",
+          "reactionName": "citrate synthase",
+          "flux": 6.15360604449563,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0303",
+          "reactionName": "citrate to cis-aconitate(3-), cytoplasmic",
+          "flux": 0.2805433214261634,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0307",
+          "reactionName": "CTP synthase (NH3)",
+          "flux": 0.04132464453638292,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0309",
+          "reactionName": "cystathionine beta-synthase",
+          "flux": 0.031658787354910504,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0310",
+          "reactionName": "cystathionine g-lyase",
+          "flux": 0.0316587873549105,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0313",
+          "reactionName": "cysteinyl-tRNA synthetase",
+          "flux": 0.03149860858556094,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0317",
+          "reactionName": "cytochrome P450 lanosterol 14-alpha-demethylase (NADP)",
+          "flux": 0.030926605012108453,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0326",
+          "reactionName": "dCMP deaminase",
+          "flux": 0.0030190761324343806,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0330",
+          "reactionName": "deoxyguanylate kinase (dGMP:ATP)",
+          "flux": -0.00201271755179578,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0344",
+          "reactionName": "dihydrofolate reductase",
+          "flux": 0.003072245420703765,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0346",
+          "reactionName": "dihydrofolate synthase",
+          "flux": 5.31692882693844e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0347",
+          "reactionName": "dihydroneopterin aldolase",
+          "flux": 5.31692882693844e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0348",
+          "reactionName": "dihydroneopterin monophosphate dephosphorylase",
+          "flux": 5.31692882693844e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0349",
+          "reactionName": "dihydroorotase",
+          "flux": -0.08995868860743392,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0350",
+          "reactionName": "dihydropteroate synthase",
+          "flux": 5.3169288269384395e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0352",
+          "reactionName": "dihydroxy-acid dehydratase (2,3-dihydroxy-3-methylbutanoate)",
+          "flux": 0.5680206031087652,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0353",
+          "reactionName": "dihydroxy-acid dehydratase (2,3-dihydroxy-3-methylpentanoate)",
+          "flux": 0.22264875077745008,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0355",
+          "reactionName": "dimethylallyltranstransferase",
+          "flux": 0.0618540486564882,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0361",
+          "reactionName": "dolichyl-phosphate D-mannosyltransferase",
+          "flux": 0.5887534012285099,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0362",
+          "reactionName": "dolichyl-phosphate-mannose--protein mannosyltransferase",
+          "flux": 0.58875340122851,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0366",
+          "reactionName": "enolase",
+          "flux": 12.506693407202993,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0438",
+          "reactionName": "ferrocytochrome-c:oxygen oxidoreductase",
+          "flux": 87.2666692539099,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0439",
+          "reactionName": "ubiquinol:ferricytochrome c reductase",
+          "flux": 43.63333462695495,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0440",
+          "reactionName": "FMN adenylyltransferase",
+          "flux": 8.386322522297139e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0446",
+          "reactionName": "formate-tetrahydrofolate ligase",
+          "flux": 0.038745509062805696,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0450",
+          "reactionName": "fructose-bisphosphate aldolase",
+          "flux": 5.807460549027909,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0451",
+          "reactionName": "fumarase",
+          "flux": 5.005537868580151,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0452",
+          "reactionName": "fumarase, cytoplasmic",
+          "flux": 0.3645292870196432,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0453",
+          "reactionName": "dihydoorotic acid dehydrogenase",
+          "flux": 0.0899586886074339,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0462",
+          "reactionName": "geranyltranstransferase",
+          "flux": 0.0618540486564882,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0466",
+          "reactionName": "glucose 6-phosphate dehydrogenase",
+          "flux": 5.803892453810822,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0467",
+          "reactionName": "glucose-6-phosphate isomerase",
+          "flux": 2.8337900387185497,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0468",
+          "reactionName": "glutamate 5-kinase",
+          "flux": 0.15080381933082207,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0471",
+          "reactionName": "glutamate dehydrogenase (NADP)",
+          "flux": 4.638719128330172,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0473",
+          "reactionName": "glutamate-5-semialdehyde dehydrogenase",
+          "flux": 0.15080381933082204,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0476",
+          "reactionName": "glutamine synthetase",
+          "flux": 0.876329802644089,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0477",
+          "reactionName": "glutamine-fructose-6-phosphate transaminase",
+          "flux": 0.01980010797533634,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0478",
+          "reactionName": "glutaminyl-tRNA synthetase",
+          "flux": 0.1183816103852797,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0479",
+          "reactionName": "glutamyl-tRNA synthetase",
+          "flux": 0.24864382851502492,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0486",
+          "reactionName": "glyceraldehyde-3-phosphate dehydrogenase",
+          "flux": 13.244953188835545,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0491",
+          "reactionName": "glycerol-3-phosphate dehydrogenase (NAD)",
+          "flux": 0.05824464732611673,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0499",
+          "reactionName": "glycinamide ribotide transformylase",
+          "flux": 0.0858795206020826,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0502",
+          "reactionName": "glycine hydroxymethyltransferase",
+          "flux": 0.39203987204046487,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0503",
+          "reactionName": "glycine hydroxymethyltransferase",
+          "flux": 0.0001593401370760313,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0505",
+          "reactionName": "glycine-cleavage complex (lipoamide)",
+          "flux": 5.005544577638336,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0510",
+          "reactionName": "glycogen (starch) synthase",
+          "flux": 0.29929947205920315,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0512",
+          "reactionName": "glycyl-tRNA synthetase",
+          "flux": 0.2379610547858344,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0514",
+          "reactionName": "GMP synthase",
+          "flux": 0.040252866431370694,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0524",
+          "reactionName": "GTP cyclohydrolase I",
+          "flux": 5.316928826938441e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0525",
+          "reactionName": "GTP cyclohydrolase II",
+          "flux": 0.000838632249178788,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0528",
+          "reactionName": "guanylate kinase",
+          "flux": 0.002904519089243822,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0534",
+          "reactionName": "hexokinase (D-glucose:ATP)",
+          "flux": 9.999999999999998,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0536",
+          "reactionName": "histidinol dehydrogenase",
+          "flux": 0.07008205668407719,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0537",
+          "reactionName": "histidinol-phosphatase",
+          "flux": 0.07008205668407719,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0538",
+          "reactionName": "histidinol-phosphate transaminase",
+          "flux": 0.07008205668407719,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0539",
+          "reactionName": "histidyl-tRNA synthetase",
+          "flux": 0.0700820566840772,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0542",
+          "reactionName": "homoacontinate hydratase",
+          "flux": 0.27624516900281315,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0545",
+          "reactionName": "homoisocitrate dehydrogenase",
+          "flux": 0.27624516900281315,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0546",
+          "reactionName": "homoserine dehydrogenase (NADH)",
+          "flux": 0.2972288843083968,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0548",
+          "reactionName": "homoserine kinase",
+          "flux": 0.19722369136785975,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0549",
+          "reactionName": "homoserine O-trans-acetylase",
+          "flux": 0.10000519294053703,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0558",
+          "reactionName": "hydroxymethylglutaryl CoA reductase",
+          "flux": 0.1855621459694646,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0560",
+          "reactionName": "hydroxymethylglutaryl CoA synthase",
+          "flux": 0.1855621459694646,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0561",
+          "reactionName": "hydroxymethylpyrimidine kinase (ATP)",
+          "flux": 1.0063587636941886e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0563",
+          "reactionName": "Imidazole-glycerol-3-phosphate synthase",
+          "flux": 0.07008205668407717,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0564",
+          "reactionName": "imidazoleglycerol-phosphate dehydratase",
+          "flux": 0.07008205668407717,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0565",
+          "reactionName": "IMP dehydrogenase",
+          "flux": 0.040252866431370694,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0566",
+          "reactionName": "indole-3-glycerol-phosphate synthase",
+          "flux": 0.03743638906232034,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0569",
+          "reactionName": "inorganic diphosphatase",
+          "flux": 8.073559089720568,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0570",
+          "reactionName": "inosine monophosphate cyclohydrolase",
+          "flux": 0.15596057092739612,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0658",
+          "reactionName": "isocitrate dehydrogenase (NAD+)",
+          "flux": 4.9194503009029775,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0659",
+          "reactionName": "isocitrate dehydrogenase (NADP)",
+          "flux": 0.28054332142616334,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0663",
+          "reactionName": "isoleucine transaminase",
+          "flux": -0.22264875077745014,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0665",
+          "reactionName": "isoleucyl-tRNA synthetase",
+          "flux": 0.22264875077745014,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0667",
+          "reactionName": "isopentenyl-diphosphate D-isomerase",
+          "flux": 0.0618540486564882,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0669",
+          "reactionName": "ketol-acid reductoisomerase (2-aceto-2-hydroxybutanoate)",
+          "flux": 0.22264875077745006,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0671",
+          "reactionName": "kynurenine 3-monooxygenase",
+          "flux": 0.0050904978778154135,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0678",
+          "reactionName": "L-aminoadipate-semialdehyde dehydrogenase (NADPH)",
+          "flux": 0.2762451690028131,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0694",
+          "reactionName": "L-tryptophan:oxygen 2,3-oxidoreductase (decyclizing)",
+          "flux": 0.005090497877815413,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0698",
+          "reactionName": "lanosterol synthase",
+          "flux": 0.030926605012108456,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0699",
+          "reactionName": "leucine transaminase",
+          "flux": -0.3040237341671867,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0701",
+          "reactionName": "leucyl-tRNA synthetase",
+          "flux": 0.30402373416718675,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0711",
+          "reactionName": "lysyl-tRNA synthetase",
+          "flux": 0.2762451690028131,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0713",
+          "reactionName": "malate dehydrogenase",
+          "flux": 5.223836588999308,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0718",
+          "reactionName": "malic enzyme (NAD)",
+          "flux": 0.14623056660045652,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0722",
+          "reactionName": "mannose-1-phosphate guanylyltransferase",
+          "flux": 0.58875340122851,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0723",
+          "reactionName": "mannose-6-phosphate isomerase",
+          "flux": -0.5887534012285099,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0725",
+          "reactionName": "methenyltetrahydrofolate cyclohydrolase",
+          "flux": 0.203094582466673,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0726",
+          "reactionName": "methionine adenosyltransferase",
+          "flux": 0.11773914799280724,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0727",
+          "reactionName": "methionine synthase",
+          "flux": 0.18592621344135749,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0729",
+          "reactionName": "methionyl-tRNA synthetase",
+          "flux": 0.0683464055856264,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0731",
+          "reactionName": "methylenetetrahydrofolate dehydrogenase (NAD)",
+          "flux": 0.203094582466673,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0735",
+          "reactionName": "mevalonate kinase (atp)",
+          "flux": 0.1855621459694646,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0739",
+          "reactionName": "mevalonate pyrophoshate decarboxylase",
+          "flux": 0.18556214596946463,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0757",
+          "reactionName": "myo-inositol 1-phosphatase",
+          "flux": 0.007012276726819447,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0758",
+          "reactionName": "myo-inositol-1-phosphate synthase",
+          "flux": 0.007012276726819447,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0759",
+          "reactionName": "N-acetyl-g-glutamyl-phosphate reductase",
+          "flux": 0.16294306828028787,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0760",
+          "reactionName": "N-acetylglucosamine-6-phosphate synthase",
+          "flux": 0.019800107975336337,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0762",
+          "reactionName": "N-formyl-L-kynurenine amidohydrolase",
+          "flux": 0.005090497877815413,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0768",
+          "reactionName": "NAD synthase",
+          "flux": 0.005091504236579107,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0770",
+          "reactionName": "NADH dehydrogenase, cytosolic/mitochondrial",
+          "flux": 14.526058660779196,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0771",
+          "reactionName": "NADH kinase",
+          "flux": 0.0027423275715733435,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0773",
+          "reactionName": "NADH:ubiquinone oxidoreductase",
+          "flux": 24.01177940898816,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0774",
+          "reactionName": "NAPRtase",
+          "flux": 1.0063587636941886e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0781",
+          "reactionName": "nicotinamidase",
+          "flux": 1.0063587636941886e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0785",
+          "reactionName": "nicotinate-nucleotide adenylyltransferase",
+          "flux": 0.005091504236579107,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0786",
+          "reactionName": "nicotinate-nucleotide diphosphorylase (carboxylating)",
+          "flux": 0.005090497877815413,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0795",
+          "reactionName": "nucleoside diphosphate kinase",
+          "flux": 0.009902664586564476,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0800",
+          "reactionName": "nucleoside diphosphate kinase",
+          "flux": 0.7053529072619836,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0811",
+          "reactionName": "nucleoside-diphosphate kinase (ATP:UDP)",
+          "flux": 1.3019147463206615,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0813",
+          "reactionName": "O-acetylhomoserine (thiol)-lyase",
+          "flux": 0.10000519294053706,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0816",
+          "reactionName": "ornithine carbamoyltransferase",
+          "flux": 0.16294306828028784,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0818",
+          "reactionName": "ornithine transacetylase",
+          "flux": 0.16294306828028784,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0820",
+          "reactionName": "orotate phosphoribosyltransferase",
+          "flux": -0.0899586886074339,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0821",
+          "reactionName": "orotidine-5'-phosphate decarboxylase",
+          "flux": 0.0899586886074339,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0831",
+          "reactionName": "oxoglutarate dehydrogenase (dihydrolipoamide S-succinyltransferase)",
+          "flux": 5.005544577638336,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0832",
+          "reactionName": "oxoglutarate dehydrogenase (lipoamide)",
+          "flux": 5.005544577638336,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0841",
+          "reactionName": "pantetheine-phosphate adenylyltransferase",
+          "flux": 0.00015934013707612161,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0842",
+          "reactionName": "pantothenate kinase",
+          "flux": 0.00015934013707613425,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0843",
+          "reactionName": "pantothenate synthase",
+          "flux": 0.00015934013707612012,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0851",
+          "reactionName": "phenylalanine transaminase",
+          "flux": -0.13988047347643648,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0852",
+          "reactionName": "phenylalanyl-tRNA synthetase",
+          "flux": 0.13988047347643645,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0855",
+          "reactionName": "phopshoribosylaminoimidazole synthetase",
+          "flux": 0.08587952060208259,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0882",
+          "reactionName": "phosphoacetylglucosamine mutase",
+          "flux": 0.019800107975336337,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0883",
+          "reactionName": "phosphoadenylyl-sulfate reductase (thioredoxin)",
+          "flux": 0.10000619929930071,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0886",
+          "reactionName": "phosphofructokinase",
+          "flux": 5.807460549027909,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0888",
+          "reactionName": "phosphoglucomutase",
+          "flux": 1.2407899938089422,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0889",
+          "reactionName": "phosphogluconate dehydrogenase",
+          "flux": 5.803892453810822,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0891",
+          "reactionName": "phosphoglycerate dehydrogenase",
+          "flux": 0.7382597816325558,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0892",
+          "reactionName": "phosphoglycerate kinase",
+          "flux": 13.244953188835547,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0893",
+          "reactionName": "phosphoglycerate mutase",
+          "flux": 12.506693407202992,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0902",
+          "reactionName": "phosphomannomutase",
+          "flux": -0.58875340122851,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0903",
+          "reactionName": "phosphomethylpyrimidine kinase",
+          "flux": 1.0063587636941886e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0904",
+          "reactionName": "phosphomevalonate kinase",
+          "flux": 0.18556214596946463,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0905",
+          "reactionName": "phosphopantothenate-cysteine ligase",
+          "flux": 0.0001593401370761331,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0906",
+          "reactionName": "phosphopantothenoylcysteine decarboxylase",
+          "flux": 0.00015934013707612161,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0907",
+          "reactionName": "phosphopentomutase",
+          "flux": -0.00015934013707618154,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0908",
+          "reactionName": "phosphoribosyl amino imidazolesuccinocarbozamide synthetase",
+          "flux": 0.0858785142433189,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0909",
+          "reactionName": "phosphoribosyl-AMP cyclohydrolase",
+          "flux": 0.07008205668407719,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0910",
+          "reactionName": "phosphoribosyl-ATP pyrophosphatase",
+          "flux": 0.07008205668407719,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0911",
+          "reactionName": "phosphoribosylaminoimidazole-carboxylase",
+          "flux": 0.0858785142433189,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0912",
+          "reactionName": "phosphoribosylaminoimidazolecarboxamide formyltransferase",
+          "flux": 0.15596057092739612,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0913",
+          "reactionName": "phosphoribosylanthranilate isomerase",
+          "flux": 0.03743638906232034,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0914",
+          "reactionName": "phosphoribosylglycinamidine synthetase",
+          "flux": 0.0858795206020826,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0915",
+          "reactionName": "phosphoribosylpyrophosphate amidotransferase",
+          "flux": 0.0858795206020826,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0916",
+          "reactionName": "phosphoribosylpyrophosphate synthetase",
+          "flux": 0.28844815919249306,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0917",
+          "reactionName": "phosphoserine phosphatase (L-serine)",
+          "flux": 0.7382597816325558,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0918",
+          "reactionName": "phosphoserine transaminase",
+          "flux": 0.7382597816325557,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0935",
+          "reactionName": "porphobilinogen synthase",
+          "flux": 3.354529085192018e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0937",
+          "reactionName": "poylamine oxidase",
+          "flux": 0.00015934013707615224,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0938",
+          "reactionName": "prephenate dehydratase",
+          "flux": 0.1398804734764365,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0939",
+          "reactionName": "prephenate dehydrogenase (NADP)",
+          "flux": 0.1031732895991373,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0941",
+          "reactionName": "prolyl-tRNA synthetase",
+          "flux": 0.15080381933082204,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0957",
+          "reactionName": "pyrroline-5-carboxylate reductase",
+          "flux": 0.15080381933082204,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0958",
+          "reactionName": "pyruvate carboxylase",
+          "flux": 2.043631224496761,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0961",
+          "reactionName": "pyruvate dehydrogenase",
+          "flux": 8.440473044476542,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0962",
+          "reactionName": "pyruvate kinase",
+          "flux": 11.945606764350664,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0967",
+          "reactionName": "riboflavin synthase",
+          "flux": 0.0016772644983575758,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0968",
+          "reactionName": "riboflavin synthase",
+          "flux": 0.0008386322491787879,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0974",
+          "reactionName": "ribonucleotide reductase",
+          "flux": 0.0030190761324343806,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0976",
+          "reactionName": "ribonucleotide reductase",
+          "flux": 0.005031793684230161,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0978",
+          "reactionName": "ribonucleotide reductase",
+          "flux": 0.00201271755179578,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0982",
+          "reactionName": "ribose-5-phosphate isomerase",
+          "flux": 2.2199911697992567,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0984",
+          "reactionName": "ribulose 5-phosphate 3-epimerase",
+          "flux": 3.5822240195132116,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0988",
+          "reactionName": "saccharopine dehydrogenase (NAD, L-lysine forming)",
+          "flux": 0.27624516900281304,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0989",
+          "reactionName": "saccharopine dehydrogenase (NADP, L-glutamate forming)",
+          "flux": 0.2762451690028131,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0995",
+          "reactionName": "seryl-tRNA synthetase",
+          "flux": 0.2329097007787323,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0996",
+          "reactionName": "shikimate dehydrogenase",
+          "flux": 0.28054332142616345,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_0997",
+          "reactionName": "shikimate kinase",
+          "flux": 0.28054332142616345,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1002",
+          "reactionName": "spermine synthase",
+          "flux": 0.00015934013707616384,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1011",
+          "reactionName": "squalene epoxidase (NADP)",
+          "flux": 0.03092660501210846,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1012",
+          "reactionName": "squalene synthase",
+          "flux": 0.030926605012108456,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1021",
+          "reactionName": "succinate dehydrogenase (ubiquinone-6)",
+          "flux": 5.095496557187586,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1022",
+          "reactionName": "succinate-CoA ligase (ADP-forming)",
+          "flux": 6.155449527482685,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1025",
+          "reactionName": "sulfate adenylyltransferase",
+          "flux": 0.10000619929930073,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1027",
+          "reactionName": "sulfite reductase (NADPH2)",
+          "flux": 0.10000619929930073,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1036",
+          "reactionName": "thiamine-phosphate diphosphorylase",
+          "flux": 1.0063587636941886e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1038",
+          "reactionName": "thioredoxin reductase (NADPH)",
+          "flux": 0.11006978666776103,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1041",
+          "reactionName": "threonine synthase",
+          "flux": 0.19722369136785978,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1042",
+          "reactionName": "threonyl-tRNA synthetase",
+          "flux": 0.19722369136785975,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1045",
+          "reactionName": "thymidylate synthase",
+          "flux": 0.0030190761324343806,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1048",
+          "reactionName": "transaldolase",
+          "flux": 1.9313836704696874,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1049",
+          "reactionName": "transketolase 1",
+          "flux": 1.9313836704696874,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1050",
+          "reactionName": "transketolase 2",
+          "flux": 1.6508403490435237,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1051",
+          "reactionName": "trehalose-phosphatase",
+          "flux": 0.11451523693486562,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1054",
+          "reactionName": "triose-phosphate isomerase",
+          "flux": 5.749215901701792,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1055",
+          "reactionName": "tryptophan synthase (indoleglycerol phosphate)",
+          "flux": 0.03743638906232034,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1057",
+          "reactionName": "tryptophanyl-tRNA synthetase",
+          "flux": 0.03234589118450492,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1063",
+          "reactionName": "tyrosine transaminase",
+          "flux": 0.1031732895991373,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1066",
+          "reactionName": "tyrosyl-tRNA synthetase",
+          "flux": 0.1031732895991373,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1069",
+          "reactionName": "UDP-N-acetylglucosamine diphosphorylase",
+          "flux": 0.01980010797533634,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1072",
+          "reactionName": "UMP kinase",
+          "flux": 0.04132464453638295,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1084",
+          "reactionName": "UTP-glucose-1-phosphate uridylyltransferase",
+          "flux": 1.2407899938089424,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1088",
+          "reactionName": "valine transaminase, mitochondiral",
+          "flux": -0.26383752880450256,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1089",
+          "reactionName": "valyl-tRNA synthetase",
+          "flux": 0.26383752880450256,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1099",
+          "reactionName": "2-oxoadipate and 2-oxoglutarate transport",
+          "flux": 0.2762451690028131,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1110",
+          "reactionName": "ADP/ATP transporter",
+          "flux": 63.28514575792506,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1115",
+          "reactionName": "ammonia transport",
+          "flux": 5.520852718886273,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1127",
+          "reactionName": "citrate transport",
+          "flux": -0.28054332142616345,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1129",
+          "reactionName": "coenzyme A transport",
+          "flux": 0.18556214596948048,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1166",
+          "reactionName": "glucose transport",
+          "flux": 10.0,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1173",
+          "reactionName": "glycine transport",
+          "flux": -0.06835008274041637,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1178",
+          "reactionName": "iron (II) transport",
+          "flux": 2.6333053776396293e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1194",
+          "reactionName": "L-glutamate transport",
+          "flux": 0.5897236653650784,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1237",
+          "reactionName": "ornithine transport",
+          "flux": 0.16294306828028784,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1244",
+          "reactionName": "phosphate transport",
+          "flux": 0.2341752750627074,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1249",
+          "reactionName": "potassium transport",
+          "flux": 0.0030442350969503472,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1258",
+          "reactionName": "sodium proton antiporter",
+          "flux": -0.003329370093217709,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1265",
+          "reactionName": "succinate-fumarate transport",
+          "flux": 0.0899586886074339,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1266",
+          "reactionName": "sulfate uniport",
+          "flux": 0.11677884439270995,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1277",
+          "reactionName": "water diffusion",
+          "flux": -37.81615057362566,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1567",
+          "reactionName": "2-dehydro-3-deoxy-D-arabino-heptonate7-phohsphate transport",
+          "flux": -0.28054332142616334,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1568",
+          "reactionName": "2-dehydropantoate transport",
+          "flux": -0.00015934013707605082,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1574",
+          "reactionName": "2-isopropylmalate transport",
+          "flux": -0.30402373416718675,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1585",
+          "reactionName": "2-oxobutanoate transporter",
+          "flux": 0.22264875077745006,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1596",
+          "reactionName": "3-methyl-2-oxopentanoate transport",
+          "flux": -0.2226487507774501,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1603",
+          "reactionName": "4-amino-5-hydroxymethyl-2-methylpyrimidine synthetase",
+          "flux": 1.0063587636941884e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1606",
+          "reactionName": "4-aminobenzoate transport",
+          "flux": 5.3169288269384395e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1622",
+          "reactionName": "5-aminolevulinate transport",
+          "flux": -6.709058170384035e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1654",
+          "reactionName": "ammonium exchange",
+          "flux": -5.520852718886273,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1667",
+          "reactionName": "bicarbonate formation",
+          "flux": 3.2894469102232335,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1672",
+          "reactionName": "carbon dioxide exchange",
+          "flux": 25.38978707653871,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1682",
+          "reactionName": "cholestenol delta-isomerase, lumped reaction",
+          "flux": 0.030926605012108456,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1696",
+          "reactionName": "CO2 transport",
+          "flux": -20.53223214373201,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1697",
+          "reactionName": "CO2 transport",
+          "flux": 25.38978707653871,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1703",
+          "reactionName": "cytidylate kinase (CMP)",
+          "flux": 0.014934458270794638,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1704",
+          "reactionName": "cytidylate kinase (dCMP)",
+          "flux": -0.005031793684230161,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1708",
+          "reactionName": "D-erythrose 4-phosphate transport",
+          "flux": 0.28054332142616345,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1714",
+          "reactionName": "D-glucose exchange",
+          "flux": -10.0,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -10.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1729",
+          "reactionName": "deoxyadenylate kinase",
+          "flux": -0.0030190761324343806,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1736",
+          "reactionName": "dephospho-CoA kinase",
+          "flux": 0.0001593401370761113,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1738",
+          "reactionName": "dhnpt transport",
+          "flux": 5.316928826938441e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1744",
+          "reactionName": "dihydroneopterin triphosphate pyrophosphatase",
+          "flux": 5.316928826938441e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1745",
+          "reactionName": "dihydropteroate transport",
+          "flux": -5.31692882693844e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1748",
+          "reactionName": "dolichol phosphate transport",
+          "flux": -0.58875340122851,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1754",
+          "reactionName": "ergosta-5,6,22,24,(28)-tetraen-3beta-ol transport",
+          "flux": 0.030926605012108456,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1758",
+          "reactionName": "ergosterol transport",
+          "flux": 0.022293278069346115,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1810",
+          "reactionName": "L-glycine exchange",
+          "flux": 0.06835008274041637,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1811",
+          "reactionName": "glycine transport",
+          "flux": -0.00015263107890564728,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1812",
+          "reactionName": "glycoaldehyde transport",
+          "flux": -5.316928826938441e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1813",
+          "reactionName": "glycoaldehyde transport",
+          "flux": -5.4175647033078594e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1814",
+          "reactionName": "glycolaldehyde exchange",
+          "flux": 5.41756470330786e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1825",
+          "reactionName": "H+ diffusion",
+          "flux": 0.06185321002421692,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1832",
+          "reactionName": "H+ exchange",
+          "flux": 4.833673786127479,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1838",
+          "reactionName": "homocitrate synthase",
+          "flux": 0.27624516900281315,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1840",
+          "reactionName": "hydroxymethylglutaryl-CoA transport",
+          "flux": -0.1855621459694646,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1861",
+          "reactionName": "iron(2+) exchange",
+          "flux": -2.6333053776396293e-05,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1887",
+          "reactionName": "L-glutamate 5-semialdehyde dehydratase",
+          "flux": 0.15080381933082204,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1932",
+          "reactionName": "mannan transport",
+          "flux": -0.58875340122851,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1963",
+          "reactionName": "NADP(+) transport",
+          "flux": -0.06185321002421691,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1964",
+          "reactionName": "NADPH transport",
+          "flux": 0.06185321002421691,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1977",
+          "reactionName": "O2 transport",
+          "flux": 0.03092660501210846,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1978",
+          "reactionName": "O2 transport",
+          "flux": 21.81666941005815,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1979",
+          "reactionName": "O2 transport",
+          "flux": 22.276445948446714,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_1992",
+          "reactionName": "oxygen exchange",
+          "flux": -22.276445948446717,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2005",
+          "reactionName": "phosphate exchange",
+          "flux": -0.23417527506270744,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2020",
+          "reactionName": "potassium exchange",
+          "flux": -0.003044235096950347,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2030",
+          "reactionName": "pyrimidine phosphatase",
+          "flux": 0.0008386322491787879,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2032",
+          "reactionName": "pyrophosphate transport",
+          "flux": 8.073558251088297,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2034",
+          "reactionName": "pyruvate transport",
+          "flux": 9.652932434871081,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2045",
+          "reactionName": "serine transport",
+          "flux": 0.00015934013707603133,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2049",
+          "reactionName": "sodium exchange",
+          "flux": -0.003329370093217709,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2053",
+          "reactionName": "squalene transport",
+          "flux": 0.030926605012108456,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2054",
+          "reactionName": "squalene-2,3-epoxide transport",
+          "flux": 0.03092660501210846,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2060",
+          "reactionName": "sulphate exchange",
+          "flux": -0.11677884439270995,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2069",
+          "reactionName": "thiamine-phosphate kinase",
+          "flux": 1.0063587636941886e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2093",
+          "reactionName": "valine transport",
+          "flux": -0.26383752880450256,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2094",
+          "reactionName": "water diffusion",
+          "flux": -0.030926605012108463,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2096",
+          "reactionName": "water diffusion",
+          "flux": -58.00887946285806,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2100",
+          "reactionName": "water exchange",
+          "flux": 37.81615057362566,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2108",
+          "reactionName": "lipid pseudoreaction - merge",
+          "flux": 0.8386322734153471,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2111",
+          "reactionName": "growth",
+          "flux": 0.838632273415347,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2114",
+          "reactionName": "spontaneous 2-amino-3-carboxymuconate-6-semialdehyde to quinolinate",
+          "flux": 0.005090497877815413,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2131",
+          "reactionName": "isocitrate dehydrogenase",
+          "flux": 0.9536124221665014,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2132",
+          "reactionName": "oxoglutarate/malate exchange",
+          "flux": 1.2942987425159331,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2140",
+          "reactionName": "fatty-acyl-CoA synthase (n-C16:0CoA)",
+          "flux": 0.10466704786882984,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2141",
+          "reactionName": "fatty-acyl-CoA synthase (n-C18:0CoA)",
+          "flux": 0.032530574219617726,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2182",
+          "reactionName": "palmitoyl-CoA desaturase (n-C16:0CoA -> n-C16:1CoA), ER membrane",
+          "flux": 0.07822288642428613,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2183",
+          "reactionName": "stearoyl-CoA desaturase (n-C18:0CoA -> n-C18:1CoA), ER membrane",
+          "flux": 0.025849654359753095,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2197",
+          "reactionName": "fatty-acid--CoA ligase (hexadecenoate), ER membrane",
+          "flux": -0.004898322153206264,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2305",
+          "reactionName": "cis-aconitate(3-) to isocitrate",
+          "flux": 0.28054332142616334,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2308",
+          "reactionName": "glycerol-3-phosphate acyltransferase (16:0), ER membrane",
+          "flux": 0.02644416144454372,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2309",
+          "reactionName": "glycerol-3-phosphate acyltransferase (16:1), ER membrane",
+          "flux": 0.02511956602170839,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2310",
+          "reactionName": "glycerol-3-phosphate acyltransferase (18:0), ER membrane",
+          "flux": 0.006680919859864629,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2332",
+          "reactionName": "1-acyl-sn-glycerol-3-phosphate acyltransferase (1-16:0, 2-16:1), ER membrane",
+          "flux": 0.009227834027552959,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2333",
+          "reactionName": "1-acyl-sn-glycerol-3-phosphate acyltransferase (1-16:0, 2-18:1), ER membrane",
+          "flux": 0.017216327416990754,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2334",
+          "reactionName": "1-acyl-sn-glycerol-3-phosphate acyltransferase (1-16:1, 2-16:1), ER membrane",
+          "flux": 0.025119566021708388,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2336",
+          "reactionName": "1-acyl-sn-glycerol-3-phosphate acyltransferase (1-18:0, 2-16:1), ER membrane",
+          "flux": 0.006680919859864627,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2346",
+          "reactionName": "PA phosphatase (1-16:1, 2-16:1), ER membrane",
+          "flux": 0.007176678340245493,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2378",
+          "reactionName": "diacylglycerol acyltransferase (1-16:1, 2-16:1, 3-16:1), ER membrane",
+          "flux": 0.007176678340245493,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2432",
+          "reactionName": "CDP-diacylglycerol synthase (1-16:0, 2-16:1), ER membrane",
+          "flux": 0.009227834027552959,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2433",
+          "reactionName": "CDP-diacylglycerol synthase (1-16:1, 2-16:1), ER membrane",
+          "flux": 0.017942887681462894,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2434",
+          "reactionName": "CDP-diacylglycerol synthase (1-18:0, 2-16:1), ER membrane",
+          "flux": 0.006680919859864629,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2436",
+          "reactionName": "CDP-diacylglycerol synthase (1-16:0, 2-18:1), ER membrane",
+          "flux": 0.017216327416990754,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2446",
+          "reactionName": "PS synthase (1-16:0, 2-16:1), ER membrane",
+          "flux": 0.009227834027552959,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2447",
+          "reactionName": "PS synthase (1-16:1, 2-16:1), ER membrane",
+          "flux": 0.015460291816696661,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2448",
+          "reactionName": "PS synthase (1-18:0, 2-16:1), ER membrane",
+          "flux": 0.002151238997811416,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2450",
+          "reactionName": "PS synthase (1-16:0, 2-18:1), ER membrane",
+          "flux": 0.01721632741699075,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2455",
+          "reactionName": "PI synthase (1-16:1, 2-16:1), ER membrane",
+          "flux": 0.002482595864766232,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2456",
+          "reactionName": "PI synthase (1-18:0, 2-16:1), ER membrane",
+          "flux": 0.004529680862053216,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2465",
+          "reactionName": "PS decarboxylase (1-16:1, 2-16:1), mitochondrial membrane",
+          "flux": 0.008642142122062647,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2466",
+          "reactionName": "PS decarboxylase (1-18:0, 2-16:1), mitochondrial membrane",
+          "flux": 0.002151238997811416,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2468",
+          "reactionName": "PS decarboxylase (1-16:0, 2-18:1), mitochondrial membrane",
+          "flux": 0.017216327416990754,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2480",
+          "reactionName": "PS decarboxylase (1-16:0, 2-16:1), vacuolar membrane",
+          "flux": 0.009227834027552959,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2488",
+          "reactionName": "PE methyltransferase (1-16:0, 2-16:1), ER membrane",
+          "flux": 0.00922783402755296,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2489",
+          "reactionName": "PE methyltransferase (1-16:1, 2-16:1), ER membrane",
+          "flux": 0.0024402395033304397,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2492",
+          "reactionName": "PE methyltransferase (1-16:0, 2-18:1), ER membrane",
+          "flux": 0.01721632741699075,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2496",
+          "reactionName": "phosphatidyl-N-methylethanolamine methyltransferase (1-16:0, 2-16:1), ER membrane",
+          "flux": 0.00922783402755296,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2497",
+          "reactionName": "phosphatidyl-N-methylethanolamine methyltransferase (1-16:1, 2-16:1), ER membrane",
+          "flux": 0.0024402395033304397,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2500",
+          "reactionName": "phosphatidyl-N-methylethanolamine methyltransferase (1-16:0, 2-18:1), ER membrane",
+          "flux": 0.017216327416990754,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2504",
+          "reactionName": "phosphatidyl-N,N-dimethylethanolamine methyltransferase (1-16:0, 2-16:1), ER membrane",
+          "flux": 0.00922783402755296,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2505",
+          "reactionName": "phosphatidyl-N,N-dimethylethanolamine methyltransferase (1-16:1, 2-16:1), ER membrane",
+          "flux": 0.0024402395033304397,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_2508",
+          "reactionName": "phosphatidyl-N,N-dimethylethanolamine methyltransferase (1-16:0, 2-18:1), ER membrane",
+          "flux": 0.017216327416990754,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3511",
+          "reactionName": "palmitoleate transport, cytoplasm-ER membrane",
+          "flux": -0.004898322153206264,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3517",
+          "reactionName": "palmitoyl-CoA transport, cytoplasm-ER membrane",
+          "flux": 0.10466704786882984,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3519",
+          "reactionName": "stearoyl-CoA transport, cytoplasm-ER membrane",
+          "flux": 0.032530574219617726,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3525",
+          "reactionName": "H+ transport, cytoplasm-ER membrane",
+          "flux": -0.024292508110037355,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3526",
+          "reactionName": "H2O transport, cytoplasm-ER membrane",
+          "flux": -0.200968403227833,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3528",
+          "reactionName": "coenzyme A transport, cytoplasm-ER membrane",
+          "flux": -0.13719762208844752,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3531",
+          "reactionName": "O2 transport, cytoplasm-ER membrane",
+          "flux": 0.10407254078403921,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3532",
+          "reactionName": "NADH transport, cytoplasm-ER membrane",
+          "flux": 0.1968523558203646,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3533",
+          "reactionName": "NAD transport, cytoplasm-ER membrane",
+          "flux": -0.19685235582036456,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3534",
+          "reactionName": "glycerol 3-phosphate transport, cytoplasm-ER membrane",
+          "flux": 0.058244647326116734,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3536",
+          "reactionName": "diphosphate transport, cytoplasm-ER membrane",
+          "flux": -0.04616964683266497,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3537",
+          "reactionName": "phosphate transport, cytoplasm-ER membrane",
+          "flux": -0.007176678340245494,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3538",
+          "reactionName": "CTP transport, cytoplasm-ER membrane",
+          "flux": 0.051067968985871265,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3540",
+          "reactionName": "CMP transport, cytoplasm-ER membrane",
+          "flux": -0.05106796898587116,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3543",
+          "reactionName": "ATP transport, cytoplasm-ER membrane",
+          "flux": -0.004898322153206265,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3544",
+          "reactionName": "AMP transport, cytoplasm-ER membrane",
+          "flux": 0.004898322153206265,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3545",
+          "reactionName": "L-serine transport, cytoplasm-ER membrane",
+          "flux": 0.044055692259051794,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3546",
+          "reactionName": "myo-inositol transport, cytoplasm-ER membrane",
+          "flux": 0.007012276726819447,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3547",
+          "reactionName": "S-adenosyl-L-methionine transport, cytoplasm-ER membrane",
+          "flux": 0.08665320284362255,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3548",
+          "reactionName": "S-adenosyl-L-homocysteine transport, cytoplasm-ER membrane",
+          "flux": -0.08665320284362246,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3563",
+          "reactionName": "1-phosphatidyl-1D-myo-inositol (1-16:1, 2-16:1) transport, cytoplasm-ER membrane",
+          "flux": -0.0024825958647662315,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3564",
+          "reactionName": "1-phosphatidyl-1D-myo-inositol (1-18:0, 2-16:1) transport, cytoplasm-ER membrane",
+          "flux": -0.004529680862053216,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3653",
+          "reactionName": "carbon dioxide transport, cytoplasm-vacuolar membrane",
+          "flux": -0.009227834027552959,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3669",
+          "reactionName": "carbon dioxide transport, cytoplasm-mitochondrial membrane",
+          "flux": -0.02800970853686482,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3766",
+          "reactionName": "phosphatidyl-L-serine (1-16:1, 2-16:1) transport, ER membrane-mitochondrial membrane",
+          "flux": 0.008642142122062645,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3767",
+          "reactionName": "phosphatidyl-L-serine (1-18:0, 2-16:1) transport, ER membrane-mitochondrial membrane",
+          "flux": 0.002151238997811416,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3769",
+          "reactionName": "phosphatidyl-L-serine (1-16:0, 2-18:1) transport, ER membrane-mitochondrial membrane",
+          "flux": 0.017216327416990754,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3774",
+          "reactionName": "phosphatidylethanolamine (1-16:1, 2-16:1) transport, mitochondrial membrane-ER membrane",
+          "flux": 0.008642142122062647,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3775",
+          "reactionName": "phosphatidylethanolamine (1-18:0, 2-16:1) transport, mitochondrial membrane-ER membrane",
+          "flux": 0.0021512389978114166,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3777",
+          "reactionName": "phosphatidylethanolamine (1-16:0, 2-18:1) transport, mitochondrial membrane-ER membrane",
+          "flux": 0.017216327416990754,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3845",
+          "reactionName": "phosphatidyl-L-serine (1-16:0, 2-16:1) transport, ER membrane-vacuolar membrane",
+          "flux": 0.009227834027552959,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3853",
+          "reactionName": "phosphatidylethanolamine (1-16:0, 2-16:1) transport, vacuolar membrane-ER membrane",
+          "flux": 0.009227834027552959,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3939",
+          "reactionName": "ergosterol transport, ER-ER membrane",
+          "flux": 0.008633326942762344,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3964",
+          "reactionName": "1-phosphatidyl-1D-myo-inositol (1-16:1, 2-16:1) [cytoplasm] SLIME rxn",
+          "flux": 0.002482595864766231,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3965",
+          "reactionName": "1-phosphatidyl-1D-myo-inositol (1-18:0, 2-16:1) [cytoplasm] SLIME rxn",
+          "flux": 0.004529680862053216,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3972",
+          "reactionName": "ergosteryl oleate [endoplasmic reticulum membrane] SLIME rxn",
+          "flux": 0.008633326942762342,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3973",
+          "reactionName": "ergosterol ester transport, ER membrane-cytoplasm",
+          "flux": 0.005707563580474193,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3976",
+          "reactionName": "palmitoleate [cytoplasm] SLIME rxn",
+          "flux": 0.004898322153206265,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3980",
+          "reactionName": "phosphatidyl-L-serine (1-16:1, 2-16:1) [endoplasmic reticulum membrane] SLIME rxn",
+          "flux": 0.006818149694634018,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3987",
+          "reactionName": "phosphatidyl-L-serine transport, ER membrane-cytoplasm",
+          "flux": 0.004990533091769188,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3988",
+          "reactionName": "phosphatidylcholine (1-16:0, 2-16:1) [endoplasmic reticulum membrane] SLIME rxn",
+          "flux": 0.00922783402755296,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3989",
+          "reactionName": "phosphatidylcholine (1-16:1, 2-16:1) [endoplasmic reticulum membrane] SLIME rxn",
+          "flux": 0.00244023950333044,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3992",
+          "reactionName": "phosphatidylcholine (1-16:0, 2-18:1) [endoplasmic reticulum membrane] SLIME rxn",
+          "flux": 0.017216327416990754,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3996",
+          "reactionName": "phosphatidylcholine transport, ER membrane-cytoplasm",
+          "flux": 0.021622456570761582,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3998",
+          "reactionName": "phosphatidylethanolamine (1-16:1, 2-16:1) [endoplasmic reticulum membrane] SLIME rxn",
+          "flux": 0.006201902618732205,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_3999",
+          "reactionName": "phosphatidylethanolamine (1-18:0, 2-16:1) [endoplasmic reticulum membrane] SLIME rxn",
+          "flux": 0.002151238997811416,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4005",
+          "reactionName": "phosphatidylethanolamine transport, ER membrane-cytoplasm",
+          "flux": 0.005811134712897027,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4016",
+          "reactionName": "triglyceride (1-16:1, 2-16:1, 3-16:1) [endoplasmic reticulum membrane] SLIME rxn",
+          "flux": 0.007176678340245493,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4038",
+          "reactionName": "triglyceride transport, ER membrane-cytoplasm",
+          "flux": 0.005750585372697229,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4039",
+          "reactionName": "succinyl-CoA:acetate CoA transferase",
+          "flux": -1.1499116589025191,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4041",
+          "reactionName": "biomass pseudoreaction",
+          "flux": 0.838632273415347,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4046",
+          "reactionName": "non-growth associated maintenance reaction",
+          "flux": 0.7,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.7,
+          "upperBound": 0.7
+        },
+        {
+          "reactionId": "r_4047",
+          "reactionName": "protein pseudoreaction",
+          "flux": 0.838632273415347,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4048",
+          "reactionName": "carbohydrate pseudoreaction",
+          "flux": 0.8386322734153469,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4049",
+          "reactionName": "RNA pseudoreaction",
+          "flux": 0.838632273415347,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4050",
+          "reactionName": "DNA pseudoreaction",
+          "flux": 0.8386322734153471,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4063",
+          "reactionName": "lipid backbone pseudoreaction",
+          "flux": 0.838632273415347,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4065",
+          "reactionName": "lipid chain pseudoreaction",
+          "flux": 0.8386322734153471,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4196",
+          "reactionName": "NADH:ferricytochrome-b5 oxidoreductase",
+          "flux": 0.09277981503632535,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4216",
+          "reactionName": "riboflavin-5-phosphate phosphohydrolase",
+          "flux": -8.386322522297139e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4226",
+          "reactionName": "L-Alanine:2-oxoglutarate aminotransferase",
+          "flux": -0.28653266333341176,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4262",
+          "reactionName": "citrate hydroxymutase",
+          "flux": 5.873062723069478,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4333",
+          "reactionName": "Polyphosphate phosphohydrolase",
+          "flux": -23.42874212852888,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4570",
+          "reactionName": "phosphoglycerate dehydrogenase",
+          "flux": -0.19098996342252403,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4571",
+          "reactionName": "seed:rxn00681",
+          "flux": 0.19098996342252406,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4581",
+          "reactionName": "(2R,3S)-3-methylmalate:NAD+ oxidoreductase",
+          "flux": 0.19098996342253954,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4582",
+          "reactionName": "malate/beta-methylmalate synthase",
+          "flux": 0.19098996342253957,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4587",
+          "reactionName": "Ca(2+) transport",
+          "flux": 0.00018198319781856972,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4588",
+          "reactionName": "chloride transport",
+          "flux": 0.0010818356694457826,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4589",
+          "reactionName": "Cu2(+) transport",
+          "flux": 0.0005526586783217,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4590",
+          "reactionName": "Mn(2+) transport",
+          "flux": 0.0022894661614714005,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4591",
+          "reactionName": "Zn(2+) transport",
+          "flux": 0.0006272969332104197,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4592",
+          "reactionName": "Mg(2+) transport",
+          "flux": 0.0010420366513632772,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4593",
+          "reactionName": "chloride exchange",
+          "flux": -0.0010818356694457824,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4594",
+          "reactionName": "Cu2(+) exchange",
+          "flux": -0.0005526586783217,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4595",
+          "reactionName": "Mn(2+) exchange",
+          "flux": -0.0022894661614714005,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4596",
+          "reactionName": "Zn(2+) exchange",
+          "flux": -0.0006272969332104197,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4597",
+          "reactionName": "Mg(2+) exchange",
+          "flux": -0.0010420366513632772,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4598",
+          "reactionName": "cofactor pseudoreaction",
+          "flux": 0.8386322734153471,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4599",
+          "reactionName": "ion pseudoreaction",
+          "flux": 0.8386322734153469,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4600",
+          "reactionName": "Ca(2+) exchange",
+          "flux": -0.00018198319781856975,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4724",
+          "reactionName": "polyphosphate phosphohydrolase, m",
+          "flux": 23.428742128528878,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4745",
+          "reactionName": "polyphosphate transport, c-m",
+          "flux": 23.42874212852888,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4749",
+          "reactionName": "adenosine phosphorylase",
+          "flux": -0.00015934013707618157,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4781",
+          "reactionName": "HET-P synthase (thiazole synthase)",
+          "flux": 1.0063587636941886e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4782",
+          "reactionName": "adenylated thiazole synthase",
+          "flux": 1.0063587636941886e-06,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4783",
+          "reactionName": "oxaloacetate/sulphate antiport, mitochondrial",
+          "flux": 0.9297694554963054,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4784",
+          "reactionName": "malate/sulphate antiport, mitochondrial",
+          "flux": -0.9297694554963054,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": -1000.0,
+          "upperBound": 1000.0
+        },
+        {
+          "reactionId": "r_4785",
+          "reactionName": "acetate transport",
+          "flux": 1.1499116589025193,
+          "unit": "mmol/gDW/h",
+          "conditionId": "aerobic_glucose",
+          "lowerBound": 0.0,
+          "upperBound": 1000.0
+        }
+      ],
+      "pathwaySummaries": []
+    },
+    "yield": {
+      "status": "available",
+      "method": "COBRApy 0.32.1 pFBA",
+      "notAvailableReason": null,
+      "artifactIds": [
+        "flux_table"
+      ],
+      "results": [
+        {
+          "metricId": "r_1761_per_glucose",
+          "name": "ethanol yield",
+          "value": 0.0,
+          "unit": "mol/mol",
+          "kind": "predicted",
+          "conditionId": "aerobic_glucose"
+        },
+        {
+          "metricId": "r_1634_per_glucose",
+          "name": "acetate yield",
+          "value": 0.0,
+          "unit": "mol/mol",
+          "kind": "predicted",
+          "conditionId": "aerobic_glucose"
+        },
+        {
+          "metricId": "r_2056_per_glucose",
+          "name": "succinate yield",
+          "value": 0.0,
+          "unit": "mol/mol",
+          "kind": "predicted",
+          "conditionId": "aerobic_glucose"
+        }
+      ]
+    },
+    "geneExpression": {
+      "status": "available",
+      "method": "ILLUSTRATIVE (literature-informed, POC) \u2014 representative values, NOT a computed result; informed by GSE11452 (S. cerevisiae) and PXD016519 / ProteomICA",
+      "notAvailableReason": null,
+      "contrastId": "aerobic_glucose_vs_aerobic_glucose",
+      "results": [
+        {
+          "featureId": "YOL086C",
+          "symbol": "ADH1",
+          "featureType": "gene",
+          "log2FoldChange": 2.3,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "YLR044C",
+          "symbol": "PDC1",
+          "featureType": "gene",
+          "log2FoldChange": 1.7,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "YGR087C",
+          "symbol": "PDC6",
+          "featureType": "gene",
+          "log2FoldChange": 1.4,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "YJR048W",
+          "symbol": "CYC1",
+          "featureType": "gene",
+          "log2FoldChange": -2.1,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "YKL085W",
+          "symbol": "MDH1",
+          "featureType": "gene",
+          "log2FoldChange": -1.6,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "YNL071W",
+          "symbol": "LAT1",
+          "featureType": "gene",
+          "log2FoldChange": -1.2,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "YPR001W",
+          "symbol": "CIT3",
+          "featureType": "gene",
+          "log2FoldChange": -1.0,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "P00330",
+          "symbol": "Adh1",
+          "featureType": "protein",
+          "log2FoldChange": 1.8,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "P06169",
+          "symbol": "Pdc1",
+          "featureType": "protein",
+          "log2FoldChange": 1.3,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        },
+        {
+          "featureId": "P00127",
+          "symbol": "Cyc1",
+          "featureType": "protein",
+          "log2FoldChange": -1.4,
+          "pValue": null,
+          "adjustedPValue": null,
+          "unit": "log2FoldChange"
+        }
+      ]
+    },
+    "metabolomics": {
+      "status": "available",
+      "method": "ILLUSTRATIVE (literature-informed, POC) \u2014 representative values, NOT a computed result; informed by ST001421",
+      "notAvailableReason": null,
+      "results": [
+        {
+          "featureId": "hmdb:HMDB0000108",
+          "name": "Ethanol",
+          "value": 7.9,
+          "unit": "mM",
+          "change": 3.6,
+          "changeUnit": "log2FoldChange",
+          "conditionId": "aerobic_glucose"
+        },
+        {
+          "featureId": "hmdb:HMDB0000042",
+          "name": "Acetate",
+          "value": 2.3,
+          "unit": "mM",
+          "change": 1.1,
+          "changeUnit": "log2FoldChange",
+          "conditionId": "aerobic_glucose"
+        },
+        {
+          "featureId": "hmdb:HMDB0000122",
+          "name": "D-Glucose",
+          "value": 11.0,
+          "unit": "mM",
+          "change": -1.2,
+          "changeUnit": "log2FoldChange",
+          "conditionId": "aerobic_glucose"
+        },
+        {
+          "featureId": "hmdb:HMDB0000243",
+          "name": "Pyruvate",
+          "value": 0.6,
+          "unit": "mM",
+          "change": -0.3,
+          "changeUnit": "log2FoldChange",
+          "conditionId": "aerobic_glucose"
+        }
+      ]
+    }
+  }
+}

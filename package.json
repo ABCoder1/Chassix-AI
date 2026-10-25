@@ -1,0 +1,33 @@
+{
+  "name": "chassix",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.12.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "typecheck": "tsc -p packages/shared/tsconfig.json && tsc -p packages/analysis-bundle/tsconfig.json && tsc -p packages/fixtures/tsconfig.json && tsc -p packages/db/tsconfig.json && tsc -p packages/ui/tsconfig.json && tsc -p apps/planner/tsconfig.json && tsc -p apps/datasets/tsconfig.json && tsc -p apps/executor/tsconfig.json && tsc -p apps/orchestrator/tsconfig.json && tsc -p apps/realtime/tsconfig.json && tsc -p apps/api/tsconfig.json && tsc -p apps/web/tsconfig.json && tsc -p apps/visualizer/tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "dev:stack": "docker compose up -d",
+    "dev:stack:down": "docker compose down",
+    "dev:stack:logs": "docker compose logs -f",
+    "db:generate": "pnpm --filter @chassix/db db:generate",
+    "db:migrate": "pnpm --filter @chassix/db db:migrate"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.13.0",
+    "@types/node": "20.16.11",
+    "eslint": "9.13.0",
+    "prettier": "3.3.3",
+    "typescript": "5.6.3",
+    "typescript-eslint": "8.11.0",
+    "vitest": "2.1.3"
+  }
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chassix AI — multi-omics POC demo</title>
+<style>
+  :root { color-scheme: light dark; --fg:#1a1a1a; --bg:#fff; --mut:#666; --line:#e3e3e3; --accent:#2563eb; }
+  @media (prefers-color-scheme: dark) { :root { --fg:#e8e8e8; --bg:#121316; --mut:#9aa0a6; --line:#2a2d33; --accent:#6ea8fe; } }
+  body { font: 15px/1.55 -apple-system, system-ui, sans-serif; color:var(--fg); background:var(--bg); margin:0; padding:32px 16px; }
+  main { max-width: 860px; margin: 0 auto; }
+  h1 { font-size: 1.5rem; margin:.2em 0; } .s { color:var(--mut); font-size:.85em; }
+  p { color:var(--mut); } table { border-collapse: collapse; width:100%; margin:18px 0; }
+  th,td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); }
+  th { font-size:.8rem; text-transform:uppercase; letter-spacing:.03em; color:var(--mut); }
+  td.n { text-align:right; font-variant-numeric: tabular-nums; }
+  a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+  .note { border-left:3px solid var(--accent); padding:10px 14px; background:color-mix(in srgb, var(--accent) 7%, transparent); border-radius:4px; font-size:.9em; }
+</style></head><body><main>
+<h1>Chassix AI — multi-omics POC demo</h1>
+<p>Condition-specific flux maps for <em>S. cerevisiae</em> S288C and <em>E. coli</em> K-12 MG1655.</p>
+<div class="note"><strong>Provenance.</strong> Growth rate, flux, and byproduct secretion are
+<strong>real</strong> COBRApy pFBA on the genome-scale models (iML1515, yeast-GEM / Yeast8-9).
+The transcriptomic / proteomic / metabolomic sections inside each bundle are
+<strong>illustrative, literature-informed</strong> placeholders for the demo (labelled in each
+section), not computed measurements.</div>
+<table><thead><tr><th>Organism</th><th>Condition</th><th>Growth (/h)</th>
+<th>Ethanol</th><th>Acetate</th><th>Active rxns</th><th></th></tr></thead>
+<tbody>
+<tr><td>Escherichia coli <span class="s">K-12 MG1655</span></td><td>aerobic_glucose</td><td class="n">0.877</td><td class="n">0.0</td><td class="n">0.0</td><td class="n">432/2712</td><td><a href="/?bundleUrl=/demo/ecoli-aerobic_glucose.json">open in dashboard →</a></td></tr>
+<tr><td>Escherichia coli <span class="s">K-12 MG1655</span></td><td>oxygen_limited</td><td class="n">0.236</td><td class="n">6.1996</td><td class="n">10.2483</td><td class="n">417/2712</td><td><a href="/?bundleUrl=/demo/ecoli-oxygen_limited.json">open in dashboard →</a></td></tr>
+<tr><td>Saccharomyces cerevisiae <span class="s">S288C</span></td><td>aerobic_glucose</td><td class="n">0.8386</td><td class="n">0.0</td><td class="n">0.0</td><td class="n">485/4105</td><td><a href="/?bundleUrl=/demo/yeast-aerobic_glucose.json">open in dashboard →</a></td></tr>
+<tr><td>Saccharomyces cerevisiae <span class="s">S288C</span></td><td>oxygen_limited</td><td class="n">0.2515</td><td class="n">15.5617</td><td class="n">0.0</td><td class="n">489/4105</td><td><a href="/?bundleUrl=/demo/yeast-oxygen_limited.json">open in dashboard →</a></td></tr>
+</tbody></table>
+<p>Secretion in mmol·gDW⁻¹·h⁻¹. Each dashboard link opens the validated analysis bundle
+(schema 1.0.0) in the visualizer.</p>
+</main></body></html>

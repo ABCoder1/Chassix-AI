@@ -1,0 +1,62 @@
+{
+  "taskGroups": [
+    {
+      "taskCount": 1,
+      "taskSpec": {
+        "runnables": [
+          {
+            "container": {
+              "imageUri": "REGION-docker.pkg.dev/PROJECT_ID/chassix/transcriptomics:latest",
+              "commands": []
+            },
+            "environment": {
+              "variables": {
+                "CHASSIX_INPUTS_DIR": "/mnt/disks/gcs/studies/RUN_ID/inputs",
+                "CHASSIX_OUTPUT": "/mnt/disks/gcs/studies/RUN_ID/outputs/bundle.transcriptomics.json",
+                "CHASSIX_DE_CSV": "/mnt/disks/gcs/studies/RUN_ID/outputs/differential_expression.csv",
+                "CHASSIX_DE_CSV_URI": "gs://GCS_BUCKET/studies/RUN_ID/outputs/differential_expression.csv",
+                "CHASSIX_RUN_ID": "RUN_ID",
+                "CHASSIX_WORKFLOW_ID": "transcriptomics",
+                "CHASSIX_WORKFLOW_VERSION": "WORKFLOW_VERSION",
+                "CHASSIX_CONDITION_ID": "CONDITION_ID",
+                "CHASSIX_ORGANISM_CHASSIS": "CHASSIS_ID",
+                "CHASSIX_ORGANISM_TAXON_ID": "TAXON_ID",
+                "CHASSIX_ORGANISM_TAXON_NAME": "TAXON_NAME",
+                "CHASSIX_ORGANISM_STRAIN_ID": "STRAIN_ID",
+                "CHASSIX_ORGANISM_STRAIN_NAME": "STRAIN_NAME"
+              }
+            }
+          }
+        ],
+        "volumes": [
+          {
+            "gcs": {
+              "remotePath": "GCS_BUCKET"
+            },
+            "mountPath": "/mnt/disks/gcs",
+            "mountOptions": ["implicit-dirs"]
+          }
+        ],
+        "computeResource": {
+          "cpuMilli": 4000,
+          "memoryMib": 16384
+        },
+        "maxRetryCount": 1,
+        "maxRunDuration": "7200s"
+      }
+    }
+  ],
+  "allocationPolicy": {
+    "instances": [
+      {
+        "policy": {
+          "machineType": "e2-standard-4",
+          "provisioningModel": "STANDARD"
+        }
+      }
+    ]
+  },
+  "logsPolicy": {
+    "destination": "CLOUD_LOGGING"
+  }
+}

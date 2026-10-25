@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "exactOptionalPropertyTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@chassix/shared": ["packages/shared/src/index.ts"],
+      "@chassix/shared/*": ["packages/shared/src/*"],
+      "@chassix/analysis-bundle": ["packages/analysis-bundle/src/index.ts"],
+      "@chassix/analysis-bundle/*": ["packages/analysis-bundle/src/*"],
+      "@chassix/ui": ["packages/ui/src/index.ts"],
+      "@chassix/ui/*": ["packages/ui/src/*"],
+      "@chassix/db": ["packages/db/src/index.ts"],
+      "@chassix/db/*": ["packages/db/src/*"],
+      "@chassix/planner": ["apps/planner/src/index.ts"],
+      "@chassix/datasets": ["apps/datasets/src/index.ts"],
+      "@chassix/executor": ["apps/executor/src/index.ts"],
+      "@chassix/executor/gcp": ["apps/executor/src/gcp-batch/real-client.ts"],
+      "@chassix/orchestrator": ["apps/orchestrator/src/index.ts"],
+      "@chassix/realtime": ["apps/realtime/src/index.ts"],
+      "@chassix/fixtures": ["packages/fixtures/src/index.ts"]
+    }
+  }
+}

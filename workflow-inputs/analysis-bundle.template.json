@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1.0.0",
+  "run": {
+    "id": "REPLACE_WITH_WORKFLOW_RUN_ID",
+    "workflowId": "REPLACE_WITH_WORKFLOW_ID",
+    "workflowVersion": null,
+    "status": "queued",
+    "createdAt": null,
+    "completedAt": null,
+    "modelVersions": []
+  },
+  "organism": {
+    "chassisId": "other",
+    "taxonId": null,
+    "taxonName": "REPLACE_WITH_TAXON_NAME",
+    "strainId": null,
+    "strainName": null
+  },
+  "condition": {
+    "id": "REPLACE_WITH_CONDITION_ID",
+    "temperatureC": null,
+    "salinityMolL": null,
+    "pH": null,
+    "timepoint": null,
+    "media": null,
+    "oxygenation": null,
+    "other": {}
+  },
+  "artifacts": [],
+  "analyses": {
+    "geneExpression": {
+      "status": "not_run",
+      "method": null,
+      "notAvailableReason": "Replace with the workflow status or reason.",
+      "artifactIds": [],
+      "contrastId": null,
+      "results": []
+    },
+    "flux": {
+      "status": "not_run",
+      "method": null,
+      "notAvailableReason": "Replace with the workflow status or reason.",
+      "artifactIds": [],
+      "modelId": null,
+      "objective": null,
+      "results": [],
+      "pathwaySummaries": []
+    },
+    "metabolomics": {
+      "status": "not_run",
+      "method": null,
+      "notAvailableReason": "Replace with the workflow status or reason.",
+      "artifactIds": [],
+      "results": []
+    },
+    "yield": {
+      "status": "not_run",
+      "method": null,
+      "notAvailableReason": "Replace with the workflow status or reason.",
+      "artifactIds": [],
+      "results": []
+    },
+    "interactions": {
+      "status": "not_run",
+      "method": null,
+      "notAvailableReason": "Only populate from interaction evidence appropriate to the displayed interaction type.",
+      "artifactIds": [],
+      "results": []
+    }
+  }
+}
