@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Activity, ArrowDownToLine, ArrowRight, Atom, Box, Check, ChevronDown, CircleHelp, Dna, Droplets, Eye, Focus, Layers3, Maximize2, Microscope, Minus, MousePointer2, Network, Pause, Play, Plus, RotateCcw, RotateCw, SlidersHorizontal, Sparkles, Thermometer, Wind, X } from 'lucide-react';
+import { Brand } from './Brand';
 import { CellScene, type CellSceneHandle } from './CellScene';
 import { ExpressionMatrix, GrnView, MAP_NODE_LABELS, OrganelleMap, type DataViewMode } from './DataViews';
 import { networkFor, type PathwayMode } from './pathwayData';
@@ -66,7 +67,7 @@ export default function App() {
   ];
   return <div className={`app ${immersive ? 'immersive' : ''}`}>
     <header className="app-header">
-      <a href="#" className="brand" aria-label="Chassix-AI workstation"><span className="brand-mark"><Dna size={22} /></span><strong>CHASSIX<span>-AI</span></strong></a>
+      <Brand />
       <div className="header-divider" /><div className="breadcrumb">Workspace <span>/</span> <strong>Digital twin</strong></div>
       <span className="prototype-badge"><span />Visualization prototype</span>
       <button ref={helpButton} className="help-button icon-button" aria-label="How to use the workstation" onClick={() => setHelp(true)}><CircleHelp size={18} /></button>
