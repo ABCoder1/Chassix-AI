@@ -37,3 +37,8 @@ coverage/
 .coverage
 htmlcov/
 tmp/
+
+# Local SpaceTimeDB module project created by `spacetime init` (docs/spacetimedb-setup.md).
+# Published via the `spacetime` CLI, not built by our monorepo; the reference module source lives
+# at apps/realtime/module/run_events.ts. Keep it out of our git/tooling.
+/chassix-realtime/

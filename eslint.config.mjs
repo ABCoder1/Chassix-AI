@@ -11,6 +11,8 @@ export default tseslint.config(
       // SpaceTimeDB reference templates — published via the `spacetime` CLI, not compiled here.
       "apps/realtime/module/**",
       "apps/realtime/examples/**",
+      // Local SpaceTimeDB module project created by `spacetime init` — not part of our build.
+      "chassix-realtime/**",
     ],
   },
   js.configs.recommended,
