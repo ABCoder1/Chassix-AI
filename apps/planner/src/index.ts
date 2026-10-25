@@ -2,6 +2,8 @@ export * from "./planner.js";
 export * from "./claude-planner.js";
 export * from "./fake-planner.js";
 export { GOAL_INTERPRETATION_SYSTEM } from "./prompt.js";
+// Sonnet 4.8 reasoning over finished run results (thinking + interpretation).
+export * from "./reasoner.js";
 
 // Step 2.1 — host literature retrieval (citation-first, behind RetrievalProvider).
 export * from "./retrieval/index.js";

@@ -8,6 +8,7 @@ import {
   Check,
   ChevronDown,
   CircleHelp,
+  Database,
   Dna,
   Droplets,
   Eye,
@@ -37,6 +38,7 @@ import {
   OrganelleMap,
   type DataViewMode,
 } from "./DataViews";
+import { EvidenceExplorer } from "./EvidenceExplorer";
 import { networkFor, type PathwayMode } from "./pathwayData";
 import {
   CHASSIS,
@@ -349,8 +351,21 @@ export default function App() {
           </span>
         </div>
       </div>
-      <nav className="data-toolbar" aria-label="Digital twin view">
+      <nav
+        className={`data-toolbar ${dataView === "evidence" ? "evidence-toolbar" : ""}`}
+        aria-label="Digital twin view"
+      >
         <div className="data-view-tabs">
+          <button
+            className={dataView === "evidence" ? "active" : ""}
+            onClick={() => {
+              setDataView("evidence");
+              setImmersive(false);
+            }}
+          >
+            <Database size={14} />
+            Evidence POC
+          </button>
           <button
             className={dataView === "organelle" ? "active" : ""}
             onClick={() => {
@@ -420,7 +435,9 @@ export default function App() {
           {view.playing ? "Pause" : "Run"}
         </button>
       </nav>
-      <div className={`workstation ${dataView !== "twin" ? "data-workstation" : ""}`}>
+      <div
+        className={`workstation ${dataView !== "twin" ? "data-workstation" : ""} ${dataView === "evidence" ? "evidence-workstation" : ""}`}
+      >
         <aside className={`control-panel ${dataView !== "twin" ? "data-controls" : ""}`}>
           <div className="panel-title">
             <SlidersHorizontal size={15} />
@@ -676,10 +693,14 @@ export default function App() {
             aria-label={
               dataView === "organelle"
                 ? "Illustrative cellular response map"
-                : "Gene regulatory network view"
+                : dataView === "evidence"
+                  ? "Sourced literature evidence explorer"
+                  : "Gene regulatory network view"
             }
           >
-            {dataView === "organelle" ? (
+            {dataView === "evidence" ? (
+              <EvidenceExplorer chassisId={chassisId} />
+            ) : dataView === "organelle" ? (
               <OrganelleMap
                 chassisId={chassisId}
                 response={response}

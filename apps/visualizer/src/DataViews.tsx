@@ -32,7 +32,7 @@ const ICONS = {
   homeostasis: CheckCircle2,
   mitochondria: Cpu,
 };
-export type DataViewMode = PathwayMode | "twin";
+export type DataViewMode = PathwayMode | "twin" | "evidence";
 export const MAP_NODE_LABELS: Record<string, string> = Object.fromEntries(
   Object.values(ORGANELLE_NETWORKS).flatMap((network) =>
     network.nodes.map((node) => [node.id, node.short]),

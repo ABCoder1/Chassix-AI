@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import type { AnalysisBundle, AnalysisStatus, Artifact } from "@chassix/analysis-bundle";
 import { resolveArtifacts } from "./bundle/provider";
+import { ReasoningPanel } from "./ReasoningPanel";
 import {
   STATUS_LABEL,
   YIELD_KIND_LABEL,
@@ -339,6 +340,8 @@ export function AnalysisResults({ bundle }: { bundle: AnalysisBundle }) {
         and source-artifact provenance. Missing or failed analyses are marked explicitly and are
         never replaced with a plausible-looking value.
       </p>
+
+      <ReasoningPanel bundle={bundle} />
     </section>
   );
 }

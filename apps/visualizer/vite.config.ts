@@ -11,5 +11,15 @@ export default defineConfig({
       "@chassix/analysis-bundle": r("../../packages/analysis-bundle/src/index.ts"),
     },
   },
-  server: { port: 5174 },
+  server: {
+    port: 5174,
+    // Proxy reasoning (and any engine API) to the Fastify server so the dashboard stays same-origin.
+    proxy: {
+      "/api": {
+        target: process.env.VITE_API_TARGET ?? "http://localhost:3001",
+        changeOrigin: true,
+        rewrite: (p) => p.replace(/^\/api/, ""),
+      },
+    },
+  },
 });

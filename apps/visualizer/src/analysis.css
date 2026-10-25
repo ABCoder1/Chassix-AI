@@ -346,3 +346,102 @@
   padding: 6px 14px;
   border-radius: 8px;
 }
+
+/* Model reasoning panel (Sonnet 4.8 thinking + interpretation) */
+.reasoning {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border: 1px solid #27333f;
+  border-left: 3px solid #8b7bd8;
+  border-radius: 10px;
+  background: #0e1420;
+}
+.reasoning-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.reasoning-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 600 9px/1 var(--mono, ui-monospace, monospace);
+  letter-spacing: 1px;
+  color: #b4a7ea;
+}
+.reasoning-model {
+  font: 8px var(--mono, ui-monospace, monospace);
+  color: #6f8498;
+}
+.reasoning-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  color: #9fb0c0;
+  font-size: 12px;
+}
+.reasoning-spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #3a3357;
+  border-top-color: #8b7bd8;
+  animation: reasoning-spin 0.9s linear infinite;
+}
+@keyframes reasoning-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.reasoning-error {
+  margin: 12px 0 0;
+  color: #d89a86;
+  font-size: 12px;
+}
+.reasoning-thinking {
+  margin-top: 12px;
+}
+.reasoning-thinking-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #9a8fd0;
+  font: 600 10px/1 var(--mono, ui-monospace, monospace);
+  letter-spacing: 0.6px;
+  cursor: pointer;
+}
+.reasoning-thinking-body {
+  margin: 8px 0 0;
+  padding: 11px 13px;
+  border: 1px solid #2a3140;
+  border-radius: 7px;
+  background: #0a1019;
+  color: #93a7ba;
+  font: 11px/1.7 var(--mono, ui-monospace, monospace);
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 320px;
+  overflow: auto;
+}
+.reasoning-text {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  margin-top: 13px;
+}
+.reasoning-text-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #c6b98f;
+}
+.reasoning-text p {
+  margin: 0;
+  color: #d7e2ea;
+  font-size: 13px;
+  line-height: 1.75;
+}

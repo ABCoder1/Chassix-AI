@@ -11,8 +11,10 @@ import { registerWorkspaceRoutes } from "./routes/workspaces.js";
 import { registerRunRoutes } from "./routes/runs.js";
 import { registerGoalRoutes } from "./routes/goals.js";
 import { registerDiscoveryRoutes } from "./routes/discovery.js";
+import { registerReasoningRoutes } from "./routes/reasoning.js";
 import {
   createPlanner,
+  createReasoner,
   createRetrievalProvider,
   type Planner,
   type RetrievalProvider,
@@ -107,6 +109,8 @@ export function buildServer(options: BuildServerOptions = {}): FastifyInstance {
   registerWorkspaceRoutes(app, { repos, guards });
   registerGoalRoutes(app, { planner, live: plannerLive });
   registerDiscoveryRoutes(app, { retrieval, datasets: datasetService, live: retrievalLive });
+  // Sonnet 4.8 reasoning over finished results (null when no ANTHROPIC_API_KEY ⇒ route returns 503).
+  registerReasoningRoutes(app, { reasoner: createReasoner() });
   registerRunRoutes(app, {
     guards,
     provider: runProvider,
