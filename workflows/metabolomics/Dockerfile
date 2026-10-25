@@ -4,6 +4,11 @@
 # The remotes install line below is the documented route; pin to a release tag.
 FROM bioconductor/bioconductor_docker:RELEASE_3_19
 
+# fgsea (installed below for MetaboAnalystR) compiles its C++ under C++11, but current BH (Boost)
+# headers require C++14+ in Boost.Math ("'is_final'/'enable_if_t' ... not declared in 'std'").
+# Pin BH to the last C++11-compatible release first (header-only, fast; kept pinned by update=FALSE).
+RUN R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/BH/BH_1.81.0-1.tar.gz', repos=NULL, type='source')"
+
 # XCMS + MSnbase from Bioconductor; jsonlite + remotes from CRAN.
 RUN R -e "options(warn=2); BiocManager::install(c('xcms','MSnbase'), update=FALSE, ask=FALSE); install.packages(c('jsonlite','remotes'), repos='https://cloud.r-project.org')"
 

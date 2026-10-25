@@ -6,6 +6,13 @@
 # OrgDb named in params.json (orgDb field).
 FROM bioconductor/bioconductor_docker:RELEASE_3_19
 
+# clusterProfiler pulls in fgsea, whose C++ compiles under C++11 — but current BH (Boost) headers
+# require C++14+ in Boost.Math, which breaks the build with errors like
+# "'is_final' has not been declared in 'std'" / "'enable_if_t' ... not declared".
+# Pin BH to the last C++11-compatible release BEFORE installing clusterProfiler so fgsea builds
+# against it (BH is header-only, so this is a fast copy; update=FALSE below keeps it pinned).
+RUN R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/BH/BH_1.81.0-1.tar.gz', repos=NULL, type='source')"
+
 RUN R -e "options(warn=2); BiocManager::install(c('clusterProfiler','org.EcK12.eg.db'), update=FALSE, ask=FALSE); install.packages('jsonlite', repos='https://cloud.r-project.org')"
 
 RUN mkdir -p /opt/chassix/common /opt/chassix/pathways
