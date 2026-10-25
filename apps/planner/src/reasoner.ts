@@ -51,6 +51,8 @@ export class ResultsReasoner {
     const response = await this.client.messages.create({
       model: this.model,
       max_tokens: 4000,
+      // Adaptive thinking: the model emits a thinking trace when the task warrants one (the panel
+      // shows it when present). budget_tokens / forced thinking is rejected on current models.
       thinking: { type: "adaptive" },
       output_config: { effort: "medium" },
       system: RESULTS_REASONING_SYSTEM,
