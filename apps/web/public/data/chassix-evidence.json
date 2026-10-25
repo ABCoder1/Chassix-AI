@@ -1,0 +1,1245 @@
+{
+  "schemaVersion": 1,
+  "snapshotDate": "2026-10-25",
+  "sourceWorkbook": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit",
+  "trainingStatus": "Not run",
+  "catalog": [
+    {
+      "id": "train-3",
+      "organism": "Saccharomyces cerevisiae",
+      "domain": "Eukaryote / yeast",
+      "strain": "S288C (reference)",
+      "partition": "Training target",
+      "dataDepth": "FULL multiomics: RNA-seq + proteome + phosphoproteome + metabolome, same cultures",
+      "rationale": "Only yeast with genuinely paired 4-layer data on the same samples.",
+      "resources": [
+        "GSE11452 (170 steady-state chemostat arrays, 55 conditions)",
+        "PXD016519 (SILAC/iBAQ proteome + phosphoproteome)",
+        "PXD016519 untargeted metabolomics (Metabolon)"
+      ],
+      "model": "iMM904; Yeast8/Yeast9",
+      "modelStatus": "ESTABLISHED",
+      "assembly": "GCF_000146045.2",
+      "assemblyStatus": "ESTABLISHED",
+      "proteome": "UP000002311",
+      "proteomeStatus": "ESTABLISHED",
+      "leakage": "",
+      "note": "S288C and CEN.PK113-7D are DIFFERENT genomes. All IDs here are S288C. If CEN.PK is wanted, every ID changes — do not mix.",
+      "sourceSheet": "01_Train_Chassix",
+      "sourceRow": 3,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit",
+      "ingestionStatus": "Catalog only; no training run"
+    },
+    {
+      "id": "train-4",
+      "organism": "Escherichia coli",
+      "domain": "Bacterium / Gram-neg",
+      "strain": "K-12 MG1655",
+      "partition": "Training target",
+      "dataDepth": "FULL multiomics: PRECISE-1K RNA-seq (1,035 samples) + ProteomICA condition-matched proteomes",
+      "rationale": "Deepest single-protocol expression compendium of any organism; matched proteomics exists.",
+      "resources": [
+        "PRECISE-1K — 1,035 single-protocol RNA-seq samples; 9 media, 39 supplements, 42 heterologous proteins, 76 knockouts (iModulonDB)",
+        "ProteomICA — 64 prior + 98 new proteomes matched to PRECISE RNA-seq conditions",
+        "ST001421"
+      ],
+      "model": "iML1515; iJO1366",
+      "modelStatus": "ESTABLISHED",
+      "assembly": "GCF_000005845.2",
+      "assemblyStatus": "ESTABLISHED",
+      "proteome": "UP000000625",
+      "proteomeStatus": "ESTABLISHED",
+      "leakage": "",
+      "note": "BL21(DE3) is a DIFFERENT strain: lacks lon and ompT, different prophages, NOT represented by iML1515. Give it its own row if needed.",
+      "sourceSheet": "01_Train_Chassix",
+      "sourceRow": 4,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit",
+      "ingestionStatus": "Catalog only; no training run"
+    },
+    {
+      "id": "train-5",
+      "organism": "Pseudomonas putida",
+      "domain": "Bacterium / Gram-neg",
+      "strain": "KT2440",
+      "partition": "Training target",
+      "dataDepth": "Transcriptomics + ribosome profiling; proteome allocation via ME-model. No metabolome compendium found.",
+      "rationale": "Leading industrial non-model chassis; has an ME-model validated against multi-omics.",
+      "resources": [
+        "iModulonDB P. putida decomposition; GSE118554 (RNA-seq across glucose, citrate, ferulate, serine)",
+        "iPpu1676-ME proteome allocation predictions validated against RNA-seq + Ribo-seq"
+      ],
+      "model": "iJN1463; iPpu1676-ME",
+      "modelStatus": "UNVERIFIED",
+      "assembly": "",
+      "assemblyStatus": "",
+      "proteome": "UP000000556",
+      "proteomeStatus": "ESTABLISHED",
+      "leakage": "",
+      "note": "iJN1463 is widely cited but NOT re-verified this session — confirm in BiGG before use. iPpu1676-ME is VERIFIED (npj Syst Biol Appl 2025, DOI 10.1038/s41540-025-00521-1).",
+      "sourceSheet": "01_Train_Chassix",
+      "sourceRow": 5,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit",
+      "ingestionStatus": "Catalog only; no training run"
+    },
+    {
+      "id": "train-6",
+      "organism": "Corynebacterium glutamicum",
+      "domain": "Bacterium / Actinobacteria",
+      "strain": "ATCC 13032",
+      "partition": "Training target",
+      "dataDepth": "Transcriptomics-only at scale. No paired proteome/metabolome compendium found.",
+      "rationale": "Largest curated industrial expression compendium outside E. coli.",
+      "resources": [
+        "927 manually curated microarray profiles covering all 3,047 annotated genes (Zenodo 6842663; Sci Data 2022)"
+      ],
+      "model": "",
+      "modelStatus": "Not asserted",
+      "assembly": "",
+      "assemblyStatus": "",
+      "proteome": "",
+      "proteomeStatus": "",
+      "leakage": "",
+      "note": "Microarray, not RNA-seq — different normalization from the RNA-seq compendia. Do not pool without platform correction.",
+      "sourceSheet": "01_Train_Chassix",
+      "sourceRow": 6,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit",
+      "ingestionStatus": "Catalog only; no training run"
+    },
+    {
+      "id": "train-7",
+      "organism": "Yarrowia lipolytica",
+      "domain": "Eukaryote / oleaginous yeast",
+      "strain": "W29 / derivatives",
+      "partition": "Training target",
+      "dataDepth": "Proteome + phosphoproteome + metabolome under N-limitation; separate chemostat set with RNA-seq + proteomics + metabolomics + lipidomics",
+      "rationale": "Best non-conventional yeast for multi-layer stress data; oleaginous metabolism is metabolically distinct from S. cerevisiae.",
+      "resources": [
+        "N-limitation proteome + phosphoproteome (1,219 novel phosphosites, 133 N-responsive)",
+        "N-limitation metabolome; chemostat lipidomics"
+      ],
+      "model": "iYali4",
+      "modelStatus": "UNVERIFIED",
+      "assembly": "",
+      "assemblyStatus": "",
+      "proteome": "",
+      "proteomeStatus": "",
+      "leakage": "",
+      "note": "iYali4 is commonly cited but NOT verified this session. Strain for each dataset differs — check before merging.",
+      "sourceSheet": "01_Train_Chassix",
+      "sourceRow": 7,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit",
+      "ingestionStatus": "Catalog only; no training run"
+    },
+    {
+      "id": "train-14",
+      "organism": "Saccharomyces cerevisiae",
+      "domain": "Eukaryote / yeast",
+      "strain": "CEN.PK113-7D",
+      "partition": "Training target",
+      "dataDepth": "Growth-rate series: absolute transcriptome + absolute proteome + phosphoproteome + metabolome",
+      "rationale": "Industrial/physiology reference; differs from S288C in MAL, SUC, HXT complements.",
+      "resources": [],
+      "model": "Yeast8/Yeast9",
+      "modelStatus": "ESTABLISHED",
+      "assembly": "",
+      "assemblyStatus": "",
+      "proteome": "",
+      "proteomeStatus": "",
+      "leakage": "",
+      "note": "RETRIEVE: CEN.PK113-7D has its own assembly and proteome accession. Do NOT reuse the S288C IDs from the row above. Resolve via NCBI Assembly + UniProt before ingestion.",
+      "sourceSheet": "01_Train_Chassix",
+      "sourceRow": 14,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit",
+      "ingestionStatus": "Catalog only; no training run"
+    },
+    {
+      "id": "train-20",
+      "organism": "Bacillus subtilis",
+      "domain": "Bacterium / Gram-pos",
+      "strain": "168.0",
+      "partition": "Training target",
+      "dataDepth": "Transcriptomics-deep (multiple compendia). Proteome/metabolome partial.",
+      "rationale": "Second-best-characterized bacterium; multiple independent ICA compendia.",
+      "resources": [
+        "iModulonDB (multiple B. subtilis decompositions); SubtiWiki expression compendium (Nicolas et al. microarray set)"
+      ],
+      "model": "",
+      "modelStatus": "Not asserted",
+      "assembly": "",
+      "assemblyStatus": "",
+      "proteome": "",
+      "proteomeStatus": "",
+      "leakage": "",
+      "note": "RETRIEVE: assembly + proteome accessions not asserted. Resolve via NCBI/UniProt.",
+      "sourceSheet": "01_Train_Chassix",
+      "sourceRow": 20,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit",
+      "ingestionStatus": "Catalog only; no training run"
+    },
+    {
+      "id": "test-2",
+      "organism": "Vibrio natriegens",
+      "domain": "Bacterium / Gram-neg marine",
+      "strain": "ATCC 14048",
+      "partition": "Held-out target",
+      "dataDepth": "ICA decomposition into 45 iModulons; quantitative proteome allocation across 7 growth conditions fused with fluxomics (PREPRINT)",
+      "rationale": "Fastest-growing non-pathogenic bacterium; emerging E. coli replacement. Growth physiology far outside train-set range — a real stress test for growth-rate-dependent predictions.",
+      "resources": [
+        "iModulonDB V. natriegens (45 iModulons, Cell Rep 2023)"
+      ],
+      "model": "",
+      "modelStatus": "Not asserted",
+      "assembly": "",
+      "assemblyStatus": "",
+      "proteome": "",
+      "proteomeStatus": "",
+      "leakage": "LOW — no train-set-derived GEM identified",
+      "note": "Proteome/fluxome fusion is a 2026 bioRxiv PREPRINT — label as non-peer-reviewed in any judge-facing material.",
+      "sourceSheet": "02_test_novel",
+      "sourceRow": 2,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit",
+      "ingestionStatus": "Catalog only; no training run"
+    },
+    {
+      "id": "test-3",
+      "organism": "Cupriavidus necator",
+      "domain": "Bacterium / Gram-neg",
+      "strain": "H16",
+      "partition": "Held-out target",
+      "dataDepth": "TraDIS genome-wide essentiality screen + transcriptomics integrated into the GEM",
+      "rationale": "CO2-fixing PHB producer. Autotrophic growth on CO2/H2 is a carbon-fixation mode absent from the entire train set.",
+      "resources": [
+        "iCN1361 (PLoS Comput Biol 2022; model on GitHub)"
+      ],
+      "model": "iCN1361",
+      "modelStatus": "VERIFIED",
+      "assembly": "",
+      "assemblyStatus": "",
+      "proteome": "",
+      "proteomeStatus": "",
+      "leakage": "LOW — built from BioCyc via ScrumPy, not from a train-set template",
+      "note": "Model is ScrumPy-format, not standard SBML — needs conversion before a COBRA pipeline can read it.",
+      "sourceSheet": "02_test_novel",
+      "sourceRow": 3,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit",
+      "ingestionStatus": "Catalog only; no training run"
+    },
+    {
+      "id": "test-4",
+      "organism": "Rhodotorula (Rhodosporidium) toruloides",
+      "domain": "Eukaryote / basidiomycete yeast",
+      "strain": "IFO0880",
+      "partition": "Held-out target",
+      "dataDepth": "819 deletion mutants screened (772 viable recapitulated); biomass composition measured under C- and N-limitation",
+      "rationale": "Basidiomycete — a whole phylum essentially unrepresented in metabolic models. Carotenoid + lipid producer.",
+      "resources": [
+        "iRhto1108 (Metab Eng Commun 2019; 2,204 rxns / 1,985 mets / 1,108 genes)"
+      ],
+      "model": "iRhto1108",
+      "modelStatus": "VERIFIED",
+      "assembly": "",
+      "assemblyStatus": "",
+      "proteome": "",
+      "proteomeStatus": "",
+      "leakage": "HIGH — iRhto1108 was built using the S. cerevisiae yeast 7.6 model as a template. Flux predictions here are NOT independent of S. cerevisiae training data. Report this.",
+      "note": "Phylogenetic novelty is real; GEM novelty is not. Use for sequence-level generalization testing, treat flux results with caution.",
+      "sourceSheet": "02_test_novel",
+      "sourceRow": 4,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit",
+      "ingestionStatus": "Catalog only; no training run"
+    },
+    {
+      "id": "test-5",
+      "organism": "Clostridium autoethanogenum",
+      "domain": "Bacterium / Gram-pos anaerobe",
+      "strain": "DSM 10061 (JA1-1)",
+      "partition": "Held-out target",
+      "dataDepth": "Chemostat metabolomics + transcriptomics across gas-liquid mass transfer rates; PHB-producing engineered strain characterized the same way",
+      "rationale": "Industrial gas-fermenting acetogen (LanzaTech). Wood-Ljungdahl carbon fixation and strictly anaerobic energy conservation — no train-set analogue.",
+      "resources": [
+        "GSE90792 (ATP homeostasis chemostat series); GSE115837 (PHB strain, metabolomics + transcriptomics + GEM integration)"
+      ],
+      "model": "iCLAU786; MetaCLAU",
+      "modelStatus": "VERIFIED",
+      "assembly": "",
+      "assemblyStatus": "",
+      "proteome": "",
+      "proteomeStatus": "",
+      "leakage": "MEDIUM-HIGH — early C. autoethanogenum GEMs were curated FROM the C. ljungdahlii model (iHN637). Check provenance of whichever version you ingest.",
+      "note": "Both GEO handles surfaced from dataset indexes during compilation — confirm each opens and matches the described design before use.",
+      "sourceSheet": "02_test_novel",
+      "sourceRow": 5,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit",
+      "ingestionStatus": "Catalog only; no training run"
+    },
+    {
+      "id": "test-6",
+      "organism": "Zymomonas mobilis",
+      "domain": "Bacterium / Gram-neg",
+      "strain": "ZM4",
+      "partition": "Held-out target",
+      "dataDepth": "BarSeq pooled mutant fitness (492 experiments); Biolog phenotype microarrays",
+      "rationale": "Uses the Entner-Doudoroff pathway instead of glycolysis, with very high glycolytic flux and unusually low biomass yield. Directly breaks EMP-pathway assumptions.",
+      "resources": [
+        "iZM516 (MEMOTE-tested); iHN446 (Sci Rep 2020, DOI 10.1038/s41598-020-64721-x)"
+      ],
+      "model": "iZM516; iHN446; iZM4_478; ZmoMBEL601",
+      "modelStatus": "VERIFIED",
+      "assembly": "",
+      "assemblyStatus": "",
+      "proteome": "",
+      "proteomeStatus": "",
+      "leakage": "LOW — multiple independent reconstructions exist from different groups.",
+      "note": "Four competing GEMs with different gene counts. Pick ONE and state which — they are not interchangeable.",
+      "sourceSheet": "02_test_novel",
+      "sourceRow": 6,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit",
+      "ingestionStatus": "Catalog only; no training run"
+    },
+    {
+      "id": "test-7",
+      "organism": "Komagataella phaffii",
+      "domain": "Eukaryote / methylotrophic yeast",
+      "strain": "CBS7435 / X-33 / GS115",
+      "partition": "Held-out target",
+      "dataDepth": "Genomic + transcriptomic comparison across 11 strain variants; chemostat/retentostat growth-rate series",
+      "rationale": "Methylotrophy (AOX1/methanol utilization) is absent from the train set. Dominant industrial protein-secretion host.",
+      "resources": [
+        "GSE135666 (variant super-series); GSE135664 (non-expressing subseries); GSE81070 (chemostat/retentostat)"
+      ],
+      "model": "",
+      "modelStatus": "Not asserted",
+      "assembly": "",
+      "assemblyStatus": "",
+      "proteome": "",
+      "proteomeStatus": "",
+      "leakage": "LOW — no train-set-derived GEM asserted here",
+      "note": "Strain identity is a known trap: K. phaffii vs K. pastoris were historically conflated under 'Pichia pastoris'. X-33 and GS115 share a defective HIS4. Pin the strain per sample.",
+      "sourceSheet": "02_test_novel",
+      "sourceRow": 7,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit",
+      "ingestionStatus": "Catalog only; no training run"
+    },
+    {
+      "id": "test-8",
+      "organism": "Halobacterium salinarum",
+      "domain": "Archaeon / halophile",
+      "strain": "NRC-1",
+      "partition": "Held-out target",
+      "dataDepth": "Multi-omics atlas integrating transcript processing sites, SmAP1 binding, antisense RNAs, and an RNase knockout",
+      "rationale": "Archaeal domain entirely absent from the train set. Salt-in osmoprotection means a fundamentally different proteome surface chemistry.",
+      "resources": [
+        "halodata.systemsbiology.net (genome-scale atlas, mSystems 2023)"
+      ],
+      "model": "",
+      "modelStatus": "Not asserted",
+      "assembly": "",
+      "assemblyStatus": "",
+      "proteome": "",
+      "proteomeStatus": "",
+      "leakage": "LOW",
+      "note": "WARNING: the published GEM (Gonzalez et al. 2008, Mol BioSyst, DOI 10.1039/b715203e) is for strain R-1, NOT NRC-1. KEGG org code is 'hal' — NOT 'hsa' (that is Homo sapiens). No paired proteome+metabolome exists; this is a regulation atlas, not multiomics.",
+      "sourceSheet": "02_test_novel",
+      "sourceRow": 8,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit",
+      "ingestionStatus": "Catalog only; no training run"
+    },
+    {
+      "id": "test-9",
+      "organism": "Kluyveromyces marxianus",
+      "domain": "Eukaryote / thermotolerant yeast",
+      "strain": "DMKU3-1042 (NBRC 104275)",
+      "partition": "Held-out target",
+      "dataDepth": "iTRAQ proteomics + RNA-seq across a 45 °C ethanol-fermentation arrest: 5 timepoints (14-22 h), 3 biological replicates, 15 samples",
+      "rationale": "Fastest-growing eukaryote known, and it grows and ferments at 45-52 °C — far above any train-set eukaryote. Crabtree-NEGATIVE, so it respires where S. cerevisiae ferments. Assimilates lactose and inulin. GRAS status.",
+      "resources": [
+        "iSM996 (BMC Bioinformatics 2019;20:551 — 996 genes / 1,913 reactions / 1,531 metabolites)"
+      ],
+      "model": "iSM996",
+      "modelStatus": "VERIFIED",
+      "assembly": "",
+      "assemblyStatus": "",
+      "proteome": "",
+      "proteomeStatus": "",
+      "leakage": "MEDIUM — iSM996 was drafted by homology from iOD907 (K. lactis) plus a KEGG draft, NOT from any train-set model, so direct leakage is low. But iOD907's own provenance is untraced, and iSM996 was validated ONLY against literature growth rates (R2=0.9445); the authors state no cultivation experiments were performed. Weak ground truth for flux.",
+      "note": "NO repository accession exists for the proteome+transcriptome: the paper carries no PRIDE/GEO/SRA ID and no data-availability statement. RETRIEVE from the authors or the journal SI. Also: the RNA-seq came from an EARLIER study by the same group and the paper does not confirm the two layers share aliquots — do NOT call this paired multiomics.",
+      "sourceSheet": "02_test_novel",
+      "sourceRow": 9,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit",
+      "ingestionStatus": "Catalog only; no training run"
+    },
+    {
+      "id": "test-10",
+      "organism": "Kluyveromyces lactis",
+      "domain": "Eukaryote / yeast",
+      "strain": "Not pinned in workbook",
+      "partition": "Held-out target",
+      "dataDepth": "Genome-wide metabolic re-annotation published (BMC Genomics 2012). No paired multi-layer dataset located.",
+      "rationale": "The 'milk yeast' — the classic lactose/galactose model and an established heterologous protein host (e.g. recombinant chymosin). Crabtree-negative.",
+      "resources": [
+        "iOD907 (Dias et al., Biotechnol J 2014;9(6):776-790 — 1,867 reactions / 1,476 metabolites / 4 compartments)"
+      ],
+      "model": "iOD907",
+      "modelStatus": "VERIFIED",
+      "assembly": "",
+      "assemblyStatus": "",
+      "proteome": "",
+      "proteomeStatus": "",
+      "leakage": "UNKNOWN — iOD907's template provenance was not established. It is also the PARENT of iSM996, so scoring K. lactis and K. marxianus together double-counts one model lineage. Pick one or report them as a single lineage.",
+      "note": "Strain NOT pinned in the model record — resolve before ingestion. Gene count not stated in the record consulted. KEGG org code left BLANK deliberately: 'kla' could not be confirmed, and an unverified code is exactly the error that put 'hsa' on an archaeon.",
+      "sourceSheet": "02_test_novel",
+      "sourceRow": 10,
+      "sourceUrl": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit",
+      "ingestionStatus": "Catalog only; no training run"
+    }
+  ],
+  "studies": [
+    {
+      "id": "ecoli-gade",
+      "chassisId": "bacterium",
+      "title": "A gene deletion under acid stress",
+      "shortTitle": "E. coli · acid response",
+      "organism": "Escherichia coli",
+      "strain": "K-12 MG1655 / ΔgadE derivative",
+      "reference": "Wild type",
+      "condition": "ΔgadE",
+      "context": "37°C · pH 5.5 · M9 + 2 g/L glucose",
+      "accession": "GSE66482 / PRECISE-1K",
+      "assay": "RNA-seq",
+      "unit": "Δ log₂TPM",
+      "nativeUnit": "log₂TPM",
+      "method": "Mean of two ΔgadE log₂TPM values minus mean of two wild-type log₂TPM values from the authors’ quality-controlled matrix. No p-values or significance calls were calculated.",
+      "sampleNote": "2 wild-type + 2 ΔgadE biological replicates; same study and recorded culture conditions.",
+      "limitation": "A descriptive re-analysis of a published perturbation. Transcript abundance is not regulator activity, protein abundance, viability, or product yield.",
+      "story": "Inspect gadA, gadB, and hdeA after gadE deletion, then trace each expression change to the four original RNA-seq samples.",
+      "citation": "Nature Communications, 2015. Decoding genome-wide GadEWX transcriptional regulatory networks reveals a multifaceted cellular response to acid stress in Escherichia coli. PMID: 26258987.",
+      "sourceTitle": "Seo et al. · Nature Communications · 2015",
+      "sourceUrl": "https://doi.org/10.1038/ncomms8970",
+      "dataUrl": "https://github.com/SBRG/precise1k/tree/4829b83ace51ee7980de6950077f1cf8f3746f88/data/precise1k",
+      "sourceLocator": "log_tpm_qc.csv + metadata_qc.csv; pinned author repository commit 4829b83ace51ee7980de6950077f1cf8f3746f88",
+      "license": "PRECISE-1K repository: MIT; original study cited separately.",
+      "observations": [
+        {
+          "id": "gadE",
+          "locus": "b3512",
+          "label": "DNA-binding transcriptional activator GadE",
+          "referenceValues": [
+            9.346449764,
+            9.448532449
+          ],
+          "conditionValues": [
+            0.236515425,
+            0.0
+          ],
+          "value": -9.279233394,
+          "probe": null,
+          "reportedSd": null,
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "gadX",
+          "locus": "b3516",
+          "label": "DNA-binding transcriptional dual regulator GadX",
+          "referenceValues": [
+            8.788519353,
+            8.769971041
+          ],
+          "conditionValues": [
+            8.746369186,
+            8.697513142
+          ],
+          "value": -0.05730403299999942,
+          "probe": null,
+          "reportedSd": null,
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "gadW",
+          "locus": "b3515",
+          "label": "DNA-binding transcriptional dual regulator GadW",
+          "referenceValues": [
+            8.143232236000001,
+            8.169567283
+          ],
+          "conditionValues": [
+            8.195955401,
+            8.078873555
+          ],
+          "value": -0.018985281500000895,
+          "probe": null,
+          "reportedSd": null,
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "gadA",
+          "locus": "b3517",
+          "label": "glutamate decarboxylase A",
+          "referenceValues": [
+            10.48597571,
+            10.49490947
+          ],
+          "conditionValues": [
+            4.1633928860000005,
+            4.008381467
+          ],
+          "value": -6.404555413500001,
+          "probe": null,
+          "reportedSd": null,
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "gadB",
+          "locus": "b1493",
+          "label": "glutamate decarboxylase B",
+          "referenceValues": [
+            10.81764744,
+            10.81018
+          ],
+          "conditionValues": [
+            4.473494335,
+            4.449335652
+          ],
+          "value": -6.3524987265,
+          "probe": null,
+          "reportedSd": null,
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "gadC",
+          "locus": "b1492",
+          "label": "L-glutamate:4-aminobutyrate antiporter",
+          "referenceValues": [
+            9.604850156,
+            9.614169644
+          ],
+          "conditionValues": [
+            3.903231765,
+            3.843758789
+          ],
+          "value": -5.736014622999999,
+          "probe": null,
+          "reportedSd": null,
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "hdeA",
+          "locus": "b3510",
+          "label": "HdeA monomer%2C chaperone active form",
+          "referenceValues": [
+            13.09139097,
+            13.13111159
+          ],
+          "conditionValues": [
+            6.73661535,
+            6.916123175
+          ],
+          "value": -6.284882017500001,
+          "probe": null,
+          "reportedSd": null,
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "hdeB",
+          "locus": "b3509",
+          "label": "periplasmic acid stress chaperone",
+          "referenceValues": [
+            12.54924517,
+            12.59848676
+          ],
+          "conditionValues": [
+            5.041267843,
+            5.35810637
+          ],
+          "value": -7.3741788585,
+          "probe": null,
+          "reportedSd": null,
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "rpoS",
+          "locus": "b2741",
+          "label": "RNA polymerase%2C sigma S (sigma 38) factor",
+          "referenceValues": [
+            9.879400307,
+            9.882799039
+          ],
+          "conditionValues": [
+            9.947970563,
+            10.05577458
+          ],
+          "value": 0.12077289850000028,
+          "probe": null,
+          "reportedSd": null,
+          "padj": null,
+          "valueKind": "derived"
+        }
+      ],
+      "samples": [
+        {
+          "sample_id": "acid__wt_ph5__1",
+          "Strain Description": "Escherichia coli K-12 MG1655",
+          "Temperature (C)": "37",
+          "pH": "5.5",
+          "Base Media": "M9",
+          "Carbon Source (g/L)": "glucose(2)",
+          "GEO": "GSE66482",
+          "Run": "SRR1824557",
+          "id": "p1k_00011",
+          "group": "Reference"
+        },
+        {
+          "sample_id": "acid__wt_ph5__2",
+          "Strain Description": "Escherichia coli K-12 MG1655",
+          "Temperature (C)": "37",
+          "pH": "5.5",
+          "Base Media": "M9",
+          "Carbon Source (g/L)": "glucose(2)",
+          "GEO": "GSE66482",
+          "Run": "SRR1824558",
+          "id": "p1k_00012",
+          "group": "Reference"
+        },
+        {
+          "sample_id": "acid__delgade_ph5__1",
+          "Strain Description": "Escherichia coli K-12 MG1655 del_gadE",
+          "Temperature (C)": "37",
+          "pH": "5.5",
+          "Base Media": "M9",
+          "Carbon Source (g/L)": "glucose(2)",
+          "GEO": "GSE66482",
+          "Run": "SRR1824559",
+          "id": "p1k_00017",
+          "group": "Condition"
+        },
+        {
+          "sample_id": "acid__delgade_ph5__2",
+          "Strain Description": "Escherichia coli K-12 MG1655 del_gadE",
+          "Temperature (C)": "37",
+          "pH": "5.5",
+          "Base Media": "M9",
+          "Carbon Source (g/L)": "glucose(2)",
+          "GEO": "GSE66482",
+          "Run": "SRR1824560",
+          "id": "p1k_00018",
+          "group": "Condition"
+        }
+      ],
+      "edges": [
+        {
+          "from": "rpoS",
+          "to": "gadX",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_sigma",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "rpoS",
+          "to": "gadW",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_sigma",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "rpoS",
+          "to": "gadE",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_sigma",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "rpoS",
+          "to": "gadC",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_sigma",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "rpoS",
+          "to": "gadB",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_sigma",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "rpoS",
+          "to": "gadA",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_sigma",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "rpoS",
+          "to": "hdeB",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_sigma",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "rpoS",
+          "to": "hdeA",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_sigma",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "gadX",
+          "to": "rpoS",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_TF",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "gadW",
+          "to": "gadE",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_TF",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "gadX",
+          "to": "gadE",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_TF",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "gadX",
+          "to": "gadC",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_TF",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "gadX",
+          "to": "gadA",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_TF",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "gadX",
+          "to": "gadB",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_TF",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "gadE",
+          "to": "gadB",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_TF",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "gadE",
+          "to": "hdeB",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_TF",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "gadE",
+          "to": "hdeA",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_TF",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "gadE",
+          "to": "gadX",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_TF",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "gadE",
+          "to": "gadW",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_TF",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        },
+        {
+          "from": "gadE",
+          "to": "gadC",
+          "effect": "+",
+          "source": "PRECISE-1K TRN.csv / RegulonDB_TF",
+          "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv"
+        }
+      ],
+      "edgeNote": "Directed links are curated reference annotations from the author TRN, independent of this expression contrast. Co-expression is not used to infer new edges."
+    },
+    {
+      "id": "yeast-cold",
+      "chassisId": "yeast",
+      "title": "Cold adaptation in a controlled culture",
+      "shortTitle": "Yeast · 12°C vs 30°C",
+      "organism": "Saccharomyces cerevisiae",
+      "strain": "CEN.PK113-7D",
+      "reference": "30°C chemostat",
+      "condition": "12°C chemostat",
+      "context": "pH 5 · anaerobic · glucose / carbon limitation · dilution 0.03 h⁻¹",
+      "accession": "GSE11452 / GSE6190",
+      "assay": "Affymetrix microarray",
+      "unit": "Δ RMA log expression",
+      "nativeUnit": "RMA log expression",
+      "method": "Mean of three 12°C RMA log-scale probe values minus mean of three 30°C values. Source supplement array IDs 153–155 vs 156–158; no further normalization or significance tests.",
+      "sampleNote": "3 biological replicates per temperature, matched for the other recorded cultivation fields and preparation protocol.",
+      "limitation": "Steady-state cold adaptation, not an acute heat shock. Probe-level measurements are retained. This dataset does not represent S288C or calibrated protein activity.",
+      "story": "Compare the measured cold-adaptation profile with the bacterial perturbation. Study context and native assay units stay attached to every gene.",
+      "citation": "BMC Genomics, 2009. Combinatorial effects of environmental parameters on transcriptional regulation in Saccharomyces cerevisiae: A quantitative analysis of a compendium of chemostat-based transcriptome data. PMID: 19173729.",
+      "sourceTitle": "Knijnenburg et al. · BMC Genomics · 2009",
+      "sourceUrl": "https://doi.org/10.1186/1471-2164-10-53",
+      "dataUrl": "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2F1471-2164-10-53/MediaObjects/12864_2008_1937_MOESM6_ESM.zip",
+      "sourceLocator": "Additional file 6 / AD1.xls / Expression data and Array descriptions",
+      "license": "Original article and supplement: CC BY 2.0.",
+      "observations": [
+        {
+          "id": "HSF1",
+          "locus": "YGL073W",
+          "label": "HSF1",
+          "referenceValues": [
+            7.4109435,
+            7.6647606,
+            7.7261557
+          ],
+          "conditionValues": [
+            6.642951,
+            7.3842344,
+            6.7719054
+          ],
+          "value": -0.6675896666666663,
+          "probe": "5079_at",
+          "reportedSd": null,
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "MSN2",
+          "locus": "YMR037C",
+          "label": "MSN2",
+          "referenceValues": [
+            7.6009655,
+            7.5708146,
+            7.5042148
+          ],
+          "conditionValues": [
+            8.2995625,
+            7.9424267,
+            7.1884275
+          ],
+          "value": 0.2514739333333331,
+          "probe": "9615_at",
+          "reportedSd": null,
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "MSN4",
+          "locus": "YKL062W",
+          "label": "MSN4",
+          "referenceValues": [
+            7.7841139,
+            7.7986488,
+            7.7446623
+          ],
+          "conditionValues": [
+            8.3666753,
+            8.2809373,
+            8.0406141
+          ],
+          "value": 0.45360056666666804,
+          "probe": "10634_at",
+          "reportedSd": null,
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "HSP104",
+          "locus": "YLL026W",
+          "label": "HSP104",
+          "referenceValues": [
+            10.046033,
+            10.200018,
+            9.9717836
+          ],
+          "conditionValues": [
+            9.634059,
+            9.3862047,
+            9.5740157
+          ],
+          "value": -0.5411850666666655,
+          "probe": "10360_at",
+          "reportedSd": null,
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "HSP82",
+          "locus": "YPL240C",
+          "label": "HSP82",
+          "referenceValues": [
+            10.77372,
+            10.799157,
+            10.958287
+          ],
+          "conditionValues": [
+            9.8673468,
+            9.7151966,
+            10.306531
+          ],
+          "value": -0.8806965333333334,
+          "probe": "8010_i_at",
+          "reportedSd": null,
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "SSA1",
+          "locus": "YAL005C",
+          "label": "SSA1",
+          "referenceValues": [
+            13.99278,
+            13.924665,
+            13.831712
+          ],
+          "conditionValues": [
+            13.812451,
+            13.569401,
+            13.306845
+          ],
+          "value": -0.35348666666666695,
+          "probe": "11316_r_at",
+          "reportedSd": null,
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "TPS1",
+          "locus": "YBR126C",
+          "label": "TPS1",
+          "referenceValues": [
+            9.4464769,
+            9.531292,
+            9.8396731
+          ],
+          "conditionValues": [
+            9.8751326,
+            9.748579,
+            9.3915529
+          ],
+          "value": 0.06594083333333245,
+          "probe": "7217_at",
+          "reportedSd": null,
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "CTT1",
+          "locus": "YGR088W",
+          "label": "CTT1",
+          "referenceValues": [
+            4.6541329,
+            4.3983335,
+            4.2457204
+          ],
+          "conditionValues": [
+            4.5357171,
+            4.0162922,
+            4.1481271
+          ],
+          "value": -0.19935013333333362,
+          "probe": "4924_at",
+          "reportedSd": null,
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "SKN7",
+          "locus": "YHR206W",
+          "label": "SKN7",
+          "referenceValues": [
+            7.8691106,
+            7.6866541,
+            8.1919393
+          ],
+          "conditionValues": [
+            7.8283406,
+            8.7461987,
+            8.7530278
+          ],
+          "value": 0.5266210333333339,
+          "probe": "4319_at",
+          "reportedSd": null,
+          "padj": null,
+          "valueKind": "derived"
+        }
+      ],
+      "samples": [
+        {
+          "id": "Array 156",
+          "sample_id": "GSM143077",
+          "group": "Reference",
+          "temperature": "30",
+          "strain": "CEN.PK 113-7D"
+        },
+        {
+          "id": "Array 157",
+          "sample_id": "GSM143079",
+          "group": "Reference",
+          "temperature": "30",
+          "strain": "CEN.PK 113-7D"
+        },
+        {
+          "id": "Array 158",
+          "sample_id": "GSM143081",
+          "group": "Reference",
+          "temperature": "30",
+          "strain": "CEN.PK 113-7D"
+        },
+        {
+          "id": "Array 153",
+          "sample_id": "GSM143071",
+          "group": "Condition",
+          "temperature": "12",
+          "strain": "CEN.PK 113-7D"
+        },
+        {
+          "id": "Array 154",
+          "sample_id": "GSM143073",
+          "group": "Condition",
+          "temperature": "12",
+          "strain": "CEN.PK 113-7D"
+        },
+        {
+          "id": "Array 155",
+          "sample_id": "GSM143076",
+          "group": "Condition",
+          "temperature": "12",
+          "strain": "CEN.PK 113-7D"
+        }
+      ],
+      "edges": [],
+      "edgeNote": "Genes were co-measured. No regulatory edges are inferred from this six-sample contrast."
+    },
+    {
+      "id": "archaea-heat",
+      "chassisId": "archaeon",
+      "title": "Heat shock at the edge of life",
+      "shortTitle": "P. furiosus · 90°C → 105°C",
+      "organism": "Pyrococcus furiosus",
+      "strain": "DSM 3638",
+      "reference": "90°C control",
+      "condition": "105°C for 1 hour",
+      "context": "Sea-salts medium · tryptone + yeast extract · mid-exponential shift",
+      "accession": "PMID 12676722 · Table 1",
+      "assay": "Targeted cDNA microarray",
+      "unit": "log₂ ratio",
+      "nativeUnit": "log₂ ratio",
+      "method": "Arithmetic mean of the two reported log₂ intensity ratios in Table 1. Each source value and its reported SD is preserved. No baseline abundance, pooled uncertainty, or p-value is invented.",
+      "sampleNote": "Two reported replicate columns; technical spot replication and independent RNA isolation are described in the paper.",
+      "limitation": "Five selected chaperone-related loci from a targeted array. These measurements apply to P. furiosus DSM 3638, not Sulfolobus or Halobacterium. No direct regulatory links are established here.",
+      "story": "Inspect measured chaperone responses after a 90°C to 105°C shift. The thermosome locus PF1974 has reported log₂ ratios of 2.00 and 2.07.",
+      "citation": "Applied and Environmental Microbiology, 2003. Heat Shock Response by the Hyperthermophilic Archaeon Pyrococcus furiosus. PMID: 12676722.",
+      "sourceTitle": "Shockley et al. · Applied and Environmental Microbiology · 2003",
+      "sourceUrl": "https://doi.org/10.1128/AEM.69.4.2365-2371.2003",
+      "dataUrl": "https://pmc.ncbi.nlm.nih.gov/articles/PMC154833/#T1",
+      "sourceLocator": "Table 1 / chaperone-related genes",
+      "license": "Numerical observations transcribed with attribution; publisher copyright applies to the article.",
+      "observations": [
+        {
+          "id": "PF1883",
+          "locus": "PF1883",
+          "label": "Small heat shock protein (class I)",
+          "referenceValues": [],
+          "conditionValues": [
+            2.95,
+            2.8
+          ],
+          "value": 2.875,
+          "probe": null,
+          "reportedSd": [
+            0.34,
+            0.12
+          ],
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "PF1882",
+          "locus": "PF1882",
+          "label": "VAT homolog",
+          "referenceValues": [],
+          "conditionValues": [
+            2.78,
+            1.89
+          ],
+          "value": 2.335,
+          "probe": null,
+          "reportedSd": [
+            0.18,
+            0.04
+          ],
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "PF0963",
+          "locus": "PF0963",
+          "label": "VAT homolog",
+          "referenceValues": [],
+          "conditionValues": [
+            2.21,
+            1.45
+          ],
+          "value": 1.83,
+          "probe": null,
+          "reportedSd": [
+            0.27,
+            0.05
+          ],
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "PF1974",
+          "locus": "PF1974",
+          "label": "Thermosome, single subunit",
+          "referenceValues": [],
+          "conditionValues": [
+            2.0,
+            2.07
+          ],
+          "value": 2.035,
+          "probe": null,
+          "reportedSd": [
+            0.25,
+            0.16
+          ],
+          "padj": null,
+          "valueKind": "derived"
+        },
+        {
+          "id": "PF0380",
+          "locus": "PF0380",
+          "label": "Prefoldin homolog (beta subunit)",
+          "referenceValues": [],
+          "conditionValues": [
+            -0.76,
+            -1.02
+          ],
+          "value": -0.89,
+          "probe": null,
+          "reportedSd": [
+            0.19,
+            0.03
+          ],
+          "padj": null,
+          "valueKind": "derived"
+        }
+      ],
+      "samples": [],
+      "edges": [],
+      "edgeNote": "Co-measured loci only. No causal or direct regulatory edges are inferred."
+    }
+  ],
+  "audit": [
+    {
+      "id": "strain-gse11452",
+      "status": "Corrected",
+      "title": "GSE11452 is CEN.PK113-7D",
+      "detail": "GEO design and publisher sample metadata identify CEN.PK113-7D. The S288C catalog row is not used to assign this measurement.",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE11452"
+    },
+    {
+      "id": "strain-pxd016519",
+      "status": "Catalog only",
+      "title": "PXD016519 culture and search reference differ",
+      "detail": "PRIDE identifies CEN.PK113-7D BAR1::KanMX cultures and an S288C search proteome. The 204 omic samples are 51 biological samples × four layers. No protein or metabolite measurements from this accession have been loaded.",
+      "url": "https://www.ebi.ac.uk/pride/archive/projects/PXD016519"
+    },
+    {
+      "id": "wrong-gse1456",
+      "status": "Rejected",
+      "title": "GSE1456 is a human tumor series",
+      "detail": "The GEO record describes human breast cancer tissue. It is excluded from microbial measurement ingestion.",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE1456"
+    },
+    {
+      "id": "index-schema",
+      "status": "Excluded",
+      "title": "The dataset-index sheet mixes two layouts",
+      "detail": "Rows 2–13 contain audit findings, while rows 14–20 contain resource entries under the same header. No row is treated as a measurement because of a VERIFIED cell.",
+      "url": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit"
+    }
+  ],
+  "sources": [
+    {
+      "file": "source-workbook.xlsx",
+      "url": "https://docs.google.com/spreadsheets/d/10ettJUyxtRmGjoIsSQfX7aDFRgyhYHonRwjAGOl5NQI/edit",
+      "bytes": 31086,
+      "sha256": "98cf88a4d89785c6060582dc843cdcfaad5e176141fbd5120897b6251d380c9b"
+    },
+    {
+      "file": "ecoli-log-tpm.csv",
+      "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/precise1k/log_tpm_qc.csv",
+      "bytes": 60884226,
+      "sha256": "8bdb286aecd305a38323ad5a5c18eb264702739824dfcb708c5c5b595abb84d6"
+    },
+    {
+      "file": "ecoli-metadata.csv",
+      "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/precise1k/metadata_qc.csv",
+      "bytes": 621002,
+      "sha256": "a1358525a0431ac68b44f85f56169b7e8af4efb9186be6b43ba2cacb7b56e1cf"
+    },
+    {
+      "file": "ecoli-genes.csv",
+      "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/gene_info.csv",
+      "bytes": 1063339,
+      "sha256": "355de1157a4837180cb0c3d625a7a4f26903ba0d50f2bf3ca769949e90dbcb90"
+    },
+    {
+      "file": "ecoli-trn.csv",
+      "url": "https://raw.githubusercontent.com/SBRG/precise1k/4829b83ace51ee7980de6950077f1cf8f3746f88/data/annotation/TRN.csv",
+      "bytes": 358044,
+      "sha256": "d91a2caf32807cc03332cf4f52692ac7ff41027f7b9bf58d50e9b999f5a2a462"
+    },
+    {
+      "file": "yeast-supplement.zip",
+      "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2F1471-2164-10-53/MediaObjects/12864_2008_1937_MOESM6_ESM.zip",
+      "bytes": 15529340,
+      "sha256": "919afa45b2f4fecc7669af0462e8e86613247a4089a79682db5f16156c0ed5dd"
+    },
+    {
+      "file": "pmc.txt",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC154833/",
+      "bytes": 181462,
+      "sha256": "3033195f74491b7815da4460605dd3fc589cfeac35ec545cc81b7241343cc955"
+    },
+    {
+      "file": "pride.txt",
+      "url": "https://www.ebi.ac.uk/pride/ws/archive/v2/projects/PXD016519",
+      "bytes": 12066,
+      "sha256": "950b605bd12b6844529c74ca963bbbee550b11988f0a61d500a9d470e81e3546"
+    },
+    {
+      "file": "geo.txt",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE11452",
+      "bytes": 9495,
+      "sha256": "efa7093a6f4303e3992418d05327455b8c43c633871a9a2a999887bcc203b80a"
+    },
+    {
+      "file": "GSE1456.txt",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE1456",
+      "bytes": 18777,
+      "sha256": "169141621d3eccba27fe5f1c807b184d02715cdd9fb34fc18b31e1e0e54637ea"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import type { PathwayMode } from './pathwayData';
 import type { SimulationResult } from './simulation';
 
 const ICONS = { stress: Flame, aggregates: Layers3, envelope: Layers3, folding: AlertTriangle, catalase: Shield, ros: Zap, sensors: Activity, genome: Dna, homeostasis: CheckCircle2, mitochondria: Cpu };
-export type DataViewMode = PathwayMode | 'twin';
+export type DataViewMode = PathwayMode | 'twin' | 'evidence';
 export const MAP_NODE_LABELS: Record<string, string> = Object.fromEntries(Object.values(ORGANELLE_NETWORKS).flatMap((network) => network.nodes.map((node) => [node.id, node.short])));
 
 export function ExpressionMatrix({ chassisId, simulation, onSelect, selected }: { chassisId: ChassisId; simulation: SimulationResult; onSelect: (id: string) => void; selected: string }) {
