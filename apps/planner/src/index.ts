@@ -4,6 +4,8 @@ export * from "./fake-planner.js";
 export { GOAL_INTERPRETATION_SYSTEM } from "./prompt.js";
 // Sonnet 4.8 reasoning over finished run results (thinking + interpretation).
 export * from "./reasoner.js";
+// Agentic memory (Moss semantic store): persist + recall agent-state records.
+export * from "./memory/moss-memory.js";
 
 // Step 2.1 — host literature retrieval (citation-first, behind RetrievalProvider).
 export * from "./retrieval/index.js";

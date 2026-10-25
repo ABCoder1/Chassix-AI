@@ -14,6 +14,7 @@
   "dependencies": {
     "@anthropic-ai/sdk": "1.3.0",
     "@chassix/shared": "workspace:*",
+    "@moss-js/moss": "^1.21.0",
     "zod": "^3.25.0"
   }
 }

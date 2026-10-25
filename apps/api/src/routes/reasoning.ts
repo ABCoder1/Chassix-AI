@@ -10,17 +10,19 @@
 import type { FastifyInstance } from "fastify";
 import { z } from "zod";
 import { apiError } from "@chassix/shared";
-import type { ResultsReasoner } from "@chassix/planner";
+import type { AgentMemoryStore, ResultsReasoner } from "@chassix/planner";
 
 const reasoningSchema = z.object({ summary: z.string().min(1).max(20000) });
 
 export interface ReasoningRouteDeps {
   reasoner: ResultsReasoner | null;
+  /** Optional agentic memory (Moss) — recall related prior reasoning, then store this one. */
+  memory?: AgentMemoryStore;
 }
 
 export const registerReasoningRoutes = (
   app: FastifyInstance,
-  { reasoner }: ReasoningRouteDeps,
+  { reasoner, memory }: ReasoningRouteDeps,
 ): void => {
   app.post("/reasoning", async (req, reply) => {
     if (!reasoner) {
@@ -41,7 +43,23 @@ export const registerReasoningRoutes = (
       );
     }
     try {
-      const result = await reasoner.reason(parsed.data.summary);
+      // Recall semantically-related prior reasoning from agent memory and give it to the model.
+      const priors = (await memory?.recall(parsed.data.summary, { topK: 3 })) ?? [];
+      const summary =
+        priors.length > 0
+          ? `${parsed.data.summary}\n\n--- Related prior analyses from memory (for context only) ---\n` +
+            priors.map((p, i) => `(${i + 1}) ${p.text}`).join("\n")
+          : parsed.data.summary;
+
+      const result = await reasoner.reason(summary);
+
+      // Remember this reasoning as an agent-memory state (best-effort, non-blocking).
+      void memory?.remember({
+        id: `reasoning:${req.id}`,
+        text: `Results summary: ${parsed.data.summary}\nInterpretation: ${result.text}`,
+        metadata: { kind: "reasoning", model: result.model, at: new Date().toISOString() },
+      });
+
       return reply.status(200).send(result);
     } catch {
       return reply.status(502).send(

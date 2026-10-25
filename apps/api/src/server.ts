@@ -13,6 +13,7 @@ import { registerGoalRoutes } from "./routes/goals.js";
 import { registerDiscoveryRoutes } from "./routes/discovery.js";
 import { registerReasoningRoutes } from "./routes/reasoning.js";
 import {
+  createAgentMemoryStore,
   createPlanner,
   createReasoner,
   createRetrievalProvider,
@@ -107,10 +108,13 @@ export function buildServer(options: BuildServerOptions = {}): FastifyInstance {
 
   registerAuthRoutes(app, { repos, sessions, guards });
   registerWorkspaceRoutes(app, { repos, guards });
-  registerGoalRoutes(app, { planner, live: plannerLive });
+  // Agentic memory (Moss). Live when MOSS_PROJECT_ID + MOSS_PROJECT_KEY are set, else a no-op store.
+  const memory = createAgentMemoryStore();
+
+  registerGoalRoutes(app, { planner, live: plannerLive, memory });
   registerDiscoveryRoutes(app, { retrieval, datasets: datasetService, live: retrievalLive });
   // Sonnet 4.8 reasoning over finished results (null when no ANTHROPIC_API_KEY ⇒ route returns 503).
-  registerReasoningRoutes(app, { reasoner: createReasoner() });
+  registerReasoningRoutes(app, { reasoner: createReasoner(), memory });
   registerRunRoutes(app, {
     guards,
     provider: runProvider,

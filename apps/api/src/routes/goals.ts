@@ -12,7 +12,7 @@
 import type { FastifyInstance } from "fastify";
 import { z } from "zod";
 import { apiError } from "@chassix/shared";
-import type { Planner } from "@chassix/planner";
+import type { AgentMemoryStore, Planner } from "@chassix/planner";
 
 const interpretSchema = z.object({ prompt: z.string().min(1).max(4000) });
 
@@ -20,11 +20,13 @@ export interface GoalRouteDeps {
   planner: Planner;
   /** True when the planner is the live (Anthropic-backed) one; drives the `illustrative` flag. */
   live: boolean;
+  /** Optional agentic memory (Moss) — the interpreted goal is remembered best-effort. */
+  memory?: AgentMemoryStore;
 }
 
 export const registerGoalRoutes = (
   app: FastifyInstance,
-  { planner, live }: GoalRouteDeps,
+  { planner, live, memory }: GoalRouteDeps,
 ): void => {
   app.post("/goals/interpret", async (req, reply) => {
     const parsed = interpretSchema.safeParse(req.body);
@@ -38,6 +40,16 @@ export const registerGoalRoutes = (
     }
     try {
       const draft = await planner.interpretGoal(parsed.data.prompt);
+      // Remember this interpretation as an agent-memory state (best-effort, non-blocking).
+      void memory?.remember({
+        id: `goal:${req.id}`,
+        text: `Objective: ${parsed.data.prompt}\nInterpreted goal: ${JSON.stringify(draft)}`,
+        metadata: {
+          kind: "goal",
+          provider: live ? "anthropic" : "fake",
+          at: new Date().toISOString(),
+        },
+      });
       return reply.status(200).send({
         originalPrompt: parsed.data.prompt,
         draft,
