@@ -1,0 +1,322 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:chassix-ai:workflow-analysis-bundle:1.0.0",
+  "title": "Chassix-AI workflow analysis bundle",
+  "description": "Normalized, provenance-aware analysis results for the digital-twin dashboard. This contract stores native values and does not define a prediction model.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "run", "organism", "condition", "analyses"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "workflowId", "status"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "workflowId": { "type": "string", "minLength": 1 },
+        "workflowVersion": { "type": ["string", "null"] },
+        "status": { "enum": ["queued", "running", "completed", "partial", "failed"] },
+        "createdAt": { "type": ["string", "null"], "format": "date-time" },
+        "completedAt": { "type": ["string", "null"], "format": "date-time" },
+        "modelVersions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "version"],
+            "properties": {
+              "id": { "type": "string", "minLength": 1 },
+              "version": { "type": "string", "minLength": 1 },
+              "uri": { "type": ["string", "null"], "format": "uri-reference" }
+            }
+          }
+        }
+      }
+    },
+    "organism": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chassisId", "taxonId", "taxonName", "strainId", "strainName"],
+      "properties": {
+        "chassisId": { "enum": ["yeast", "bacterium", "archaeon", "other"] },
+        "taxonId": { "type": ["string", "null"] },
+        "taxonName": { "type": "string", "minLength": 1 },
+        "strainId": { "type": ["string", "null"] },
+        "strainName": { "type": ["string", "null"] }
+      }
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "temperatureC": { "type": ["number", "null"], "minimum": -273.15 },
+        "salinityMolL": { "type": ["number", "null"], "minimum": 0 },
+        "pH": { "type": ["number", "null"] },
+        "timepoint": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["value", "unit"],
+              "properties": {
+                "value": { "type": "number", "minimum": 0 },
+                "unit": { "enum": ["s", "min", "h", "d"] }
+              }
+            }
+          ]
+        },
+        "media": { "type": ["string", "null"] },
+        "oxygenation": { "type": ["string", "null"] },
+        "other": { "type": "object", "additionalProperties": { "type": ["string", "number", "boolean", "null"] } }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/artifact" }
+    },
+    "analyses": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "geneExpression": { "$ref": "#/$defs/geneExpression" },
+        "flux": { "$ref": "#/$defs/fluxAnalysis" },
+        "metabolomics": { "$ref": "#/$defs/metabolomics" },
+        "yield": { "$ref": "#/$defs/yieldAnalysis" },
+        "interactions": { "$ref": "#/$defs/interactions" }
+      },
+      "minProperties": 1
+    }
+  },
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "uri", "role"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "uri": { "type": "string", "minLength": 1 },
+        "mediaType": { "type": ["string", "null"] },
+        "sha256": { "type": ["string", "null"], "pattern": "^[a-fA-F0-9]{64}$" },
+        "role": { "type": "string", "minLength": 1 }
+      }
+    },
+    "uncertainty": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["lower", "upper", "confidenceLevel"],
+      "properties": {
+        "lower": { "type": "number" },
+        "upper": { "type": "number" },
+        "confidenceLevel": { "type": ["number", "null"], "exclusiveMinimum": 0, "exclusiveMaximum": 1 }
+      }
+    },
+    "analysisBase": {
+      "type": "object",
+      "required": ["status", "results"],
+      "properties": {
+        "status": { "enum": ["available", "partial", "not_run", "failed"] },
+        "method": { "type": ["string", "null"] },
+        "notAvailableReason": { "type": ["string", "null"] },
+        "artifactIds": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "geneExpression": {
+      "allOf": [
+        { "$ref": "#/$defs/analysisBase" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "results"],
+          "properties": {
+            "status": { "enum": ["available", "partial", "not_run", "failed"] },
+            "method": { "type": ["string", "null"] },
+            "notAvailableReason": { "type": ["string", "null"] },
+            "artifactIds": { "type": "array", "items": { "type": "string" } },
+            "contrastId": { "type": ["string", "null"] },
+            "results": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["featureId", "featureType", "log2FoldChange", "pValue", "adjustedPValue"],
+                "properties": {
+                  "featureId": { "type": "string", "minLength": 1 },
+                  "symbol": { "type": ["string", "null"] },
+                  "featureType": { "enum": ["gene", "transcript", "protein"] },
+                  "log2FoldChange": { "type": ["number", "null"] },
+                  "pValue": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+                  "adjustedPValue": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+                  "baseMean": { "type": ["number", "null"], "minimum": 0 },
+                  "unit": { "type": "string", "const": "log2FoldChange" }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "fluxAnalysis": {
+      "allOf": [
+        { "$ref": "#/$defs/analysisBase" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "results"],
+          "properties": {
+            "status": { "enum": ["available", "partial", "not_run", "failed"] },
+            "method": { "type": ["string", "null"] },
+            "notAvailableReason": { "type": ["string", "null"] },
+            "artifactIds": { "type": "array", "items": { "type": "string" } },
+            "modelId": { "type": ["string", "null"] },
+            "objective": { "type": ["string", "null"] },
+            "results": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["reactionId", "flux", "unit", "conditionId"],
+                "properties": {
+                  "reactionId": { "type": "string", "minLength": 1 },
+                  "reactionName": { "type": ["string", "null"] },
+                  "flux": { "type": "number" },
+                  "unit": { "type": "string", "minLength": 1 },
+                  "conditionId": { "type": "string", "minLength": 1 },
+                  "lowerBound": { "type": ["number", "null"] },
+                  "upperBound": { "type": ["number", "null"] },
+                  "uncertainty": { "$ref": "#/$defs/uncertainty" }
+                }
+              }
+            },
+            "pathwaySummaries": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["pathwayId", "name", "flux", "unit", "conditionId"],
+                "properties": {
+                  "pathwayId": { "type": "string", "minLength": 1 },
+                  "name": { "type": "string", "minLength": 1 },
+                  "flux": { "type": "number" },
+                  "unit": { "type": "string", "minLength": 1 },
+                  "conditionId": { "type": "string", "minLength": 1 },
+                  "direction": { "enum": ["forward", "reverse", "net", "unknown"] },
+                  "reactionIds": { "type": "array", "items": { "type": "string" } },
+                  "uncertainty": { "$ref": "#/$defs/uncertainty" }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "metabolomics": {
+      "allOf": [
+        { "$ref": "#/$defs/analysisBase" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "results"],
+          "properties": {
+            "status": { "enum": ["available", "partial", "not_run", "failed"] },
+            "method": { "type": ["string", "null"] },
+            "notAvailableReason": { "type": ["string", "null"] },
+            "artifactIds": { "type": "array", "items": { "type": "string" } },
+            "results": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["featureId", "value", "unit", "conditionId"],
+                "properties": {
+                  "featureId": { "type": "string", "minLength": 1 },
+                  "name": { "type": ["string", "null"] },
+                  "value": { "type": "number" },
+                  "unit": { "type": "string", "minLength": 1 },
+                  "change": { "type": ["number", "null"] },
+                  "changeUnit": { "type": ["string", "null"] },
+                  "pValue": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+                  "adjustedPValue": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+                  "uncertainty": { "$ref": "#/$defs/uncertainty" },
+                  "conditionId": { "type": "string", "minLength": 1 }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "yieldAnalysis": {
+      "allOf": [
+        { "$ref": "#/$defs/analysisBase" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "results"],
+          "properties": {
+            "status": { "enum": ["available", "partial", "not_run", "failed"] },
+            "method": { "type": ["string", "null"] },
+            "notAvailableReason": { "type": ["string", "null"] },
+            "artifactIds": { "type": "array", "items": { "type": "string" } },
+            "results": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["metricId", "value", "unit", "kind", "conditionId"],
+                "properties": {
+                  "metricId": { "type": "string", "minLength": 1 },
+                  "name": { "type": ["string", "null"] },
+                  "value": { "type": "number" },
+                  "unit": { "type": "string", "minLength": 1 },
+                  "kind": { "enum": ["measured", "predicted", "derived"] },
+                  "conditionId": { "type": "string", "minLength": 1 },
+                  "replicateCount": { "type": ["integer", "null"], "minimum": 1 },
+                  "timepoint": { "type": ["number", "null"], "minimum": 0 },
+                  "timeUnit": { "type": ["string", "null"] },
+                  "uncertainty": { "$ref": "#/$defs/uncertainty" }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "interactions": {
+      "allOf": [
+        { "$ref": "#/$defs/analysisBase" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "results"],
+          "properties": {
+            "status": { "enum": ["available", "partial", "not_run", "failed"] },
+            "method": { "type": ["string", "null"] },
+            "notAvailableReason": { "type": ["string", "null"] },
+            "artifactIds": { "type": "array", "items": { "type": "string" } },
+            "results": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["sourceId", "targetId", "interactionType", "evidenceType"],
+                "properties": {
+                  "sourceId": { "type": "string", "minLength": 1 },
+                  "targetId": { "type": "string", "minLength": 1 },
+                  "interactionType": { "type": "string", "minLength": 1 },
+                  "evidenceType": { "type": "string", "minLength": 1 },
+                  "score": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+                  "state": { "enum": ["stable", "forming", "rearranging", "weakening", "disrupted"] },
+                  "artifactIds": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

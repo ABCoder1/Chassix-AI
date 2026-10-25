@@ -1,12 +1,12 @@
-# BioForge AI — Product Requirements Document
+# Chassix-AI — Product Requirements Document
 
 Version 1.0 · 22 October 2026 · Status: implementation proposal
 
 ## 1. Product intent and source of truth
 
-BioForge AI turns a scientist’s plain-language experimental goal into a reviewable, reproducible bioinformatics workflow. Scientists choose hosts and evidence, run independent remote analyses, and explore an integrated interpretation with citations, limitations, and an AI assistant.
+Chassix-AI turns a scientist’s plain-language experimental goal into a reviewable, reproducible bioinformatics workflow. Scientists choose hosts and evidence, run independent remote analyses, and explore an integrated interpretation with citations, limitations, and an AI assistant.
 
-This document incorporates the detailed user requirements retrieved from the BioForgeAI conversation and the continuation request. Earlier assistant responses containing the implementation blueprint were returned only as inaccessible content-reference markers. Architecture, delivery phases, scoring details, and thresholds below are proposed decisions rather than claims about that unavailable blueprint. Scientific examples in the design are illustrative, not validated findings.
+This document incorporates the detailed user requirements retrieved from the Chassix-AI conversation and the continuation request. Earlier assistant responses containing the implementation blueprint were returned only as inaccessible content-reference markers. Architecture, delivery phases, scoring details, and thresholds below are proposed decisions rather than claims about that unavailable blueprint. Scientific examples in the design are illustrative, not validated findings.
 
 ### Required experience
 
@@ -122,20 +122,20 @@ Export bundle: human-readable report, selected tables, figure data, manifest, ci
 
 | ID | Priority | Requirement | Acceptance evidence |
 |---|---|---|---|
-| BF-01 | P0 | Interpret goal and expose assumptions | Editable goal review and persisted original prompt |
-| BF-02 | P0 | Cited host shortlist and user confirmation | Citation drawer and explicit host selection event |
-| BF-03 | P0 | Discover public multiomics metadata | Search, filters, empty/error states, stable identifiers |
-| BF-04 | P0 | Upload and validate private inputs | Checksum, sample mapping, actionable validation results |
-| BF-05 | P0 | Review a versioned execution plan | Frozen manifest and explicit launch event |
-| BF-06 | P0 | Execute branches independently remotely | Attempt IDs, live status, logs, separate artifacts |
-| BF-07 | P0 | Wait at integration barrier | No integration while required branch is nonterminal |
-| BF-08 | P0 | Ask before partial-evidence integration | Decision audit record and persistent limitations |
-| BF-09 | P0 | Harmonize and independently critique evidence | Mapping report, evidence graph, critic disposition |
-| BF-10 | P0 | Explore results interactively | Linked filters, detail drawer, plot-to-data consistency |
-| BF-11 | P0 | Ground AI chat in a run snapshot | Verifiable citations and no implicit job mutations |
-| BF-12 | P0 | Export reproducible results | Manifest, artifacts, limitations and provenance bundle |
-| BF-13 | P0 | Restore state across sessions | Reconnect replay and authoritative run refresh |
-| BF-14 | P0 | Enforce project permissions | Cross-workspace access denied in API and artifact store |
+| CHX-01 | P0 | Interpret goal and expose assumptions | Editable goal review and persisted original prompt |
+| CHX-02 | P0 | Cited host shortlist and user confirmation | Citation drawer and explicit host selection event |
+| CHX-03 | P0 | Discover public multiomics metadata | Search, filters, empty/error states, stable identifiers |
+| CHX-04 | P0 | Upload and validate private inputs | Checksum, sample mapping, actionable validation results |
+| CHX-05 | P0 | Review a versioned execution plan | Frozen manifest and explicit launch event |
+| CHX-06 | P0 | Execute branches independently remotely | Attempt IDs, live status, logs, separate artifacts |
+| CHX-07 | P0 | Wait at integration barrier | No integration while required branch is nonterminal |
+| CHX-08 | P0 | Ask before partial-evidence integration | Decision audit record and persistent limitations |
+| CHX-09 | P0 | Harmonize and independently critique evidence | Mapping report, evidence graph, critic disposition |
+| CHX-10 | P0 | Explore results interactively | Linked filters, detail drawer, plot-to-data consistency |
+| CHX-11 | P0 | Ground AI chat in a run snapshot | Verifiable citations and no implicit job mutations |
+| CHX-12 | P0 | Export reproducible results | Manifest, artifacts, limitations and provenance bundle |
+| CHX-13 | P0 | Restore state across sessions | Reconnect replay and authoritative run refresh |
+| CHX-14 | P0 | Enforce project permissions | Cross-workspace access denied in API and artifact store |
 
 ## 6. State model and dependency rules
 
@@ -264,4 +264,4 @@ Decisions before implementation: exact analysis tools and validated versions; in
 
 ## 13. Requirements traceability
 
-Welcome/modules → BF-01, screen 1. RAG ranking/selection → BF-02, screen 2. Public datasets/uploads → BF-03/04, screen 3. Reviewed remote plan → BF-05, screen 4. Parallel overlays → BF-06/07, screen 5. Failure fallback → BF-08, screen 6. Harmonization/critic → BF-09, screen 7. Interactive results and chat → BF-10/11, screens 8/9. Reproducibility and persistence → BF-12/13/14 across screens and services.
+Welcome/modules → CHX-01, screen 1. RAG ranking/selection → CHX-02, screen 2. Public datasets/uploads → CHX-03/04, screen 3. Reviewed remote plan → CHX-05, screen 4. Parallel overlays → CHX-06/07, screen 5. Failure fallback → CHX-08, screen 6. Harmonization/critic → CHX-09, screen 7. Interactive results and chat → CHX-10/11, screens 8/9. Reproducibility and persistence → CHX-12/13/14 across screens and services.

@@ -1,0 +1,11 @@
+{
+  "name": "chassix-ai",
+  "private": true,
+  "packageManager": "pnpm@11.25.0",
+  "scripts": {
+    "dev": "pnpm --filter @chassix/visualizer dev",
+    "build": "pnpm --filter @chassix/visualizer build",
+    "test": "pnpm --filter @chassix/visualizer test",
+    "typecheck": "pnpm --filter @chassix/visualizer typecheck"
+  }
+}
