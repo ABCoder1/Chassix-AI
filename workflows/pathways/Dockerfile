@@ -13,16 +13,24 @@ FROM bioconductor/bioconductor_docker:RELEASE_3_19
 # against it (BH is header-only, so this is a fast copy; update=FALSE below keeps it pinned).
 RUN R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/BH/BH_1.81.0-1.tar.gz', repos=NULL, type='source')"
 
-# BiocManager pulls large annotation packages (e.g. GO.db ~27 MB); a flaky/truncated download
+# Pin CRAN to a dated Posit snapshot that matches this Bioconductor release (3.19 was current
+# from 2024-05 to 2024-10). Without this, BiocManager resolves CRAN to ".../cran/latest" (current
+# 2025/2026 packages) while Bioconductor stays at 3.19 — a version skew that breaks the clusterProfiler
+# dependency tree: e.g. treeio 1.28.0 (Bioc 3.19) imports `random_ref` from yulab.utils, which newer
+# CRAN yulab.utils removed, so treeio fails to load ("object 'random_ref' not found") and ggtree →
+# enrichplot → clusterProfiler all fail. Pinning CRAN to the 3.19 era keeps the CRAN deps compatible.
+# (BH stays pinned above: it was installed from the archive with repos=NULL and update=FALSE keeps it.)
+#
+# BiocManager also pulls large annotation packages (e.g. GO.db ~27 MB); a flaky/truncated download
 # otherwise aborts the build ("downloaded length != reported length"). Use a long timeout and
 # retry up to 3x (already-installed packages are skipped, so each retry resumes), then verify the
 # targets are actually installed — rather than escalating every transient download warning to an error.
-RUN R -e "options(timeout = 3600); \
+RUN R -e "options(timeout = 3600, repos = c(CRAN = 'https://packagemanager.posit.co/cran/2024-10-28')); \
   has <- function(p) all(p %in% rownames(installed.packages())); \
   pkgs <- c('clusterProfiler', 'org.EcK12.eg.db'); \
   for (i in 1:3) { if (has(pkgs)) break; tryCatch(BiocManager::install(pkgs, update = FALSE, ask = FALSE), error = function(e) message('attempt ', i, ' failed: ', conditionMessage(e))); if (!has(pkgs)) Sys.sleep(5) }; \
   if (!has(pkgs)) quit(status = 1); \
-  for (i in 1:3) { if (has('jsonlite')) break; try(install.packages('jsonlite', repos = 'https://cloud.r-project.org')) }; \
+  for (i in 1:3) { if (has('jsonlite')) break; try(install.packages('jsonlite')) }; \
   if (!has('jsonlite')) quit(status = 1)"
 
 RUN mkdir -p /opt/chassix/common /opt/chassix/pathways
