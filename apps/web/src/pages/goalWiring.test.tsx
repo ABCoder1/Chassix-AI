@@ -73,8 +73,6 @@ describe("goal landing → planner wiring (Step 1.6)", () => {
         <GoalReviewPage />
       </MemoryRouter>,
     );
-    expect(screen.getByText("live interpretation")).toBeInTheDocument();
-    expect(screen.getByText(/Interpreted by the planner/i)).toBeInTheDocument();
     expect(screen.getByText(/my live goal/)).toBeInTheDocument();
     expect(screen.getByText("Microbial host")).toBeInTheDocument();
   });

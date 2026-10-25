@@ -84,47 +84,55 @@ function ev(
 }
 
 /**
- * A scripted timeline for the default illustrative source: each branch advances
+ * A scripted timeline for the default source: each branch advances
  * Queued → Running → Validating outputs → Succeeded on wall-clock delays.
+ *
+ * Timings mirror realistic bioinformatics jobs — each branch runs for ~44–48 s
+ * before succeeding, so the monitor visibly counts up (and remote GCP Batch jobs
+ * take minutes, not seconds).
  */
 export const ILLUSTRATIVE_TIMELINE: ReadonlyArray<{ at: number; event: BranchStatusEvent }> = [
   {
-    at: 1200,
+    at: 1500,
     event: ev("branch-genome-bl01", 1, BranchState.Running, "Remote execution started."),
   },
   {
-    at: 2600,
-    event: ev(
-      "branch-pathway-km07",
-      2,
-      BranchState.ValidatingOutputs,
-      "Validating output artifacts.",
-    ),
+    at: 2500,
+    event: ev("branch-pathway-km07", 2, BranchState.Running, "Remote execution started."),
   },
+  { at: 3500, event: ev("branch-expr-bl01", 3, BranchState.Running, "Remote execution started.") },
   {
-    at: 3200,
+    at: 40000,
     event: ev(
       "branch-genome-bl01",
-      3,
+      4,
       BranchState.ValidatingOutputs,
       "Validating output artifacts.",
     ),
   },
-  { at: 3600, event: ev("branch-expr-bl01", 4, BranchState.Running, "Remote execution started.") },
   {
-    at: 4200,
-    event: ev("branch-pathway-km07", 5, BranchState.Succeeded, "Outputs validated against schema."),
+    at: 42000,
+    event: ev(
+      "branch-pathway-km07",
+      5,
+      BranchState.ValidatingOutputs,
+      "Validating output artifacts.",
+    ),
   },
   {
-    at: 4800,
-    event: ev("branch-genome-bl01", 6, BranchState.Succeeded, "Outputs validated against schema."),
+    at: 43000,
+    event: ev("branch-expr-bl01", 6, BranchState.ValidatingOutputs, "Validating output artifacts."),
   },
   {
-    at: 6000,
-    event: ev("branch-expr-bl01", 7, BranchState.ValidatingOutputs, "Validating output artifacts."),
+    at: 44000,
+    event: ev("branch-genome-bl01", 7, BranchState.Succeeded, "Outputs validated against schema."),
   },
   {
-    at: 6800,
-    event: ev("branch-expr-bl01", 8, BranchState.Succeeded, "Outputs validated against schema."),
+    at: 46000,
+    event: ev("branch-pathway-km07", 8, BranchState.Succeeded, "Outputs validated against schema."),
+  },
+  {
+    at: 48000,
+    event: ev("branch-expr-bl01", 9, BranchState.Succeeded, "Outputs validated against schema."),
   },
 ];

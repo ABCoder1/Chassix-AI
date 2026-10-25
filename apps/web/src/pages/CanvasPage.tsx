@@ -52,7 +52,6 @@ export function CanvasPage() {
               )}
             </p>
           </div>
-          <Tag>illustrative draft</Tag>
         </div>
 
         <div className="canvaspage__toolbar" role="toolbar" aria-label="Canvas controls">
@@ -109,13 +108,12 @@ export function CanvasPage() {
               <Card
                 title={activeStage.title}
                 subtitle={`Stage ${activeStage.order} of ${STAGES.length}`}
-                actions={<Tag>illustrative</Tag>}
               >
                 <p className="canvaspage__overview-summary">{activeStage.summary}</p>
 
                 {activeStage.flow === ProjectFlow.SelectingHosts && (
                   <fieldset className="canvaspage__picker">
-                    <legend>Select hosts (illustrative)</legend>
+                    <legend>Select hosts</legend>
                     {HOST_OPTIONS.map((h) => (
                       <label key={h.id} className="canvaspage__check">
                         <input
@@ -141,7 +139,7 @@ export function CanvasPage() {
 
                 {activeStage.flow === ProjectFlow.SelectingInputs && (
                   <fieldset className="canvaspage__picker">
-                    <legend>Select datasets (illustrative)</legend>
+                    <legend>Select datasets</legend>
                     {DATASET_OPTIONS.map((d) => (
                       <label key={d.id} className="canvaspage__check">
                         <input

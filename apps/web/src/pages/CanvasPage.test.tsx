@@ -50,7 +50,7 @@ describe("CanvasPage (Screen 2, Phase 1 exit)", () => {
     fireEvent.click(discoveryBtn);
     expect(discoveryBtn).toHaveAttribute("aria-current", "step");
     // The overview now exposes the host picker for the selected stage.
-    expect(screen.getByText("Select hosts (illustrative)")).toBeInTheDocument();
+    expect(screen.getByText("Select hosts")).toBeInTheDocument();
   });
 
   it("persists host selections to the store and localStorage, surviving a remount", () => {

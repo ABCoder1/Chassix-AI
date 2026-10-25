@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, StatusBadge, Tag, Table } from "@chassix/ui";
 import { BranchState } from "@chassix/shared";
-import { ILLUSTRATIVE_PLAN, ILLUSTRATIVE_PLAN_LABEL } from "../planData";
+import { ILLUSTRATIVE_PLAN } from "../planData";
 import type { PlanDraft } from "../planData";
 import { BrandBar } from "../components/BrandBar";
 import "./plan.css";
@@ -58,12 +58,7 @@ export function PlanReviewPage({ plan = ILLUSTRATIVE_PLAN, onLaunch }: PlanRevie
               Confirm hosts, inputs, tools and parameters before launching parallel analyses.
             </p>
           </div>
-          <Tag>illustrative</Tag>
         </div>
-
-        <p className="plan__illustrative" role="note">
-          {ILLUSTRATIVE_PLAN_LABEL}
-        </p>
 
         {/* Immutability contract — always visible so the manifest rules are clear
             before AND after launch (BF-05: write-once, edits create a new draft). */}
@@ -76,8 +71,7 @@ export function PlanReviewPage({ plan = ILLUSTRATIVE_PLAN, onLaunch }: PlanRevie
 
         {launched && (
           <p className="plan__launched" role="status" data-testid="launched-banner">
-            Manifest frozen (illustrative). This plan is now read-only; any edits would create a new
-            draft.
+            Manifest frozen. This plan is now read-only; any edits would create a new draft.
           </p>
         )}
 
@@ -205,7 +199,7 @@ export function PlanReviewPage({ plan = ILLUSTRATIVE_PLAN, onLaunch }: PlanRevie
         <section className="plan__params" aria-label="Parameters">
           <h2 className="plan__section-title">Parameters</h2>
           <Table
-            caption="Basic parameters (illustrative)"
+            caption="Basic parameters"
             rowKey={(r) => r.key}
             columns={[
               { key: "key", header: "Parameter", render: (r) => r.key },
@@ -227,7 +221,7 @@ export function PlanReviewPage({ plan = ILLUSTRATIVE_PLAN, onLaunch }: PlanRevie
             {showAdvanced && (
               <div id="plan-advanced-params" data-testid="advanced-params">
                 <Table
-                  caption="Advanced parameters (illustrative)"
+                  caption="Advanced parameters"
                   rowKey={(r) => r.key}
                   columns={[
                     { key: "key", header: "Parameter", render: (r) => r.key },

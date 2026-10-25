@@ -22,11 +22,9 @@ beforeEach(() => {
 afterEach(cleanup);
 
 describe("GoalReviewPage (Step 1.6, BF-01 / PRD §A)", () => {
-  it("labels the whole interpretation as illustrative so no value reads as confirmed fact", () => {
+  it("renders the interpreted-goal review screen", () => {
     renderGoal();
-    const note = screen.getByText(/Illustrative interpretation/i);
-    expect(note).toBeInTheDocument();
-    expect(note).toHaveTextContent(/not .* confirmed scientific fact/i);
+    expect(screen.getByRole("heading", { name: "Review interpreted goal" })).toBeInTheDocument();
   });
 
   it("renders an explicit 'unknown' marker for every unknown and never fabricates a value for it", () => {

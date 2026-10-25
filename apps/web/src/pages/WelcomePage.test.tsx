@@ -96,6 +96,6 @@ describe("WelcomePage (Screen 1, BF-01)", () => {
     const region = screen.getByRole("heading", { name: "Recent projects" });
     expect(region).toBeInTheDocument();
     const recent = screen.getByRole("button", { name: /Thermotolerant host draft/ });
-    expect(within(recent).getByText("illustrative")).toBeInTheDocument();
+    expect(within(recent).getByText(/open workflow canvas/)).toBeInTheDocument();
   });
 });

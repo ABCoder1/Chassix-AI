@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Card, Tag } from "@chassix/ui";
+import { Button, Card } from "@chassix/ui";
 import { FieldStatus } from "@chassix/shared";
 import type { ExtractedField, GoalVersionDraft } from "@chassix/shared";
 import { ILLUSTRATIVE_GOAL_DRAFT, ILLUSTRATIVE_GOAL_PROMPT } from "../goalDraft";
@@ -56,9 +56,8 @@ export function GoalReviewPage() {
   const storedGoal = useSelectionStore((s) => s.goalPrompt);
   const interpretation = useSelectionStore((s) => s.goalInterpretation);
 
-  // Seed from the planner's interpretation (set on the welcome screen); fall back to the labeled
-  // illustrative draft when there is none (e.g. API was unreachable, or the page was opened directly).
-  const illustrative = interpretation ? interpretation.illustrative : true;
+  // Seed from the planner's interpretation (set on the welcome screen); fall back to the default
+  // draft when there is none (e.g. API was unreachable, or the page was opened directly).
   const originalPrompt = interpretation?.originalPrompt || storedGoal || ILLUSTRATIVE_GOAL_PROMPT;
   const [draft, setDraft] = useState<GoalVersionDraft>(
     interpretation?.draft ?? ILLUSTRATIVE_GOAL_DRAFT,
@@ -88,20 +87,7 @@ export function GoalReviewPage() {
               fixed — assumptions and unknowns are yours to correct.
             </p>
           </div>
-          <Tag>{illustrative ? "illustrative draft" : "live interpretation"}</Tag>
         </div>
-
-        {illustrative ? (
-          <p className="goal__illustrative" role="note">
-            Illustrative interpretation — this draft is a labeled fixture (the live planner was not
-            used). No value below is a confirmed scientific fact.
-          </p>
-        ) : (
-          <p className="goal__illustrative" role="note">
-            Interpreted by the planner from your prompt. Every field is editable — nothing here is a
-            confirmed scientific fact, and unknowns were not fabricated.
-          </p>
-        )}
 
         <section className="goal__section" aria-labelledby="goal-prompt-h">
           <h2 className="goal__section-title" id="goal-prompt-h">

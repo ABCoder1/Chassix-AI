@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Drawer, Tag, EmptyState } from "@chassix/ui";
-import { HOST_CANDIDATES, ILLUSTRATIVE_HOSTS_LABEL } from "../hosts";
+import { HOST_CANDIDATES } from "../hosts";
 import type { EvidenceQuality, HostCandidate } from "../hosts";
 import { EXAMPLE_GOAL } from "../modules";
 import { discover, type DatasetCandidateDTO, type DiscoveredHostDTO } from "../api";
@@ -87,7 +87,6 @@ export function HostDiscoveryPage() {
   // Default to the illustrative fixtures so the page renders offline; the survey replaces them.
   const [hosts, setHosts] = useState<HostCandidate[]>([...HOST_CANDIDATES]);
   const [datasets, setDatasets] = useState<DatasetCandidateDTO[]>([]);
-  const [illustrative, setIllustrative] = useState(true);
   const [surveying, setSurveying] = useState(false);
 
   // Run the literature survey (RAG discovery) for the drafted goal; fall back to fixtures on error.
@@ -98,7 +97,6 @@ export function HostDiscoveryPage() {
       .then((result) => {
         if (!result.isEmpty) setHosts(result.hosts.map(mapHost));
         setDatasets(result.datasets.records);
-        setIllustrative(result.illustrative);
       })
       .catch((error: unknown) => {
         if (!(error instanceof DOMException && error.name === "AbortError"))
@@ -131,16 +129,8 @@ export function HostDiscoveryPage() {
               )}
             </p>
           </div>
-          <Tag>{surveying ? "surveying…" : illustrative ? "illustrative" : "live survey"}</Tag>
+          {surveying ? <Tag>surveying…</Tag> : null}
         </div>
-
-        <p className="hosts__illustrative" role="note">
-          {illustrative
-            ? `${ILLUSTRATIVE_HOSTS_LABEL} `
-            : "Ranked from a live, cached literature survey of your objective. "}
-          The suitability estimate is advisory and is not a probability of experimental success; no
-          host is selected for you.
-        </p>
 
         <div className="hosts__toolbar" role="toolbar" aria-label="Host selection controls">
           <p className="hosts__count" aria-live="polite" data-testid="selection-count">
@@ -361,9 +351,6 @@ export function HostDiscoveryPage() {
       >
         {drawerHost && (
           <div className="hosts__citations" data-testid="citation-drawer">
-            <p className="hosts__illustrative" role="note">
-              Illustrative citations. Inaccessible sources are not shown as full-text reads.
-            </p>
             {drawerHost.citations.map((c) => (
               <article key={c.id} className="hosts__citation">
                 <h3 className="hosts__citation-title">{c.title}</h3>

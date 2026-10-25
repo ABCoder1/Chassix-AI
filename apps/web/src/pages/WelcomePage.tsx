@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Card, Tag } from "@chassix/ui";
+import { Button, Card } from "@chassix/ui";
 import { MODULES, EXAMPLE_GOAL } from "../modules";
 import { useSelectionStore } from "../store/selectionStore";
 import { interpretGoal } from "../api";
@@ -139,10 +139,7 @@ export function WelcomePage() {
                 onClick={() => navigate("/canvas")}
               >
                 <span className="welcome__recent-name">Thermotolerant host draft</span>
-                <span className="welcome__recent-meta">
-                  <Tag>illustrative</Tag>
-                  Draft · open workflow canvas
-                </span>
+                <span className="welcome__recent-meta">Draft · open workflow canvas</span>
               </button>
             </li>
           </ul>

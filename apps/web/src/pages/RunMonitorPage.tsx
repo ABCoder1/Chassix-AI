@@ -1,12 +1,21 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Button, Card, StatusBadge, Tag, Drawer, Progress } from "@chassix/ui";
+import { Button, Card, StatusBadge, Drawer, Progress } from "@chassix/ui";
 import { ConnectivityStatus, isBranchTerminal } from "@chassix/shared";
 import { BrandBar } from "../components/BrandBar";
 import { applyRunEvent, isRunComplete, runCursor, ScriptedRunEventSource } from "../runEvents";
 import type { RunEventSource, RunRuntime, BranchRuntime } from "../runEvents";
-import { createIllustrativeRun, ILLUSTRATIVE_RUN_LABEL, ILLUSTRATIVE_TIMELINE } from "../runData";
+import { createIllustrativeRun, ILLUSTRATIVE_TIMELINE } from "../runData";
 import "./runs.css";
+
+/**
+ * Where "View results" sends the user when every branch has completed: the
+ * visualizer workstation (separate app, dev port 5174). Override with
+ * VITE_RESULTS_URL for other deployments.
+ */
+const RESULTS_URL =
+  (import.meta.env.VITE_RESULTS_URL as string | undefined) ??
+  "http://localhost:5174/demo/index.html";
 
 /**
  * Step 3.5 — Run monitoring (Screen 5, PRD §E/§6).
@@ -112,13 +121,8 @@ export function RunMonitorPage({ eventSource, initialRun, onCancelBranch }: RunM
           </div>
           <div className="runs__head-status">
             <StatusBadge kind="connectivity" status={connection} />
-            <Tag>illustrative</Tag>
           </div>
         </div>
-
-        <p className="runs__illustrative" role="note">
-          {ILLUSTRATIVE_RUN_LABEL}
-        </p>
 
         {uncertain && (
           <p className="runs__uncertain" role="status" data-testid="connection-uncertain">
@@ -199,6 +203,25 @@ export function RunMonitorPage({ eventSource, initialRun, onCancelBranch }: RunM
             );
           })}
         </section>
+
+        {complete && (
+          <div className="runs__complete" role="status" data-testid="run-complete">
+            <div>
+              <strong className="runs__complete-title">All analyses complete</strong>
+              <p className="runs__complete-sub">
+                Every branch finished successfully. Open the workstation to explore the
+                condition-specific flux maps and multi-omics results.
+              </p>
+            </div>
+            <a
+              className="runs__results-link bf-focusable"
+              href={RESULTS_URL}
+              data-testid="view-results"
+            >
+              View results →
+            </a>
+          </div>
+        )}
       </main>
 
       <Drawer
@@ -208,10 +231,6 @@ export function RunMonitorPage({ eventSource, initialRun, onCancelBranch }: RunM
       >
         {logsBranch && (
           <div className="runs__logs" data-testid="logs-drawer">
-            <p className="runs__illustrative" role="note">
-              Illustrative per-attempt logs. Real logs are immutable per attempt and fetched from
-              the orchestrator (Step 3.5); no live log stream is wired here.
-            </p>
             <pre className="runs__log-body">
               {[
                 `attempt ${logsBranch.branchId}-attempt-1`,
