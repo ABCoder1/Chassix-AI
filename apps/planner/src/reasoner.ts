@@ -10,7 +10,9 @@ import Anthropic from "@anthropic-ai/sdk";
  * passed from the client, never logged. Uses adaptive thinking at medium effort (budget_tokens is
  * rejected on current models). Override the model with ANTHROPIC_REASONING_MODEL.
  */
-const DEFAULT_REASONING_MODEL = "claude-sonnet-4-8";
+// Current Sonnet with adaptive-thinking support. (There is no "claude-sonnet-4-8": the 4.8 family
+// is Opus-only, and Sonnet 4.5 does not support adaptive thinking — Sonnet 5.5 is the match.)
+const DEFAULT_REASONING_MODEL = "claude-sonnet-5-5";
 
 export const RESULTS_REASONING_SYSTEM = `You are a computational systems-biology analyst reviewing the
 results of a multi-omics pipeline run (genome-scale metabolic flux balance analysis plus
