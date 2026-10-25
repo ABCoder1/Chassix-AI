@@ -29,13 +29,16 @@ export const asUploadSessionId = (v: string): UploadSessionId => asId<"UploadSes
 export type { WorkspaceId, UserId, BranchId } from "@chassix/shared";
 
 /**
- * Analysis modality = the three P0 branch families (PRD §E). "My uploads" is a *source*
- * tab, not a modality — see {@link DatasetSourceKind}.
+ * Analysis modality = the five branch families (PRD §E; scientific sign-off 2026-10-24 added
+ * metabolomics and flux analysis for yield predictions). "My uploads" is a *source* tab, not a
+ * modality — see {@link DatasetSourceKind}.
  */
 export const Modality = {
   Genomics: "genomics",
   TranscriptomicsPerturbation: "transcriptomics_perturbation",
   Pathways: "pathways",
+  Metabolomics: "metabolomics",
+  Fluxomics: "fluxomics",
 } as const;
 export type Modality = (typeof Modality)[keyof typeof Modality];
 

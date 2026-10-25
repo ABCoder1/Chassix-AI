@@ -81,22 +81,22 @@ Cross-cutting architecture (from project architecture decision): a **TypeScript 
 
 ## ADR-D10 — Exact scientific tools per branch
 
-- **Status:** **Open — needs scientific-owner sign-off**
-- **Candidates (from project notes, not yet signed off):** genomics (FASTQC, assembly/annotation QC); transcriptomics/perturbation (DESeq2 for differential expression); pathways (clusterProfiler for enrichment).
-- **Required before code depends on this:** scientific owner confirms the exact tool list, versions, input/output schemas per branch, minimum evidence policy, and ranking rubric weights (Step 0 scientific contracts); benchmark expectations recorded.
-- **Rationale for deferring:** the guide requires pipeline/scientific owner sign-off; fabricating a tool contract would violate the "unknown stays unknown / no fabricated results" rule. Fixtures are labeled _illustrative_ until real tools land.
-- **Owner:** _scientific lead — SIGN-OFF REQUIRED_
+- **Status:** **Signed off by scientific lead — 2026-10-24** (see `docs/scientific-contracts.md`). Branch set, minimum-evidence policy, and benchmark approach confirmed; tool versions and rubric/compatibility weights approved as defaults and **tuned later against performance metrics**. Live tools still run behind the `FakeExecutor` until the Nextflow host (ADR-D4) is wired.
+- **Analysis branch set (expanded to five):** genomics · transcriptomics/perturbation · pathways · **metabolomics** · **flux analysis (fluxomics) → yield predictions**.
+- **Tools (defaults, revisable):** genomics — FastQC `0.12.x` + assembly/annotation QC (**novel microbes only**; bypass and reuse public data where already done); transcriptomics/perturbation — DESeq2; pathways — clusterProfiler; metabolomics — XCMS (+ MetaboAnalystR); flux — COBRApy (FBA / parsimonious FBA) for flux distribution + predicted yields (objective/constraints recorded in the manifest).
+- **Policies:** minimum-evidence (≥1 validated branch + traceable input metadata) and the warn/block compatibility table — confirmed to proceed, tune later.
+- **Owner:** scientific lead.
 
 ---
 
 ## Scientific contracts (Step 0) — status
 
-- Pilot goal, supported host scope, branch I/O schemas, minimum evidence policy, ranking rubric weights: **Open** (bundled with ADR-D10 sign-off).
-- Fixture corpus (`packages/fixtures/`): **scaffolded**, labeled illustrative until real tools and scientific sign-off land.
+- Pilot goal, supported host scope, branch I/O schemas (5 branches), minimum evidence policy, ranking rubric weights: **Signed off 2026-10-24** (`docs/scientific-contracts.md`); weights to be tuned against performance metrics.
+- Fixture corpus (`packages/fixtures/`): **scaffolded**, labeled illustrative until the live engine lands.
 
 ## Exit criteria tracking (PRD §10 Phase 0)
 
-- [ ] Scientific owner signs off contracts (ADR-D10 + scientific contracts) — **blocked on owner**
+- [x] Scientific owner signs off contracts (ADR-D10 + scientific contracts) — **done 2026-10-24**
 - [x] Fixture corpus exists and is versioned — _skeleton; illustrative_
 - [x] Decisions D1–D9 recorded; D10 explicitly deferred with owner
 

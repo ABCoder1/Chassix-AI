@@ -36,7 +36,7 @@ Sources of truth:
 | D7 | Full-text/index store | Postgres FTS or OpenSearch | PRD §7: vector index optional, must not replace exact accession lookup |
 | D8 | Event delivery | SSE with sequence cursor (or equivalent) | PRD §7 |
 | D9 | Search/LLM provider for planner, chat, harmonizer | vendors to evaluate | PRD §7 "contextual assistant" |
-| D10 | Exact scientific tools per branch | genomics, transcriptomics/perturbation, pathways | PRD §3, §D, §E — pipeline owners must sign off |
+| D10 | Exact scientific tools per branch | genomics, transcriptomics/perturbation, pathways, metabolomics, flux analysis (fluxomics → yield predictions) | PRD §3, §D, §E — **signed off 2026-10-24** (`docs/scientific-contracts.md`) |
 
 **Also in Step 0 (scientific contracts):**
 - Pilot goal, supported host scope, branch input/output schemas, minimum evidence policy, ranking rubric weights.
@@ -101,7 +101,7 @@ Shared contracts (`packages/shared`) are the seam: all services import them; no 
 
 ### Step 1.5 — Welcome screen and goal composer (Screen 1, BF-01)
 
-**Build:** brand/navigation; exact prompt "what do you want to build?"; supporting copy "Describe your end goal out of an experiment in plain language. We'll assemble the tools, parameters and workflow for you."; large composer; example goal; supported module cards (literature & host discovery, genomics, transcriptomics & perturbation, pathway analysis, evidence harmonization, scientific critic, results & AI chat); recent project entry; **Build my workflow** disabled while prompt is empty; optional "choose an example" flow.
+**Build:** brand/navigation; exact prompt "what do you want to build?"; supporting copy "Describe your end goal out of an experiment in plain language. We'll assemble the tools, parameters and workflow for you."; large composer; example goal; supported module cards (literature & host discovery, genomics, transcriptomics & perturbation, pathway analysis, metabolomics, flux analysis / yield prediction, evidence harmonization, scientific critic, results & AI chat); recent project entry; **Build my workflow** disabled while prompt is empty; optional "choose an example" flow.
 **DoD:** empty prompt cannot submit; modules visible before submitting; example goal fills the composer; user can navigate to a recent project.
 **Verify:** keyboard journey: tab through composer → modules → submit; focus visible.
 
@@ -143,7 +143,7 @@ Shared contracts (`packages/shared`) are the seam: all services import them; no 
 
 ### Step 2.4 — Public dataset metadata discovery (BF-03, PRD §C/D)
 
-**Build:** dataset service with repository adapters (initial repos per D10/scope decision); metadata cache with retrieval timestamps; tabs — Genomics, Transcriptomics + perturbation, Pathways, My uploads; filters — host/strain, modality, condition, repository, assay, availability, reference build, license/access status. Record fields per PRD §7 DatasetVersion: accession/source, retrieval timestamp, checksum, license/access, taxonomy, strain, reference, modality, condition, sample mapping, replicate count when available, file size, source link, quality summary, compatibility warnings. Unknown remains unknown.
+**Build:** dataset service with repository adapters (initial repos per D10/scope decision); metadata cache with retrieval timestamps; tabs — Genomics, Transcriptomics + perturbation, Pathways, Metabolomics, Flux analysis, My uploads; filters — host/strain, modality, condition, repository, assay, availability, reference build, license/access status. Record fields per PRD §7 DatasetVersion: accession/source, retrieval timestamp, checksum, license/access, taxonomy, strain, reference, modality, condition, sample mapping, replicate count when available, file size, source link, quality summary, compatibility warnings. Unknown remains unknown.
 **DoD:** stable identifiers; search + filters + distinct empty/error states; metadata cached with timestamps; selection does not auto-approve — host confirmation filters candidates; availability never implied as guaranteed.
 **Verify:** repository unavailable → cached metadata shown with timestamp and explicit age notice; empty result → distinct empty state.
 
@@ -214,10 +214,10 @@ Pick **one** branch (recommend: genomics) end-to-end through the frozen manifest
 **DoD:** one source of job truth (no competing stores); recovery replays unfinished work correctly; retry caps honored; duplicate/stale events cannot move a branch backward.
 **Verify:** service restart mid-run → reconciliation completes with correct state.
 
-### Step 4.2 — Full branch set: transcriptomics/perturbation and pathways (Screen 5, PRD §E)
+### Step 4.2 — Full branch set: transcriptomics/perturbation, pathways, metabolomics, flux analysis (Screen 5, PRD §E)
 
-**Build:** two additional overlay-style analysis panels with the same lifecycle as Step 3.x (status, stage, elapsed time, remote environment, resource info, logs, artifacts); each panel emits validated outputs referencing artifacts; fan out from inputs to panels with explicit graph edges; integration barrier node between panels and harmonization.
-**DoD:** all three branches independent (one failing does not cancel others); completed branch inspectable while others run; panels reflect only their own artifacts; outputs follow the branch contracts agreed in Step 0 (quality/annotation + host comparison; expression quality, contrast tables, uncertainty; pathway mapping/enrichment/method assumptions).
+**Build:** the remaining overlay-style analysis panels (beyond the genomics slice) with the same lifecycle as Step 3.x (status, stage, elapsed time, remote environment, resource info, logs, artifacts); each panel emits validated outputs referencing artifacts; fan out from inputs to panels with explicit graph edges; integration barrier node between panels and harmonization.
+**DoD:** all five branches independent (one failing does not cancel others); completed branch inspectable while others run; panels reflect only their own artifacts; outputs follow the branch contracts signed off in Step 0 (quality/annotation + host comparison; expression quality, contrast tables, uncertainty; pathway mapping/enrichment/method assumptions; metabolite processing/annotation; flux distribution + **predicted yields**).
 **Verify:** branches complete out of order → independent outputs visible; barrier preserved.
 
 ### Step 4.3 — Integration barrier (BF-07)

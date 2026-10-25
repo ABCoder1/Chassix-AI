@@ -1,50 +1,63 @@
-# Scientific Contracts — sign-off needed (ADR-D10)
+# Scientific Contracts (ADR-D10)
 
-**Owner:** _scientific lead (teammate) — please review and sign off._
-**Status:** OPEN. Until this is signed off, the execution layer runs on a `FakeExecutor` with
-**illustrative, clearly-labeled** tool contracts. No fabricated result is ever presented as real
-(cross-cutting rule). Signing off unblocks wiring the real workflow engine (ADR-D4, Nextflow) and
-real tools.
+**Owner:** scientific lead (teammate).
+**Status: Signed off — 2026-10-24.** Branch set, minimum-evidence policy, and benchmark approach
+are confirmed; specific tool versions and rubric/compatibility weights are approved to proceed as
+defaults and **tuned later against performance metrics**. Until the live engine is wired, the
+execution layer runs on a `FakeExecutor` with clearly-labeled illustrative contracts; no fabricated
+result is ever presented as real. Sign-off unblocks wiring the real engine (ADR-D4, Nextflow).
 
-The engineering is built so that filling this in is a **data/config change**, not a rewrite: the
-`ExecutorAdapter` interface, run manifest, and branch I/O schemas are already in place.
+Filling these in is a **data/config change**, not a rewrite: the `ExecutorAdapter` interface, run
+manifest, and branch I/O schemas are already in place.
 
-## What we need from you
+## Analysis branch set (confirmed)
 
-For the **pilot vertical slice (genomics branch first)**, please confirm:
+Five analytical branches (expanded from three per scientific-lead review 2026-10-24):
 
-### 1. Tools per branch (exact names + versions, from bioconda)
+1. **Genomics**
+2. **Transcriptomics / perturbation**
+3. **Pathways**
+4. **Metabolomics** _(added)_
+5. **Flux analysis / fluxomics — for yield predictions** _(added)_
 
-| Branch                         | Step                    | Proposed (illustrative) | Confirm / change |
-| ------------------------------ | ----------------------- | ----------------------- | ---------------- |
-| Genomics                       | QC                      | FastQC `0.12.x`         |                  |
-| Genomics                       | assembly/annotation QC  | _tbd_                   |                  |
-| Transcriptomics / perturbation | differential expression | DESeq2                  |                  |
-| Pathways                       | enrichment              | clusterProfiler         |                  |
+## 1. Tools per branch (exact names + versions, from bioconda)
 
-### 2. Branch input / output schemas
+| Branch                         | Step                                                 | Tool (defaults — tune later)                 | Notes                                                                                                                                           |
+| ------------------------------ | ---------------------------------------------------- | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Genomics                       | QC                                                   | FastQC `0.12.x`                              |                                                                                                                                                 |
+| Genomics                       | assembly/annotation QC                               | assembly/annotation QC pipeline              | **Only for novel microbes.** For microbes where this is already done, **bypass** and use the publicly available data instead (scientific lead). |
+| Transcriptomics / perturbation | differential expression                              | DESeq2                                       |                                                                                                                                                 |
+| Pathways                       | enrichment                                           | clusterProfiler                              |                                                                                                                                                 |
+| Metabolomics                   | peak detection / processing + annotation             | XCMS (+ MetaboAnalystR for downstream stats) | Illustrative defaults; confirm final tool + version.                                                                                            |
+| Flux analysis (fluxomics)      | constraint-based flux balance → **yield prediction** | COBRApy (FBA / parsimonious FBA)             | Yields predicted from the genome-scale metabolic model; 13C-MFA a later option.                                                                 |
 
-- Genomics inputs (e.g. FASTA/GFF, read sets) and the exact **output artifacts** we validate before marking a branch `Succeeded`.
-- Transcriptomics: count-matrix + metadata shape; contrast/replicate requirements.
-- Pathways: pathway table / model-file format.
+## 2. Branch input / output schemas
 
-### 3. Minimum evidence policy (BF-08)
+- **Genomics** — inputs FASTA/GFF + read sets; validated output artifacts: assembly/annotation QC report (novel microbes) or referenced public assembly.
+- **Transcriptomics / perturbation** — count-matrix + metadata; contrast/replicate requirements; outputs: contrast tables + uncertainty.
+- **Pathways** — pathway table / model-file; outputs: mapping + enrichment with method assumptions.
+- **Metabolomics** — metabolite table / model-file; outputs: processed + annotated metabolite table.
+- **Flux analysis** — flux table / genome-scale metabolic model file; outputs: flux distribution **and predicted yields** (with the objective/constraints recorded in the manifest).
 
-- MVP default encoded: _proceed only with ≥1 validated analytical branch + traceable input metadata._ Confirm or adjust.
+## 3. Minimum evidence policy (BF-08)
 
-### 4. Ranking rubric weights (BF-02, Step 2.2)
+- **Confirmed.** Proceed only with ≥1 validated analytical branch + traceable input metadata.
 
-- Current weights in `@chassix/planner` are **illustrative**. Please provide the criterion weights (evidence coverage, freshness, conflicting findings, #sources, tradeoffs) or confirm the defaults.
+## 4. Ranking rubric weights (BF-02, Step 2.2)
 
-### 5. Compatibility policy (Step 2.6)
+- **Approved to proceed** with the current `@chassix/planner` defaults (evidence coverage, freshness, conflicting findings, #sources, tradeoffs); **tune later** based on performance metrics.
 
-- Which checks **block** vs **warn** (taxonomy/strain, reference version, replicates, contrasts, gene identifiers, prerequisite availability). A default table is encoded in `@chassix/datasets`; confirm the warn/block split.
+## 5. Compatibility policy (Step 2.6)
 
-### 6. Benchmark expectations
+- **Approved to proceed** with the `@chassix/datasets` default warn/block table; **tune later** based on performance metrics.
 
-- A reference run + expected outcome so the Phase 6 fixture matrix can assert correctness.
+## 6. Benchmark expectations
 
-## How to sign off
+- **Confirmed.** A reference run + expected outcome feeds the Phase 6 fixture matrix.
 
-Fill the tables above (or reply with the values) and mark this file **Signed off: <name> <date>**.
-We then record a new ADR for the chosen tools and wire the live executor.
+---
+
+**Signed off:** scientific lead — 2026-10-24.
+Next: record the chosen tools in `docs/decisions.md` (ADR-D10) and wire the live executor when
+the Nextflow host is available. Tool versions and weights are revisable via a new ADR as they are
+tuned against performance metrics.

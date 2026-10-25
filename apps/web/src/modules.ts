@@ -31,6 +31,17 @@ export const MODULES: readonly ModuleCard[] = [
     description: "Pathway mapping and enrichment with explicit method assumptions.",
   },
   {
+    id: "metabolomics",
+    title: "Metabolomics",
+    description: "Metabolite processing and annotation from LC-MS or uploaded metabolite tables.",
+  },
+  {
+    id: "flux",
+    title: "Flux analysis / yield prediction",
+    description:
+      "Constraint-based flux balance over a metabolic model to predict achievable yields.",
+  },
+  {
     id: "harmonization",
     title: "Evidence harmonization",
     description:

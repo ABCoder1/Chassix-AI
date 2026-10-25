@@ -15,7 +15,7 @@ This document incorporates the detailed user requirements retrieved from the Cha
 3. Visible supported modules: literature and host discovery; genomics; transcriptomics and perturbation; pathway analysis; evidence harmonization; scientific critic; results and AI chat.
 4. Navy/black dotted, whiteboard-style canvas with a left-to-right dependency graph.
 5. Retrieval-augmented host ranking with literature, user-controlled host comparison, public multiomics discovery, and private upload.
-6. Three parallel remote analysis branches with live status, independent outputs, and explicit convergence into the Biological Intelligence Engine.
+6. Five parallel remote analysis branches (genomics; transcriptomics/perturbation; pathways; metabolomics; flux analysis/fluxomics for yield predictions) with live status, independent outputs, and explicit convergence into the Biological Intelligence Engine.
 7. Evidence harmonization followed by critic review; a failed branch must trigger a decision about proceeding with collected evidence.
 8. Interactive results dashboard and contextual AI chat.
 
@@ -44,7 +44,7 @@ Targets are product hypotheses to validate with pilot users, not existing servic
 
 ### MVP / P0
 
-Desktop web workspace; goal interpretation and review; cited host ranking; selecting one or multiple hosts; public dataset metadata search; validated upload; three analysis branch types; one configured remote execution environment; immutable run manifests; progress/logs; partial-failure decisions; harmonization and critic; comparison dashboard; artifact-grounded chat; report and data export; workspace access controls.
+Desktop web workspace; goal interpretation and review; cited host ranking; selecting one or multiple hosts; public dataset metadata search; validated upload; five analysis branch types (genomics, transcriptomics/perturbation, pathways, metabolomics, flux analysis/yield prediction); one configured remote execution environment; immutable run manifests; progress/logs; partial-failure decisions; harmonization and critic; comparison dashboard; artifact-grounded chat; report and data export; workspace access controls.
 
 ### P1
 
@@ -74,7 +74,7 @@ Acceptance: selection count and chosen hosts are clear; at least one host is nee
 
 ### C. Public datasets and private upload
 
-A discovery agent may fetch candidate metadata alongside host discovery. Host confirmation filters candidates and never auto-approves them. The dataset workspace provides tabs for Genomics, Transcriptomics + perturbation, Pathways, and My uploads. Filters include host/strain, modality, condition, repository, assay, availability, reference build, and license/access status.
+A discovery agent may fetch candidate metadata alongside host discovery. Host confirmation filters candidates and never auto-approves them. The dataset workspace provides tabs for Genomics, Transcriptomics + perturbation, Pathways, Metabolomics, Flux analysis, and My uploads. Filters include host/strain, modality, condition, repository, assay, availability, reference build, and license/access status.
 
 Each record exposes accession or stable identifier, repository, version/retrieval date, host/strain, experimental conditions, biological replicate count when available, file size, source link, assay, quality summary, and compatibility warnings. Missing metadata remains unknown. Selected datasets are assigned to branch and host, with a visible coverage matrix.
 
@@ -92,7 +92,7 @@ Acceptance: one deliberate launch creates one run despite double-clicks or retri
 
 ### E. Parallel remote analyses
 
-The canvas fans out from inputs to three overlay-style analysis panels: Genomics, Transcriptomics + perturbation, and Pathways. Each panel shows status, stage, elapsed time, remote environment, resource information, log access, and available artifacts. Progress percentages appear only when the executor reports meaningful progress; otherwise show stage-based status.
+The canvas fans out from inputs to five overlay-style analysis panels: Genomics, Transcriptomics + perturbation, Pathways, Metabolomics, and Flux analysis (fluxomics → yield predictions). Each panel shows status, stage, elapsed time, remote environment, resource information, log access, and available artifacts. Progress percentages appear only when the executor reports meaningful progress; otherwise show stage-based status.
 
 Panels independently emit validated outputs and forward artifact references to the integration barrier. A completed branch remains inspectable while another runs. Closing a panel or browser does not cancel a remote job. Cancel is explicit and records cancellation state.
 

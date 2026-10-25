@@ -49,7 +49,7 @@ Services depend only on `@chassix/shared` — never on each other's internals.
 
 ## Scope at a glance
 
-- **In scope (MVP/P0):** desktop web workspace; goal interpretation; cited host ranking; public + private datasets; three parallel analysis branches; immutable run manifests; failure decisions; harmonization + critic; results dashboard; grounded chat; exports; access controls.
+- **In scope (MVP/P0):** desktop web workspace; goal interpretation; cited host ranking; public + private datasets; five parallel analysis branches (genomics, transcriptomics/perturbation, pathways, metabolomics, flux analysis/yield prediction); immutable run manifests; failure decisions; harmonization + critic; results dashboard; grounded chat; exports; access controls.
 - **Not in scope:** autonomous physical experimentation, clinical decision support, untested data-modality inference, unrestricted shell from chat, open marketplace of pipelines. The UI never presents a hypothesis as experimentally confirmed.
 
 See the PRD (§3 scope, §10 phases) for details.
