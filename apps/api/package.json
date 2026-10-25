@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@chassix/analysis-bundle": "workspace:*",
     "@chassix/db": "workspace:*",
     "@chassix/executor": "workspace:*",
     "@chassix/orchestrator": "workspace:*",

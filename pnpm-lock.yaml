@@ -32,6 +32,9 @@ importers:
 
   apps/api:
     dependencies:
+      '@chassix/analysis-bundle':
+        specifier: workspace:*
+        version: link:../../packages/analysis-bundle
       '@chassix/db':
         specifier: workspace:*
         version: link:../../packages/db

@@ -1,0 +1,63 @@
+{
+  "taskGroups": [
+    {
+      "taskCount": 1,
+      "taskSpec": {
+        "runnables": [
+          {
+            "container": {
+              "imageUri": "REGION-docker.pkg.dev/PROJECT_ID/chassix/flux:latest",
+              "commands": []
+            },
+            "environment": {
+              "variables": {
+                "CHASSIX_INPUTS_DIR": "/mnt/disks/gcs/studies/RUN_ID/inputs",
+                "CHASSIX_OUTPUT": "/mnt/disks/gcs/studies/RUN_ID/outputs/bundle.flux.json",
+                "CHASSIX_FLUX_CSV": "/mnt/disks/gcs/studies/RUN_ID/outputs/flux_distribution.csv",
+                "CHASSIX_FLUX_CSV_URI": "gs://GCS_BUCKET/studies/RUN_ID/outputs/flux_distribution.csv",
+                "CHASSIX_OUTPUT_URI": "gs://GCS_BUCKET/studies/RUN_ID/outputs/bundle.flux.json",
+                "CHASSIX_RUN_ID": "RUN_ID",
+                "CHASSIX_WORKFLOW_ID": "flux",
+                "CHASSIX_WORKFLOW_VERSION": "WORKFLOW_VERSION",
+                "CHASSIX_CONDITION_ID": "CONDITION_ID",
+                "CHASSIX_ORGANISM_CHASSIS": "bacterium",
+                "CHASSIX_ORGANISM_TAXON_ID": "TAXON_ID",
+                "CHASSIX_ORGANISM_TAXON_NAME": "TAXON_NAME",
+                "CHASSIX_ORGANISM_STRAIN_ID": "STRAIN_ID",
+                "CHASSIX_ORGANISM_STRAIN_NAME": "STRAIN_NAME"
+              }
+            }
+          }
+        ],
+        "volumes": [
+          {
+            "gcs": {
+              "remotePath": "GCS_BUCKET"
+            },
+            "mountPath": "/mnt/disks/gcs",
+            "mountOptions": ["implicit-dirs"]
+          }
+        ],
+        "computeResource": {
+          "cpuMilli": 2000,
+          "memoryMib": 8192
+        },
+        "maxRetryCount": 1,
+        "maxRunDuration": "3600s"
+      }
+    }
+  ],
+  "allocationPolicy": {
+    "instances": [
+      {
+        "policy": {
+          "machineType": "e2-standard-2",
+          "provisioningModel": "STANDARD"
+        }
+      }
+    ]
+  },
+  "logsPolicy": {
+    "destination": "CLOUD_LOGGING"
+  }
+}

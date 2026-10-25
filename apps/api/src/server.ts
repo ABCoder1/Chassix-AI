@@ -10,6 +10,7 @@ import { registerAuthRoutes } from "./routes/auth.js";
 import { registerWorkspaceRoutes } from "./routes/workspaces.js";
 import { registerRunRoutes } from "./routes/runs.js";
 import { createRunOrchestrator, type RunOrchestratorBundle } from "./runs/service.js";
+import type { BundleSource } from "./runs/bundle.js";
 
 export interface BuildServerOptions {
   /** Persistence ports. Defaults to in-memory repositories (no Postgres needed). */
@@ -20,6 +21,8 @@ export interface BuildServerOptions {
   sessions?: SessionManager;
   /** Run orchestrator bundle (in-memory stack + FakeExecutor). Defaults to a fresh one; override for tests. */
   orchestrator?: RunOrchestratorBundle;
+  /** Supplies ingested analysis fragments for the run bundle endpoint. Defaults to none ingested. */
+  bundleSource?: BundleSource;
 }
 
 /**
@@ -50,7 +53,11 @@ export function buildServer(options: BuildServerOptions = {}): FastifyInstance {
 
   registerAuthRoutes(app, { repos, sessions, guards });
   registerWorkspaceRoutes(app, { repos, guards });
-  registerRunRoutes(app, { guards, bundle: orchestrator });
+  registerRunRoutes(app, {
+    guards,
+    bundle: orchestrator,
+    ...(options.bundleSource ? { bundleSource: options.bundleSource } : {}),
+  });
 
   app.setNotFoundHandler((req, reply) => {
     reply.status(404).send(

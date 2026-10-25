@@ -21,6 +21,7 @@ import { asRunId, asBranchId, OrchestratorError } from "@chassix/orchestrator";
 import type { AuthGuards } from "../context.js";
 import type { RunOrchestratorBundle } from "../runs/service.js";
 import { serializeSseEvent, SSE_HEARTBEAT, parseCursor, projectBranchLogs } from "../runs/sse.js";
+import { bundleFromSnapshot, emptyBundleSource, type BundleSource } from "../runs/bundle.js";
 
 /** How often to emit an SSE heartbeat comment (ms). */
 const HEARTBEAT_INTERVAL_MS = 15_000;
@@ -55,6 +56,8 @@ export interface RunRouteDeps {
   bundle: RunOrchestratorBundle;
   /** Overridable for tests; defaults to a 15s heartbeat. */
   heartbeatIntervalMs?: number;
+  /** Supplies ingested analysis fragments for the bundle endpoint; defaults to none ingested. */
+  bundleSource?: BundleSource;
 }
 
 const notFound = (req: FastifyRequest, reply: FastifyReply, message: string): FastifyReply =>
@@ -64,7 +67,12 @@ const notFound = (req: FastifyRequest, reply: FastifyReply, message: string): Fa
 
 export const registerRunRoutes = (
   app: FastifyInstance,
-  { guards, bundle, heartbeatIntervalMs = HEARTBEAT_INTERVAL_MS }: RunRouteDeps,
+  {
+    guards,
+    bundle,
+    heartbeatIntervalMs = HEARTBEAT_INTERVAL_MS,
+    bundleSource = emptyBundleSource,
+  }: RunRouteDeps,
 ): void => {
   const { orchestrator, transport, repo } = bundle;
 
@@ -134,6 +142,30 @@ export const registerRunRoutes = (
         branches: snap.branches,
         lastSequence: snap.lastSequence,
       });
+    },
+  );
+
+  // --- GET analysis bundle: run results in the digital-twin contract ---------
+  // Produces a schema-1.0.0 AnalysisBundle for the visualizer (native units,
+  // provenance, explicit per-section status). No fabricated results.
+  app.get(
+    "/workspaces/:workspaceId/runs/:runId/bundle",
+    { preHandler: guards.requireWorkspace() },
+    async (req, reply) => {
+      const { workspaceId, runId } = req.params as { workspaceId: string; runId: string };
+      const snap = await resolveRun(workspaceId, runId);
+      if (!snap) return notFound(req, reply, "No such run in this workspace.");
+      try {
+        const analysisBundle = await bundleFromSnapshot(snap, bundleSource);
+        return reply.status(200).send(analysisBundle);
+      } catch {
+        return reply.status(500).send(
+          apiError("BUNDLE_ASSEMBLY_FAILED", "Could not assemble the analysis bundle.", {
+            retryable: true,
+            correlationId: req.id,
+          }),
+        );
+      }
     },
   );
 
