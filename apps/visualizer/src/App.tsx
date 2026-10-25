@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   Activity,
   ArrowDownToLine,
@@ -52,6 +52,22 @@ import {
 } from "./model";
 import { SimulationDashboard } from "./SimulationDashboard";
 import { demoSimulationAdapter, simulateDemo, type SimulationResult } from "./simulation";
+import { AnalysisResults } from "./AnalysisResults";
+import {
+  BundleLoadError,
+  fileBundleProvider,
+  httpBundleProvider,
+  type BundleProvider,
+} from "./bundle/provider";
+import { SAMPLE_BUNDLE } from "./bundle/sample-bundle";
+import type { AnalysisBundle } from "@chassix/analysis-bundle";
+
+type ResultsMode = "demo" | "workflow";
+type BundleState =
+  | { kind: "idle" }
+  | { kind: "loading" }
+  | { kind: "ready"; bundle: AnalysisBundle }
+  | { kind: "error"; message: string; detail: string };
 
 function Toggle({
   label,
@@ -132,6 +148,62 @@ export default function App() {
   const [simulation, setSimulation] = useState<SimulationResult>(() =>
     simulateDemo(simulationInput),
   );
+  const [resultsMode, setResultsMode] = useState<ResultsMode>("demo");
+  const [bundleState, setBundleState] = useState<BundleState>({ kind: "idle" });
+  const bundleRequest = useRef(0);
+
+  // Load a workflow bundle through a provider, dropping any superseded request
+  // (handoff: changing conditions mid-flight must cancel/ignore the stale response).
+  const loadBundle = useCallback((provider: BundleProvider) => {
+    const token = ++bundleRequest.current;
+    const controller = new AbortController();
+    setResultsMode("workflow");
+    setBundleState({ kind: "loading" });
+    provider
+      .load(controller.signal)
+      .then((bundle) => {
+        if (token === bundleRequest.current) setBundleState({ kind: "ready", bundle });
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+        if (token !== bundleRequest.current) return;
+        if (error instanceof BundleLoadError)
+          setBundleState({ kind: "error", message: error.message, detail: error.detail });
+        else
+          setBundleState({
+            kind: "error",
+            message: "Could not load analysis results",
+            detail: error instanceof Error ? error.message : String(error),
+          });
+      });
+    return () => controller.abort();
+  }, []);
+
+  // On first load, honor ?runId / ?bundleUrl / ?bundle=sample so the engine (or a
+  // shared link) can open the workstation straight onto workflow-backed results.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const runId = params.get("runId");
+    const bundleUrl = params.get("bundleUrl");
+    const api = params.get("api") ?? "";
+    if (bundleUrl) return loadBundle(httpBundleProvider(bundleUrl));
+    if (runId)
+      return loadBundle(httpBundleProvider(`${api}/runs/${encodeURIComponent(runId)}/bundle`));
+    if (params.get("bundle") === "sample")
+      return loadBundle({ id: "sample", load: async () => SAMPLE_BUNDLE });
+    return undefined;
+  }, [loadBundle]);
+
+  const showSampleBundle = () => loadBundle({ id: "sample", load: async () => SAMPLE_BUNDLE });
+  const importBundleFile = (file: File | undefined) => {
+    if (file) loadBundle(fileBundleProvider(file));
+  };
+  const backToDemo = () => {
+    bundleRequest.current++;
+    setResultsMode("demo");
+    setBundleState({ kind: "idle" });
+  };
+
   const scene = useRef<CellSceneHandle>(null);
   const helpButton = useRef<HTMLButtonElement>(null);
   const helpDialog = useRef<HTMLDivElement>(null);
@@ -863,7 +935,59 @@ export default function App() {
           </aside>
         )}
       </div>
-      <SimulationDashboard simulation={simulation} chassisId={chassisId} />
+      <div className="results-source" role="group" aria-label="Results source">
+        <div className="results-source-tabs">
+          <button
+            className={resultsMode === "demo" ? "active" : ""}
+            onClick={backToDemo}
+            aria-pressed={resultsMode === "demo"}
+          >
+            Demo twin
+          </button>
+          <button
+            className={resultsMode === "workflow" ? "active" : ""}
+            onClick={showSampleBundle}
+            aria-pressed={resultsMode === "workflow"}
+          >
+            Workflow results
+          </button>
+        </div>
+        {resultsMode === "demo" ? (
+          <div className="results-source-actions">
+            <button onClick={showSampleBundle}>Load sample bundle</button>
+            <label className="results-import">
+              Import bundle…
+              <input
+                type="file"
+                accept="application/json,.json"
+                onChange={(event) => importBundleFile(event.target.files?.[0])}
+              />
+            </label>
+          </div>
+        ) : (
+          <span className="results-source-hint">
+            Workflow-backed results — native units &amp; provenance, distinct from the illustrative
+            demo twin.
+          </span>
+        )}
+      </div>
+      {resultsMode === "demo" ? (
+        <SimulationDashboard simulation={simulation} chassisId={chassisId} />
+      ) : bundleState.kind === "loading" ? (
+        <section className="results-status" aria-live="polite">
+          Loading analysis results…
+        </section>
+      ) : bundleState.kind === "error" ? (
+        <section className="results-status results-error" role="alert">
+          <strong>{bundleState.message}</strong>
+          <span>{bundleState.detail}</span>
+          <button onClick={backToDemo}>Back to demo twin</button>
+        </section>
+      ) : bundleState.kind === "ready" ? (
+        <AnalysisResults bundle={bundleState.bundle} />
+      ) : (
+        <section className="results-status">No bundle loaded.</section>
+      )}
       <section className="signals" aria-label="Illustrative response signals">
         <div className="signal-summary">
           <div className="section-label">
