@@ -56,6 +56,12 @@ import {
   type ArtifactRecord,
 } from "./types.js";
 import { freezeManifest } from "./manifest.js";
+import { computeBarrier, type BarrierState } from "./barrier.js";
+import {
+  evaluateFailureDecision,
+  type FailureDecision,
+  type MinEvidencePolicy,
+} from "./fallback.js";
 
 export class OrchestratorError extends Error {
   override readonly name = "OrchestratorError";
@@ -531,6 +537,35 @@ export class RunOrchestrator {
     const branches = await this.repo.listBranches(runId);
     const lastSequence = await this.eventLog.lastSequence(runId);
     return { run, branches, lastSequence };
+  }
+
+  /**
+   * Integration barrier (Step 4.3 / BF-07): whether every required branch is terminal, and
+   * which are still pending. `required` defaults to all branches in the run.
+   */
+  async barrier(runId: RunId, required?: readonly string[]): Promise<BarrierState> {
+    const branches = await this.repo.listBranches(runId);
+    return computeBarrier(branches, required);
+  }
+
+  /**
+   * Failure decision (Step 4.4 / BF-08): the available actions and whether "proceed with
+   * collected evidence" is permitted under the minimum-evidence policy. Input metadata is
+   * traceable when every branch manifest carries at least one input with a checksum.
+   */
+  async failureDecision(
+    runId: RunId,
+    options: { policy?: MinEvidencePolicy } = {},
+  ): Promise<FailureDecision> {
+    const branches = await this.repo.listBranches(runId);
+    const hasTraceableInputMetadata =
+      branches.length > 0 &&
+      branches.every((b) => b.manifest.inputs.some((i) => i.checksum.length > 0));
+    return evaluateFailureDecision({
+      branches,
+      hasTraceableInputMetadata,
+      ...(options.policy ? { policy: options.policy } : {}),
+    });
   }
 
   /** Gap-free, ordered replay of events after a cursor (reconnect, Step 3.4). */

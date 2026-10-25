@@ -17,6 +17,12 @@ export * from "./manifest.js";
 // Step 3.5 — artifact-validation gate
 export * from "./validation.js";
 
+// Step 4.3 — integration barrier (BF-07)
+export * from "./barrier.js";
+
+// Step 4.4 — failure decision + minimum-evidence policy (BF-08)
+export * from "./fallback.js";
+
 // Core orchestrator (3.3/3.4/3.6)
 export * from "./orchestrator.js";
 

@@ -339,11 +339,11 @@ Load test: ordinary metadata API p95 <2s excluding external repos; navigation/fi
 | 3.4 Events & replay | claude | ☑ | orchestrator event log + cursor + stale/dup rejection; apps/api SSE endpoint (replay-from-cursor, Last-Event-ID, heartbeat, disconnect≠cancel); @chassix/realtime SpaceTimeDB EventTransport (live wiring per docs/spacetimedb-setup.md) |
 | 3.5 Logs & validation | claude | ☑ | orchestrator artifact-validation gate; apps/api logs route + apps/web run-monitor (stage status, Connection-uncertain) |
 | 3.6 Cancel | claude | ☑ | orchestrator: audited terminal Cancelled (client-loss ≠ cancel), retry forks new attempt |
-| 4.1 Orchestrator | | ☐ | |
-| 4.2 Remaining branches | | ☐ | |
-| 4.3 Barrier | | ☐ | |
-| 4.4 Failure decision | | ☐ | |
-| 4.5 Late retry | | ☐ | |
+| 4.1 Orchestrator | claude | ◐ | DAG/dependency rules pending; durable state machine, idempotent launch, retry-fork, stale-guard, reconciliation already landed in 3.3–3.6 |
+| 4.2 Remaining branches | claude | ◐ | Data/engine side done — all five branches run as GCP Batch jobs (`workflows/`) emitting validated bundle sections; `GET …/runs/:id/bundle` + apps/visualizer native-unit panels consume them. UI overlay panels in apps/web pending |
+| 4.3 Barrier | claude | ◐ | orchestrator `computeBarrier` + `RunOrchestrator.barrier()` (required-set gating, pending list, terminal tallies) + tests; UI "waiting on…" pending |
+| 4.4 Failure decision | claude | ◐ | orchestrator `evaluateFailureDecision` (min-evidence policy BF-08), `buildFallbackDecision` (audited, off-policy proceed refused), `needsFailureDecision` + tests; decision modal UI + persistence endpoint pending |
+| 4.5 Late retry | | ☐ | HarmonizationVersion on late retry — pending |
 | 5.1 Harmonizer | | ☐ | |
 | 5.2 Evidence graph | | ☐ | |
 | 5.3 Critic | | ☐ | |
