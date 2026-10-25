@@ -445,3 +445,27 @@
   font-size: 13px;
   line-height: 1.75;
 }
+
+/* Condition-projection note (values projected onto the dialed-in environment) */
+.ar-adjusted {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0 0 14px;
+  padding: 10px 13px;
+  border: 1px solid #3a4a44;
+  border-left: 3px solid #38d6a5;
+  border-radius: 8px;
+  background: color-mix(in srgb, #38d6a5 8%, #0e1420);
+  color: #bfe6d7;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.ar-adjusted svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #45d4ad;
+}
+.ar-adjusted strong {
+  color: #e6f3ec;
+}

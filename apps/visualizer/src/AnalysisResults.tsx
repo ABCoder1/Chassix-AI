@@ -7,6 +7,7 @@ import {
   GitBranch,
   Link2,
   Microscope,
+  Sparkles,
 } from "lucide-react";
 import type { AnalysisBundle, AnalysisStatus, Artifact } from "@chassix/analysis-bundle";
 import { resolveArtifacts } from "./bundle/provider";
@@ -80,7 +81,14 @@ function Section(props: {
  * provenance, and shows explicit status for missing/failed analyses. It never
  * rescales values and never fabricates a result — the opposite of the demo twin.
  */
-export function AnalysisResults({ bundle }: { bundle: AnalysisBundle }) {
+export function AnalysisResults({
+  bundle,
+  conditionAdjusted = false,
+}: {
+  bundle: AnalysisBundle;
+  /** True when values are model-projected onto the dialed-in environment (not the raw run). */
+  conditionAdjusted?: boolean;
+}) {
   const { run, organism, condition, analyses } = bundle;
   const ge = analyses.geneExpression;
   const flux = analyses.flux;
@@ -131,6 +139,15 @@ export function AnalysisResults({ bundle }: { bundle: AnalysisBundle }) {
           )}
         </div>
       </div>
+
+      {conditionAdjusted && (
+        <p className="ar-adjusted" role="note">
+          <Sparkles size={13} /> Values are{" "}
+          <strong>model-projected to the environment you set</strong> (temperature / salinity / pH).
+          The run&apos;s own condition is the baseline; move the levers back to the reference to see
+          the measured run values.
+        </p>
+      )}
 
       <div className="ar-grid">
         {ge && (

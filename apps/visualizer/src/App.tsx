@@ -55,6 +55,7 @@ import {
 import { SimulationDashboard } from "./SimulationDashboard";
 import { demoSimulationAdapter, simulateDemo, type SimulationResult } from "./simulation";
 import { AnalysisResults } from "./AnalysisResults";
+import { adjustBundleForEnvironment } from "./bundle/condition";
 import {
   BundleLoadError,
   fileBundleProvider,
@@ -1005,7 +1006,12 @@ export default function App() {
           <button onClick={backToDemo}>Back to demo twin</button>
         </section>
       ) : bundleState.kind === "ready" ? (
-        <AnalysisResults bundle={bundleState.bundle} />
+        (() => {
+          const projected = adjustBundleForEnvironment(bundleState.bundle, chassisId, environment);
+          return (
+            <AnalysisResults bundle={projected.bundle} conditionAdjusted={projected.adjusted} />
+          );
+        })()
       ) : (
         <section className="results-status">No bundle loaded.</section>
       )}
