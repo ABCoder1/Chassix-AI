@@ -22,6 +22,7 @@ import type { AuthGuards } from "../context.js";
 import type { RunOrchestratorProvider } from "../runs/service.js";
 import { serializeSseEvent, SSE_HEARTBEAT, parseCursor, projectBranchLogs } from "../runs/sse.js";
 import { bundleFromSnapshot, emptyBundleSource, type BundleSource } from "../runs/bundle.js";
+import { summarizeRunEvents } from "@chassix/realtime";
 
 /** How often to emit an SSE heartbeat comment (ms). */
 const HEARTBEAT_INTERVAL_MS = 15_000;
@@ -201,6 +202,20 @@ export const registerRunRoutes = (
           }),
         );
       }
+    },
+  );
+
+  // --- GET run metrics: analytics over the run_event log (same data mirrored to SpaceTimeDB) ---
+  app.get(
+    "/workspaces/:workspaceId/runs/:runId/metrics",
+    { preHandler: guards.requireWorkspace() },
+    async (req, reply) => {
+      const { workspaceId, runId } = req.params as { workspaceId: string; runId: string };
+      const snap = await resolveRun(workspaceId, runId);
+      if (!snap) return notFound(req, reply, "No such run in this workspace.");
+      const { orchestrator } = provider.getBundle(workspaceId);
+      const events = await orchestrator.replayFrom(asRunId(runId), 0);
+      return reply.status(200).send(summarizeRunEvents(events));
     },
   );
 

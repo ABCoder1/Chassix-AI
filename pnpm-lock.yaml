@@ -50,6 +50,9 @@ importers:
       '@chassix/planner':
         specifier: workspace:*
         version: link:../planner
+      '@chassix/realtime':
+        specifier: workspace:*
+        version: link:../realtime
       '@chassix/shared':
         specifier: workspace:*
         version: link:../../packages/shared

@@ -32,3 +32,28 @@ export function subscribeToRunEvents(
 export function rowState(row: RunEventRow): BranchState {
   return row.state as BranchState;
 }
+
+/**
+ * Fetch the `run_event` rows for one run from SpaceTimeDB: subscribe, collect the rows delivered
+ * during the initial sync (SpaceTimeDB replays existing matching rows as inserts), and resolve after
+ * a short settle window. The result can be fed straight into `summarizeRunEvents` to analyze the
+ * collected data. For authoritative gap-free history prefer the Postgres log; this is the live
+ * client-side snapshot.
+ */
+export function collectRunEvents(
+  conn: RunEventConnection,
+  runId: string,
+  options: { settleMs?: number } = {},
+): Promise<RunEventRow[]> {
+  const settleMs = options.settleMs ?? 500;
+  const rows: RunEventRow[] = [];
+  return new Promise((resolve) => {
+    conn.db.runEvent.onInsert((_ctx, row) => {
+      if (row.runId === runId) rows.push(row);
+    });
+    conn
+      .subscriptionBuilder()
+      .subscribe(`SELECT * FROM run_event WHERE run_id = ${sqlLiteral(runId)}`);
+    setTimeout(() => resolve(rows), settleMs);
+  });
+}

@@ -14,6 +14,7 @@
     "@chassix/db": "workspace:*",
     "@chassix/executor": "workspace:*",
     "@chassix/planner": "workspace:*",
+    "@chassix/realtime": "workspace:*",
     "@google-cloud/storage": "8.4.0",
     "@chassix/orchestrator": "workspace:*",
     "@chassix/shared": "workspace:*",

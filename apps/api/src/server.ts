@@ -13,8 +13,7 @@ import { registerGoalRoutes } from "./routes/goals.js";
 import { registerDiscoveryRoutes } from "./routes/discovery.js";
 import {
   createPlanner,
-  CachingRetrievalProvider,
-  FixtureRetrievalProvider,
+  createRetrievalProvider,
   type Planner,
   type RetrievalProvider,
 } from "@chassix/planner";
@@ -95,17 +94,19 @@ export function buildServer(options: BuildServerOptions = {}): FastifyInstance {
   const planner = options.planner ?? createPlanner();
   const plannerLive = options.planner ? false : Boolean(process.env.ANTHROPIC_API_KEY);
 
-  // Discovery (RAG): literature survey (cached) + candidate hosts/datasets. Fixture-backed by
-  // default (illustrative); a live Apify retriever (ADR-D9) can be injected behind the interface.
-  const retrieval =
-    options.retrieval ?? new CachingRetrievalProvider(new FixtureRetrievalProvider());
+  // Discovery (RAG): literature survey (cached) + candidate hosts/datasets. Uses the live Apify
+  // retriever when APIFY_API_TOKEN + APIFY_RETRIEVAL_ACTOR are set (ADR-D9), else a cached fixture
+  // provider (illustrative). `live` drives the UI's live-vs-illustrative label.
+  const defaultRetrieval = createRetrievalProvider();
+  const retrieval = options.retrieval ?? defaultRetrieval.provider;
+  const retrievalLive = options.retrieval ? false : defaultRetrieval.live;
   const datasetService =
     options.datasetService ?? new DatasetService(new FixtureRepositoryAdapter());
 
   registerAuthRoutes(app, { repos, sessions, guards });
   registerWorkspaceRoutes(app, { repos, guards });
   registerGoalRoutes(app, { planner, live: plannerLive });
-  registerDiscoveryRoutes(app, { retrieval, datasets: datasetService, live: false });
+  registerDiscoveryRoutes(app, { retrieval, datasets: datasetService, live: retrievalLive });
   registerRunRoutes(app, {
     guards,
     provider: runProvider,
