@@ -10,12 +10,12 @@
 import type { FastifyInstance } from "fastify";
 import { z } from "zod";
 import { apiError } from "@chassix/shared";
-import type { AgentMemoryStore, ResultsReasoner } from "@chassix/planner";
+import type { AgentMemoryStore, Reasoner } from "@chassix/planner";
 
 const reasoningSchema = z.object({ summary: z.string().min(1).max(20000) });
 
 export interface ReasoningRouteDeps {
-  reasoner: ResultsReasoner | null;
+  reasoner: Reasoner | null;
   /** Optional agentic memory (Moss) — recall related prior reasoning, then store this one. */
   memory?: AgentMemoryStore;
 }

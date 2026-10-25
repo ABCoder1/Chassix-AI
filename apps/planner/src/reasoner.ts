@@ -33,12 +33,17 @@ export interface ResultsReasoning {
   readonly model: string;
 }
 
+/** Any engine that turns a results summary into reasoning (Sonnet, Bitdeer, …). */
+export interface Reasoner {
+  reason(summary: string): Promise<ResultsReasoning>;
+}
+
 export interface ResultsReasonerOptions {
   client?: Anthropic;
   model?: string;
 }
 
-export class ResultsReasoner {
+export class ResultsReasoner implements Reasoner {
   private readonly client: Anthropic;
   private readonly model: string;
 
@@ -74,7 +79,121 @@ export class ResultsReasoner {
   }
 }
 
-/** Live reasoner when ANTHROPIC_API_KEY is set, else null (so the app runs keyless). */
-export function createReasoner(): ResultsReasoner | null {
-  return process.env.ANTHROPIC_API_KEY ? new ResultsReasoner() : null;
+/**
+ * Bitdeer AI Model Studio reasoner (OpenAI-compatible). Fast "Flash" models serve the same
+ * interpretation + reasoning-trace contract as the Anthropic path, so it can stand in for Sonnet
+ * (the user's goal: lower latency). Base URL and model are overridable; the key comes from the
+ * environment (BIT_DEER_API_KEY), never from the client. Reasoning models return their chain as
+ * `reasoning_content` (or inline `<think>…</think>`), which we surface as `thinking`.
+ */
+const DEFAULT_BITDEER_MODEL = "zai-org/GLM-5.3-Flash";
+const BITDEER_BASE_URL = "https://api-inference.bitdeer.ai/v1";
+
+export interface BitdeerReasonerOptions {
+  apiKey?: string;
+  model?: string;
+  baseUrl?: string;
+  fetchImpl?: typeof fetch;
+}
+
+export class BitdeerReasoner implements Reasoner {
+  readonly #apiKey: string;
+  readonly #model: string;
+  readonly #baseUrl: string;
+  readonly #fetch: typeof fetch;
+
+  constructor(opts: BitdeerReasonerOptions = {}) {
+    const apiKey = opts.apiKey ?? process.env.BIT_DEER_API_KEY;
+    if (!apiKey) throw new Error("BitdeerReasoner requires BIT_DEER_API_KEY.");
+    this.#apiKey = apiKey;
+    this.#model = opts.model ?? process.env.BITDEER_REASONING_MODEL ?? DEFAULT_BITDEER_MODEL;
+    this.#baseUrl = opts.baseUrl ?? process.env.BITDEER_BASE_URL ?? BITDEER_BASE_URL;
+    this.#fetch = opts.fetchImpl ?? fetch;
+  }
+
+  async reason(summary: string): Promise<ResultsReasoning> {
+    const res = await this.#fetch(`${this.#baseUrl}/chat/completions`, {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${this.#apiKey}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        model: this.#model,
+        max_tokens: 2000,
+        messages: [
+          { role: "system", content: RESULTS_REASONING_SYSTEM },
+          { role: "user", content: summary },
+        ],
+      }),
+    });
+    if (!res.ok) {
+      const detail = await res.text().catch(() => "");
+      throw new Error(`Bitdeer returned ${res.status}: ${detail.slice(0, 200)}`);
+    }
+    const json = (await res.json()) as {
+      model?: string;
+      choices?: { message?: { content?: string; reasoning_content?: string } }[];
+    };
+    const message = json.choices?.[0]?.message ?? {};
+    let text = (message.content ?? "").trim();
+    let thinking = (message.reasoning_content ?? "").trim();
+    // Some models inline the chain as <think>…</think> in the content; split it out.
+    const match = text.match(/^<think>([\s\S]*?)<\/think>\s*([\s\S]*)$/);
+    if (match) {
+      thinking = thinking || match[1]!.trim();
+      text = match[2]!.trim();
+    }
+    if (!text) throw new Error("Bitdeer returned no content.");
+    return { thinking, text, model: json.model ?? this.#model };
+  }
+}
+
+/**
+ * Tries a fast primary reasoner (Bitdeer) and falls back to a secondary (Sonnet) on any error — e.g.
+ * Bitdeer insufficient balance or an outage. A circuit breaker disables the primary after its first
+ * failure for the rest of the process, so later calls don't pay the failed-primary latency twice.
+ */
+export class FallbackReasoner implements Reasoner {
+  #primaryDisabled = false;
+  constructor(
+    private readonly primary: Reasoner,
+    private readonly secondary: Reasoner,
+  ) {}
+
+  async reason(summary: string): Promise<ResultsReasoning> {
+    if (!this.#primaryDisabled) {
+      try {
+        return await this.primary.reason(summary);
+      } catch (err) {
+        this.#primaryDisabled = true;
+        console.error(
+          "[reasoner] primary failed; falling back for the rest of this process:",
+          err instanceof Error ? err.message : err,
+        );
+      }
+    }
+    return this.secondary.reason(summary);
+  }
+}
+
+/**
+ * Picks the reasoning engine from the environment:
+ *   - Bitdeer + Anthropic set  → Bitdeer (fast) with a Sonnet fallback.
+ *   - only one set             → that one.
+ *   - neither                  → null (route returns 503).
+ * Override the order with REASONING_PROVIDER=anthropic|bitdeer.
+ */
+export function createReasoner(): Reasoner | null {
+  const hasBitdeer = Boolean(process.env.BIT_DEER_API_KEY);
+  const hasAnthropic = Boolean(process.env.ANTHROPIC_API_KEY);
+  const bitdeer = hasBitdeer ? new BitdeerReasoner() : null;
+  const sonnet = hasAnthropic ? new ResultsReasoner() : null;
+
+  const preference = process.env.REASONING_PROVIDER?.toLowerCase();
+  if (preference === "anthropic") return sonnet ?? bitdeer;
+  if (preference === "bitdeer") return bitdeer ?? sonnet;
+
+  if (bitdeer && sonnet) return new FallbackReasoner(bitdeer, sonnet);
+  return bitdeer ?? sonnet;
 }
