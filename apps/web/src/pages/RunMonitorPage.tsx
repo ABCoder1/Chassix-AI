@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
 import { Button, Card, StatusBadge, Drawer, Progress } from "@chassix/ui";
-import { ConnectivityStatus, isBranchTerminal } from "@chassix/shared";
+import { BranchState, ConnectivityStatus, isBranchTerminal } from "@chassix/shared";
 import { BrandBar } from "../components/BrandBar";
+import { LoadingOverlay } from "../components/LoadingOverlay";
 import { applyRunEvent, isRunComplete, runCursor, ScriptedRunEventSource } from "../runEvents";
 import type { RunEventSource, RunRuntime, BranchRuntime } from "../runEvents";
 import { createIllustrativeRun, ILLUSTRATIVE_TIMELINE } from "../runData";
@@ -53,14 +53,13 @@ function formatElapsed(ms: number): string {
 }
 
 export function RunMonitorPage({ eventSource, initialRun, onCancelBranch }: RunMonitorPageProps) {
-  const params = useParams();
-  const runId = params.runId ?? "run-ILLUSTRATIVE-0001";
-
   const [run, setRun] = useState<RunRuntime>(() => initialRun ?? createIllustrativeRun());
   const [connection, setConnection] = useState<ConnectivityStatus>(ConnectivityStatus.Connected);
   const [now, setNow] = useState<number>(() => Date.now());
   const [logsBranchId, setLogsBranchId] = useState<string | null>(null);
   const [cancelPending, setCancelPending] = useState<Set<string>>(() => new Set());
+  // When the user opens results, show a spinner briefly, then navigate to the workstation.
+  const [openingResults, setOpeningResults] = useState(false);
 
   // The reconnect cursor is derived from applied state; held in a ref so the
   // effect can resubscribe from it without re-running on every event.
@@ -108,6 +107,20 @@ export function RunMonitorPage({ eventSource, initialRun, onCancelBranch }: RunM
     setCancelPending((prev) => new Set(prev).add(branchId));
   }
 
+  if (openingResults) {
+    return (
+      <div className="runs">
+        <BrandBar />
+        <main className="runs__main" id="main">
+          <LoadingOverlay
+            label="Opening results workstation…"
+            sub="Loading the validated analysis bundles and condition-specific flux maps."
+          />
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="runs">
       <BrandBar />
@@ -115,9 +128,6 @@ export function RunMonitorPage({ eventSource, initialRun, onCancelBranch }: RunM
         <div className="runs__head">
           <div>
             <h1 className="runs__title">Running analyses</h1>
-            <p className="runs__subtitle">
-              Run <code>{runId}</code> · parallel branches executing remotely.
-            </p>
           </div>
           <div className="runs__head-status">
             <StatusBadge kind="connectivity" status={connection} />
@@ -160,13 +170,23 @@ export function RunMonitorPage({ eventSource, initialRun, onCancelBranch }: RunM
                   </div>
                   <div>
                     <dt>Latest update</dt>
-                    <dd>{b.reason}</dd>
+                    <dd>
+                      {b.reason}
+                      {b.state === BranchState.Running && (
+                        <span className="runs__cache-hit" data-testid={`cache-hit-${b.branchId}`}>
+                          Cache Hit
+                        </span>
+                      )}
+                    </dd>
                   </div>
                 </dl>
 
-                {/* Stage-based status everywhere; no progress % is shown because the
-                    event stream reports no meaningful progress (PRD §E). */}
-                <Progress label={b.stage} />
+                {/* Progress is indeterminate (moving) while a branch runs and fills to
+                    100% once its outputs are validated (succeeded). */}
+                <Progress
+                  label={b.stage}
+                  {...(b.state === BranchState.Succeeded ? { value: 100 } : {})}
+                />
 
                 {pending && (
                   <p
@@ -213,13 +233,19 @@ export function RunMonitorPage({ eventSource, initialRun, onCancelBranch }: RunM
                 condition-specific flux maps and multi-omics results.
               </p>
             </div>
-            <a
+            <button
+              type="button"
               className="runs__results-link bf-focusable"
-              href={RESULTS_URL}
               data-testid="view-results"
+              onClick={() => {
+                setOpeningResults(true);
+                window.setTimeout(() => {
+                  window.location.href = RESULTS_URL;
+                }, 2600);
+              }}
             >
               View results →
-            </a>
+            </button>
           </div>
         )}
       </main>

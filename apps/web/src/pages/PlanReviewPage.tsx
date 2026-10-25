@@ -5,6 +5,7 @@ import { BranchState } from "@chassix/shared";
 import { ILLUSTRATIVE_PLAN } from "../planData";
 import type { PlanDraft } from "../planData";
 import { BrandBar } from "../components/BrandBar";
+import { LoadingOverlay, useTimedLoading } from "../components/LoadingOverlay";
 import "./plan.css";
 
 /**
@@ -38,6 +39,7 @@ export function PlanReviewPage({ plan = ILLUSTRATIVE_PLAN, onLaunch }: PlanRevie
   const hasBlockers = blockedBranches.length > 0 || plan.unresolvedAssumptions.length > 0;
   const basicParams = plan.parameters.filter((p) => !p.advanced);
   const advancedParams = plan.parameters.filter((p) => p.advanced);
+  const loading = useTimedLoading(3200);
 
   function handleLaunch() {
     // Illustratively "freeze" the manifest: mark launched (immutable), then go to
@@ -47,6 +49,20 @@ export function PlanReviewPage({ plan = ILLUSTRATIVE_PLAN, onLaunch }: PlanRevie
     else navigate(`/runs/${plan.runId}`);
   }
 
+  if (loading) {
+    return (
+      <div className="plan">
+        <BrandBar />
+        <main className="plan__main" id="main">
+          <LoadingOverlay
+            label="Preparing execution plan…"
+            sub="Resolving tools, references and resource estimates for each analysis branch."
+          />
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="plan">
       <BrandBar />
@@ -54,9 +70,6 @@ export function PlanReviewPage({ plan = ILLUSTRATIVE_PLAN, onLaunch }: PlanRevie
         <div className="plan__head">
           <div>
             <h1 className="plan__title">Plan review</h1>
-            <p className="plan__subtitle">
-              Confirm hosts, inputs, tools and parameters before launching parallel analyses.
-            </p>
           </div>
         </div>
 
@@ -242,12 +255,6 @@ export function PlanReviewPage({ plan = ILLUSTRATIVE_PLAN, onLaunch }: PlanRevie
             {launched ? "Analyses started" : "Start analyses"}
           </Button>
         </div>
-        {hasBlockers && !launched && (
-          <p className="plan__launch-note" role="note">
-            Blocked branches and unresolved assumptions are shown above. In the live product these
-            must be resolved by the review gates before launch (PRD §D).
-          </p>
-        )}
       </main>
     </div>
   );

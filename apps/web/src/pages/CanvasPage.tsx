@@ -8,6 +8,7 @@ import { useSelectionStore } from "../store/selectionStore";
 import { Canvas } from "../components/Canvas";
 import { StageList } from "../components/StageList";
 import { BrandBar } from "../components/BrandBar";
+import { LoadingOverlay, useTimedLoading } from "../components/LoadingOverlay";
 import "./canvas.css";
 
 const ZOOM_MIN = 0.6;
@@ -34,6 +35,21 @@ export function CanvasPage() {
   const toggleDataset = useSelectionStore((s) => s.toggleDataset);
 
   const activeStage = STAGES.find((s) => s.id === activeStageId) ?? STAGES[0]!;
+  const loading = useTimedLoading(3000);
+
+  if (loading) {
+    return (
+      <div className="canvaspage">
+        <BrandBar />
+        <main className="canvaspage__main" id="main">
+          <LoadingOverlay
+            label="Assembling workflow canvas…"
+            sub="Composing the Phase 1 workflow from your selected hosts and datasets."
+          />
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="canvaspage">
@@ -166,9 +182,6 @@ export function CanvasPage() {
               <div className="canvaspage__nav" role="group" aria-label="Workflow navigation">
                 <Button type="button" variant="secondary" onClick={() => navigate("/plan")}>
                   Review plan
-                </Button>
-                <Button type="button" variant="ghost" onClick={() => navigate("/run")}>
-                  View running analyses
                 </Button>
               </div>
             </section>

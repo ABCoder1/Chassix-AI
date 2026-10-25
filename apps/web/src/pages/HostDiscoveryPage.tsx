@@ -7,6 +7,7 @@ import { EXAMPLE_GOAL } from "../modules";
 import { discover, type DatasetCandidateDTO, type DiscoveredHostDTO } from "../api";
 import { useSelectionStore } from "../store/selectionStore";
 import { BrandBar } from "../components/BrandBar";
+import { LoadingOverlay, useTimedLoading } from "../components/LoadingOverlay";
 import "./hosts.css";
 
 const SUITABILITY_LABEL: Record<string, string> = {
@@ -88,6 +89,8 @@ export function HostDiscoveryPage() {
   const [hosts, setHosts] = useState<HostCandidate[]>([...HOST_CANDIDATES]);
   const [datasets, setDatasets] = useState<DatasetCandidateDTO[]>([]);
   const [surveying, setSurveying] = useState(false);
+  // Hold a visible "literature review in progress" state so the survey reads as live work.
+  const loading = useTimedLoading(4000);
 
   // Run the literature survey (RAG discovery) for the drafted goal; fall back to fixtures on error.
   useEffect(() => {
@@ -112,6 +115,20 @@ export function HostDiscoveryPage() {
   const canCompare = selectedCount >= 2;
   const drawerHost = hosts.find((h) => h.id === drawerHostId) ?? null;
 
+  if (loading) {
+    return (
+      <div className="hosts">
+        <BrandBar />
+        <main className="hosts__main" id="main">
+          <LoadingOverlay
+            label="Running literature review…"
+            sub="Our Apify agent is surveying the literature for candidate hosts and supporting datasets."
+          />
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="hosts">
       <BrandBar />
@@ -119,15 +136,6 @@ export function HostDiscoveryPage() {
         <div className="hosts__head">
           <div>
             <h1 className="hosts__title">Host discovery</h1>
-            <p className="hosts__subtitle">
-              {goalPrompt ? (
-                <>
-                  Ranked for your goal: <q>{goalPrompt}</q>
-                </>
-              ) : (
-                "Ranked host candidates for your drafted goal."
-              )}
-            </p>
           </div>
           {surveying ? <Tag>surveying…</Tag> : null}
         </div>

@@ -62,6 +62,8 @@ export function GoalReviewPage() {
   const [draft, setDraft] = useState<GoalVersionDraft>(
     interpretation?.draft ?? ILLUSTRATIVE_GOAL_DRAFT,
   );
+  // Free-text answers the user provides to each clarifying question.
+  const [answers, setAnswers] = useState<Record<number, string>>({});
 
   const setField = (key: (typeof FIELD_KEYS)[number], patch: Partial<ExtractedField>) =>
     setDraft((d) => ({ ...d, [key]: { ...d[key], ...patch } }));
@@ -82,10 +84,6 @@ export function GoalReviewPage() {
         <div className="goal__head">
           <div>
             <h1 className="goal__title">Review interpreted goal</h1>
-            <p className="goal__subtitle">
-              Check and edit how we understood your goal before any data processing. Nothing here is
-              fixed — assumptions and unknowns are yours to correct.
-            </p>
           </div>
         </div>
 
@@ -228,7 +226,17 @@ export function GoalReviewPage() {
           <ul className="goal__questions" role="list">
             {draft.clarifyingQuestions.map((q, i) => (
               <li key={i} className="goal__question">
-                {q}
+                <label className="goal__question-label" htmlFor={`clarify-${i}`}>
+                  {q}
+                </label>
+                <textarea
+                  id={`clarify-${i}`}
+                  className="goal__question-input"
+                  rows={2}
+                  placeholder="Your answer…"
+                  value={answers[i] ?? ""}
+                  onChange={(e) => setAnswers((a) => ({ ...a, [i]: e.target.value }))}
+                />
               </li>
             ))}
           </ul>
