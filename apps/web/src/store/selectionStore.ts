@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
+import type { GoalInterpretationResult } from "../api";
 
 /**
  * Selection-state store (Step 1.7). Holds the draft goal prompt plus the user's
@@ -10,11 +11,14 @@ import { persist, createJSONStorage } from "zustand/middleware";
 export interface SelectionState {
   /** The plain-language goal captured on the welcome screen. */
   goalPrompt: string;
+  /** The planner's interpretation of the goal (null until submitted / when it fell back offline). */
+  goalInterpretation: GoalInterpretationResult | null;
   /** Ids of selected host candidates. */
   selectedHostIds: string[];
   /** Ids of selected datasets. */
   selectedDatasetIds: string[];
   setGoalPrompt: (prompt: string) => void;
+  setGoalInterpretation: (interpretation: GoalInterpretationResult | null) => void;
   toggleHost: (id: string) => void;
   toggleDataset: (id: string) => void;
   clearSelections: () => void;
@@ -29,9 +33,11 @@ export const useSelectionStore = create<SelectionState>()(
   persist(
     (set) => ({
       goalPrompt: "",
+      goalInterpretation: null,
       selectedHostIds: [],
       selectedDatasetIds: [],
       setGoalPrompt: (prompt) => set({ goalPrompt: prompt }),
+      setGoalInterpretation: (interpretation) => set({ goalInterpretation: interpretation }),
       toggleHost: (id) => set((s) => ({ selectedHostIds: toggle(s.selectedHostIds, id) })),
       toggleDataset: (id) => set((s) => ({ selectedDatasetIds: toggle(s.selectedDatasetIds, id) })),
       clearSelections: () => set({ selectedHostIds: [], selectedDatasetIds: [] }),

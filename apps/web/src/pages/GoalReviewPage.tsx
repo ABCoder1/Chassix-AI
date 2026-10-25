@@ -54,10 +54,15 @@ const FIELD_KEYS = ["organismConstraints", "desiredPhenotype", "productContext"]
 export function GoalReviewPage() {
   const navigate = useNavigate();
   const storedGoal = useSelectionStore((s) => s.goalPrompt);
-  const originalPrompt = storedGoal || ILLUSTRATIVE_GOAL_PROMPT;
+  const interpretation = useSelectionStore((s) => s.goalInterpretation);
 
-  // Local editable copy of the illustrative draft (no API call).
-  const [draft, setDraft] = useState<GoalVersionDraft>(ILLUSTRATIVE_GOAL_DRAFT);
+  // Seed from the planner's interpretation (set on the welcome screen); fall back to the labeled
+  // illustrative draft when there is none (e.g. API was unreachable, or the page was opened directly).
+  const illustrative = interpretation ? interpretation.illustrative : true;
+  const originalPrompt = interpretation?.originalPrompt || storedGoal || ILLUSTRATIVE_GOAL_PROMPT;
+  const [draft, setDraft] = useState<GoalVersionDraft>(
+    interpretation?.draft ?? ILLUSTRATIVE_GOAL_DRAFT,
+  );
 
   const setField = (key: (typeof FIELD_KEYS)[number], patch: Partial<ExtractedField>) =>
     setDraft((d) => ({ ...d, [key]: { ...d[key], ...patch } }));
@@ -83,13 +88,20 @@ export function GoalReviewPage() {
               fixed — assumptions and unknowns are yours to correct.
             </p>
           </div>
-          <Tag>illustrative draft</Tag>
+          <Tag>{illustrative ? "illustrative draft" : "live interpretation"}</Tag>
         </div>
 
-        <p className="goal__illustrative" role="note">
-          Illustrative interpretation — this draft is a labeled fixture, not the output of the live
-          planner. No value below is a confirmed scientific fact.
-        </p>
+        {illustrative ? (
+          <p className="goal__illustrative" role="note">
+            Illustrative interpretation — this draft is a labeled fixture (the live planner was not
+            used). No value below is a confirmed scientific fact.
+          </p>
+        ) : (
+          <p className="goal__illustrative" role="note">
+            Interpreted by the planner from your prompt. Every field is editable — nothing here is a
+            confirmed scientific fact, and unknowns were not fabricated.
+          </p>
+        )}
 
         <section className="goal__section" aria-labelledby="goal-prompt-h">
           <h2 className="goal__section-title" id="goal-prompt-h">

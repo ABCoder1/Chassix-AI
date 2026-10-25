@@ -15,5 +15,16 @@ export default defineConfig({
       "@chassix/shared": r("../../packages/shared/src/index.ts"),
     },
   },
-  server: { port: 5173 },
+  server: {
+    port: 5173,
+    // Proxy API calls to the Fastify server so the browser stays same-origin (no CORS in dev).
+    // `/api/goals/interpret` → `http://localhost:3001/goals/interpret`.
+    proxy: {
+      "/api": {
+        target: process.env.VITE_API_TARGET ?? "http://localhost:3001",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
+  },
 });

@@ -9,6 +9,8 @@ import type { Repositories } from "./repositories/types.js";
 import { registerAuthRoutes } from "./routes/auth.js";
 import { registerWorkspaceRoutes } from "./routes/workspaces.js";
 import { registerRunRoutes } from "./routes/runs.js";
+import { registerGoalRoutes } from "./routes/goals.js";
+import { createPlanner, type Planner } from "@chassix/planner";
 import {
   createRunOrchestratorProvider,
   providerFromBundle,
@@ -37,6 +39,8 @@ export interface BuildServerOptions {
   executor?: ExecutorAdapter;
   /** Supplies ingested analysis fragments for the run bundle endpoint. Defaults to none ingested. */
   bundleSource?: BundleSource;
+  /** Goal-interpretation planner. Defaults to the live Claude planner when keyed, else the fake. */
+  planner?: Planner;
 }
 
 /**
@@ -74,8 +78,14 @@ export function buildServer(options: BuildServerOptions = {}): FastifyInstance {
 
   app.get("/health", async () => ({ status: "ok" }));
 
+  // Goal interpretation (landing page → planner). Injected planner ⇒ illustrative (fake); the
+  // default is live only when ANTHROPIC_API_KEY is set (same condition createPlanner() uses).
+  const planner = options.planner ?? createPlanner();
+  const plannerLive = options.planner ? false : Boolean(process.env.ANTHROPIC_API_KEY);
+
   registerAuthRoutes(app, { repos, sessions, guards });
   registerWorkspaceRoutes(app, { repos, guards });
+  registerGoalRoutes(app, { planner, live: plannerLive });
   registerRunRoutes(app, {
     guards,
     provider: runProvider,

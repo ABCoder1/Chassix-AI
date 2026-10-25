@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, Card, Tag } from "@chassix/ui";
 import { MODULES, EXAMPLE_GOAL } from "../modules";
 import { useSelectionStore } from "../store/selectionStore";
+import { interpretGoal } from "../api";
 import { BrandBar } from "../components/BrandBar";
 import "./welcome.css";
 
@@ -19,15 +20,35 @@ export function WelcomePage() {
   const navigate = useNavigate();
   const storedGoal = useSelectionStore((s) => s.goalPrompt);
   const setGoalPrompt = useSelectionStore((s) => s.setGoalPrompt);
+  const setGoalInterpretation = useSelectionStore((s) => s.setGoalInterpretation);
   const [prompt, setPrompt] = useState(storedGoal);
+  const [submitting, setSubmitting] = useState(false);
+  const [notice, setNotice] = useState<string | null>(null);
 
   const trimmed = prompt.trim();
-  const canSubmit = trimmed.length > 0;
+  const canSubmit = trimmed.length > 0 && !submitting;
 
-  const submit = () => {
-    if (!canSubmit) return;
+  // Submit the goal to the planner (the first real pipeline step), then move to the review screen.
+  // If the API is unreachable, fall back to the illustrative interpretation so the demo still flows.
+  const submit = async () => {
+    if (trimmed.length === 0 || submitting) return;
+    setSubmitting(true);
+    setNotice(null);
     setGoalPrompt(trimmed);
-    navigate("/goal");
+    try {
+      const interpretation = await interpretGoal(trimmed);
+      setGoalInterpretation(interpretation);
+      navigate("/goal");
+    } catch {
+      // Offline / API down: clear any stale result; the review page shows a labeled illustrative draft.
+      setGoalInterpretation(null);
+      setNotice(
+        "Couldn't reach the interpreter — showing an illustrative draft you can still edit.",
+      );
+      navigate("/goal");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const chooseExample = () => setPrompt(EXAMPLE_GOAL);
@@ -46,7 +67,7 @@ export function WelcomePage() {
             className="welcome__composer"
             onSubmit={(e) => {
               e.preventDefault();
-              submit();
+              void submit();
             }}
           >
             <label className="welcome__label" htmlFor="goal-composer">
@@ -67,12 +88,17 @@ export function WelcomePage() {
 
             <div className="welcome__actions">
               <Button type="submit" variant="primary" disabled={!canSubmit}>
-                Build my workflow
+                {submitting ? "Interpreting…" : "Build my workflow"}
               </Button>
-              <Button type="button" variant="ghost" onClick={chooseExample}>
+              <Button type="button" variant="ghost" onClick={chooseExample} disabled={submitting}>
                 Choose an example
               </Button>
             </div>
+            {notice && (
+              <p className="welcome__hint" role="status">
+                {notice}
+              </p>
+            )}
           </form>
 
           <aside className="welcome__example" aria-label="Example goal">

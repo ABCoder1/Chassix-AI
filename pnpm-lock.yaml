@@ -44,6 +44,9 @@ importers:
       '@chassix/orchestrator':
         specifier: workspace:*
         version: link:../orchestrator
+      '@chassix/planner':
+        specifier: workspace:*
+        version: link:../planner
       '@chassix/shared':
         specifier: workspace:*
         version: link:../../packages/shared
