@@ -11,6 +11,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@chassix/shared": r("./packages/shared/src/index.ts"),
+      "@chassix/analysis-bundle": r("./packages/analysis-bundle/src/index.ts"),
       "@chassix/ui": r("./packages/ui/src/index.ts"),
       "@chassix/db": r("./packages/db/src/index.ts"),
       "@chassix/planner": r("./apps/planner/src/index.ts"),

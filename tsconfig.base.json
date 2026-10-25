@@ -21,6 +21,8 @@
     "paths": {
       "@chassix/shared": ["packages/shared/src/index.ts"],
       "@chassix/shared/*": ["packages/shared/src/*"],
+      "@chassix/analysis-bundle": ["packages/analysis-bundle/src/index.ts"],
+      "@chassix/analysis-bundle/*": ["packages/analysis-bundle/src/*"],
       "@chassix/ui": ["packages/ui/src/index.ts"],
       "@chassix/ui/*": ["packages/ui/src/*"],
       "@chassix/db": ["packages/db/src/index.ts"],
