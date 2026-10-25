@@ -2,28 +2,33 @@ import { buildServer } from "./server.js";
 import { createInMemoryRepositories } from "./repositories/memory.js";
 import { createDrizzleRepositories } from "./repositories/drizzle.js";
 import type { Repositories } from "./repositories/types.js";
+import type { DbClient } from "@chassix/db";
 
 const port = Number(process.env.API_PORT ?? 3001);
 
 /**
- * Wire Drizzle-backed repositories when a database is configured; otherwise fall back to the
- * in-memory repositories so the server still boots in a bare dev environment. Live credential
- * persistence additionally needs a `password_hash` column on `@chassix/db`'s `users` table
- * (see Step 1.4 report).
+ * Wire Drizzle/Supabase-backed persistence when `DATABASE_URL` is configured: the auth/workspace
+ * repositories AND the run orchestrator (runs/branches/attempts + the append-only event log)
+ * persist to Postgres, scoped per workspace. Without a database we fall back to in-memory so the
+ * server still boots in a bare dev environment (data is not durable).
  */
-async function buildRepositories(): Promise<Repositories> {
+async function main(): Promise<void> {
+  let dbClient: DbClient | undefined;
+  let repos: Repositories;
+
   if (process.env.DATABASE_URL) {
     const { createDbClient } = await import("@chassix/db");
-    const { db } = createDbClient();
-    return createDrizzleRepositories(db);
+    dbClient = createDbClient();
+    repos = createDrizzleRepositories(dbClient.db);
+    console.log("[api] DATABASE_URL set — using Drizzle/Supabase repositories (durable).");
+  } else {
+    console.warn(
+      "[api] DATABASE_URL not set — using in-memory repositories (data is not durable).",
+    );
+    repos = createInMemoryRepositories();
   }
-  console.warn("[api] DATABASE_URL not set — using in-memory repositories (data is not durable).");
-  return createInMemoryRepositories();
-}
 
-async function main(): Promise<void> {
-  const repos = await buildRepositories();
-  const app = buildServer({ repos });
+  const app = buildServer({ repos, ...(dbClient ? { dbClient } : {}) });
   const address = await app.listen({ port, host: "0.0.0.0" });
   console.log(`[api] listening on ${address}`);
 }

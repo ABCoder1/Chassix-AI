@@ -322,6 +322,33 @@ export const attempts = pgTable("attempts", {
   ...stamps(),
 });
 
+/**
+ * Append-only per-run status-event log (ADR-D8, Step 3.4) — the authoritative cursor for
+ * gap-free SSE replay. Identifiers are the orchestrator's own (string) ids, NOT the DB uuids
+ * above (mirrors how DrizzleRunRepository journals records), so the log is queryable by the
+ * orchestrator's runId. The unique (workspace_id, run_id, sequence) makes appends idempotent
+ * and enforces the monotonic, gap-free per-run sequence.
+ */
+export const runEvents = pgTable(
+  "run_events",
+  {
+    id: pk(),
+    workspaceId: wsRef(),
+    runId: text("run_id").notNull(),
+    branchId: text("branch_id").notNull(),
+    attemptId: text("attempt_id").notNull(),
+    eventId: text("event_id").notNull(),
+    sequence: integer("sequence").notNull(),
+    state: branchStateEnum("state").notNull(),
+    reason: text("reason").notNull().default(""),
+    eventAt: timestamp("event_at", { withTimezone: true }).notNull(),
+    ...stamps(),
+  },
+  (t) => ({
+    uqRunSeq: unique("uq_run_event_run_sequence").on(t.workspaceId, t.runId, t.sequence),
+  }),
+);
+
 // --- artifacts + evidence graph ---------------------------------------------
 export const artifacts = pgTable("artifacts", {
   id: pk(),

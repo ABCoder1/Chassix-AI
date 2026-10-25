@@ -19,7 +19,7 @@ import { z } from "zod";
 import { apiError } from "@chassix/shared";
 import { asRunId, asBranchId, OrchestratorError } from "@chassix/orchestrator";
 import type { AuthGuards } from "../context.js";
-import type { RunOrchestratorBundle } from "../runs/service.js";
+import type { RunOrchestratorProvider } from "../runs/service.js";
 import { serializeSseEvent, SSE_HEARTBEAT, parseCursor, projectBranchLogs } from "../runs/sse.js";
 import { bundleFromSnapshot, emptyBundleSource, type BundleSource } from "../runs/bundle.js";
 
@@ -53,7 +53,8 @@ const cancelSchema = z
 
 export interface RunRouteDeps {
   guards: AuthGuards;
-  bundle: RunOrchestratorBundle;
+  /** Supplies a (possibly workspace-scoped) run-orchestrator bundle per request. */
+  provider: RunOrchestratorProvider;
   /** Overridable for tests; defaults to a 15s heartbeat. */
   heartbeatIntervalMs?: number;
   /** Supplies ingested analysis fragments for the bundle endpoint; defaults to none ingested. */
@@ -69,15 +70,19 @@ export const registerRunRoutes = (
   app: FastifyInstance,
   {
     guards,
-    bundle,
+    provider,
     heartbeatIntervalMs = HEARTBEAT_INTERVAL_MS,
     bundleSource = emptyBundleSource,
   }: RunRouteDeps,
 ): void => {
-  const { orchestrator, transport, repo } = bundle;
+  // The live event transport is shared across requests (SSE fan-out). The orchestrator + repo
+  // are obtained per request from the provider so a DB-backed provider can scope them to the
+  // caller's workspace (cross-workspace access is then impossible at the query layer).
+  const transport = provider.transport;
 
   /** Resolve a run that belongs to THIS workspace, or null (prevents cross-workspace id probing). */
   const resolveRun = async (workspaceId: string, runId: string) => {
+    const { orchestrator } = provider.getBundle(workspaceId);
     try {
       const snap = await orchestrator.snapshot(asRunId(runId));
       if (snap.run.workspaceId !== workspaceId) return null;
@@ -103,6 +108,7 @@ export const registerRunRoutes = (
         );
       }
       const workspaceId = req.workspace!.workspaceId;
+      const { orchestrator } = provider.getBundle(workspaceId);
       // Drop an absent branchId rather than passing `undefined` (exactOptionalPropertyTypes).
       const branches = parsed.data.branches.map((b) => ({
         ...(b.branchId ? { branchId: b.branchId } : {}),
@@ -177,6 +183,7 @@ export const registerRunRoutes = (
       const { workspaceId, runId } = req.params as { workspaceId: string; runId: string };
       const snap = await resolveRun(workspaceId, runId);
       if (!snap) return notFound(req, reply, "No such run in this workspace.");
+      const { orchestrator } = provider.getBundle(workspaceId);
 
       const cursor = parseCursor(
         req.headers["last-event-id"],
@@ -241,6 +248,7 @@ export const registerRunRoutes = (
       const { workspaceId, runId } = req.params as { workspaceId: string; runId: string };
       const snap = await resolveRun(workspaceId, runId);
       if (!snap) return notFound(req, reply, "No such run in this workspace.");
+      const { orchestrator } = provider.getBundle(workspaceId);
 
       const parsed = cancelSchema.safeParse(req.body ?? {});
       if (!parsed.success) {
@@ -281,6 +289,7 @@ export const registerRunRoutes = (
       if (!snap.branches.some((b) => b.id === branchId)) {
         return notFound(req, reply, "No such branch in this run.");
       }
+      const { orchestrator, repo } = provider.getBundle(workspaceId);
       const attempts = await repo.listAttempts(asBranchId(branchId));
       const events = await orchestrator.replayFrom(asRunId(runId), 0);
       return reply

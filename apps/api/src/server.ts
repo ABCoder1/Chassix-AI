@@ -9,8 +9,14 @@ import type { Repositories } from "./repositories/types.js";
 import { registerAuthRoutes } from "./routes/auth.js";
 import { registerWorkspaceRoutes } from "./routes/workspaces.js";
 import { registerRunRoutes } from "./routes/runs.js";
-import { createRunOrchestrator, type RunOrchestratorBundle } from "./runs/service.js";
+import {
+  createRunOrchestratorProvider,
+  providerFromBundle,
+  type RunOrchestratorBundle,
+  type RunOrchestratorProvider,
+} from "./runs/service.js";
 import type { BundleSource } from "./runs/bundle.js";
+import type { DbClient } from "@chassix/db";
 
 export interface BuildServerOptions {
   /** Persistence ports. Defaults to in-memory repositories (no Postgres needed). */
@@ -19,8 +25,12 @@ export interface BuildServerOptions {
   sessionSecret?: string;
   /** Pre-built session manager (overrides `sessionSecret`); mainly for tests. */
   sessions?: SessionManager;
-  /** Run orchestrator bundle (in-memory stack + FakeExecutor). Defaults to a fresh one; override for tests. */
+  /** Run orchestrator bundle (in-memory stack + FakeExecutor). Overrides the provider; tests pass this. */
   orchestrator?: RunOrchestratorBundle;
+  /** Full provider override (advanced/tests). Takes precedence over `orchestrator` and `dbClient`. */
+  runProvider?: RunOrchestratorProvider;
+  /** When set (and no override above), runs + the event log persist to Postgres per workspace. */
+  dbClient?: DbClient;
   /** Supplies ingested analysis fragments for the run bundle endpoint. Defaults to none ingested. */
   bundleSource?: BundleSource;
 }
@@ -43,7 +53,12 @@ export function buildServer(options: BuildServerOptions = {}): FastifyInstance {
       options.sessionSecret ?? process.env.JWT_SECRET ?? randomBytes(32).toString("hex"),
     );
 
-  const orchestrator = options.orchestrator ?? createRunOrchestrator();
+  // Resolve the run-orchestrator provider: explicit override > test bundle > DB-backed > in-memory.
+  const runProvider: RunOrchestratorProvider =
+    options.runProvider ??
+    (options.orchestrator
+      ? providerFromBundle(options.orchestrator)
+      : createRunOrchestratorProvider(options.dbClient ? { dbClient: options.dbClient } : {}));
 
   app.register(cookie);
 
@@ -55,7 +70,7 @@ export function buildServer(options: BuildServerOptions = {}): FastifyInstance {
   registerWorkspaceRoutes(app, { repos, guards });
   registerRunRoutes(app, {
     guards,
-    bundle: orchestrator,
+    provider: runProvider,
     ...(options.bundleSource ? { bundleSource: options.bundleSource } : {}),
   });
 

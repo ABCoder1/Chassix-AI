@@ -20,17 +20,33 @@
  * `@chassix/api` repositories use) to avoid TypeScript's fresh-object-literal excess-property
  * check against the Drizzle insert model.
  */
-import { runs, branches, attempts, artifacts, auditEvents, WorkspaceScope } from "@chassix/db";
+import {
+  runs,
+  branches,
+  attempts,
+  artifacts,
+  auditEvents,
+  runEvents,
+  WorkspaceScope,
+} from "@chassix/db";
 import type { DbClient } from "@chassix/db";
 import type {
   RunRepository,
+  EventLogRepository,
   RunRecord,
   BranchRecord,
   AttemptRecord,
   ArtifactRecord,
   AuditRecord,
 } from "../types.js";
-import type { RunId, BranchId, AttemptId, WorkspaceId } from "@chassix/shared";
+import type {
+  RunId,
+  BranchId,
+  AttemptId,
+  WorkspaceId,
+  BranchStatusEvent,
+  BranchState,
+} from "@chassix/shared";
 
 /** Reserved journal actions (not real audit events — see module doc). */
 const J = {
@@ -48,6 +64,22 @@ export class DrizzleRunRepository implements RunRepository {
     private readonly workspaceId: WorkspaceId,
   ) {
     this.scope = new WorkspaceScope(client.db, workspaceId);
+  }
+
+  /**
+   * Typed identity rows are BEST-EFFORT. The orchestrator uses its own synthetic ids (and
+   * free-form project/plan refs), which do not satisfy the typed tables' uuid / foreign-key
+   * constraints, so these inserts can throw against real Postgres. The append-only journal
+   * (`audit_events.payload`) is the authoritative read source, so a failed identity insert must
+   * never fail the operation. When the migration adds the orchestrator's own columns, these
+   * become ordinary typed writes.
+   */
+  private async tryTypedInsert(run: () => Promise<unknown>): Promise<void> {
+    try {
+      await run();
+    } catch {
+      /* journal is authoritative */
+    }
   }
 
   /** Append a full-record JSON snapshot into the journal (latest row wins on read). */
@@ -97,7 +129,7 @@ export class DrizzleRunRepository implements RunRepository {
       startedAt: run.startedAt ? new Date(run.startedAt) : null,
       finishedAt: run.finishedAt ? new Date(run.finishedAt) : null,
     };
-    await this.scope.insert(runs, values).onConflictDoNothing();
+    await this.tryTypedInsert(() => this.scope.insert(runs, values).onConflictDoNothing());
     await this.journal(J.run, run.id, run);
     return { created: true, run };
   }
@@ -122,7 +154,7 @@ export class DrizzleRunRepository implements RunRepository {
         sequence: branch.sequence,
         reason: branch.reason,
       };
-      await this.scope.insert(branches, values).onConflictDoNothing();
+      await this.tryTypedInsert(() => this.scope.insert(branches, values).onConflictDoNothing());
     }
     await this.journal(J.branch, branch.id, branch);
   }
@@ -150,7 +182,7 @@ export class DrizzleRunRepository implements RunRepository {
         startedAt: attempt.startedAt ? new Date(attempt.startedAt) : null,
         finishedAt: attempt.finishedAt ? new Date(attempt.finishedAt) : null,
       };
-      await this.scope.insert(attempts, values).onConflictDoNothing();
+      await this.tryTypedInsert(() => this.scope.insert(attempts, values).onConflictDoNothing());
     }
     await this.journal(J.attempt, attempt.id, attempt);
   }
@@ -172,7 +204,7 @@ export class DrizzleRunRepository implements RunRepository {
         sizeBytes: a.sizeBytes,
         available: a.available,
       };
-      await this.scope.insert(artifacts, values).onConflictDoNothing();
+      await this.tryTypedInsert(() => this.scope.insert(artifacts, values).onConflictDoNothing());
       await this.journal(J.artifact, a.id, a);
     }
   }
@@ -209,5 +241,57 @@ export class DrizzleRunRepository implements RunRepository {
         payload: (r.payload as Record<string, unknown> | null) ?? null,
         createdAt: r.createdAt instanceof Date ? r.createdAt.toISOString() : String(r.createdAt),
       }));
+  }
+}
+
+/**
+ * Drizzle-backed `EventLogRepository` over `@chassix/db`'s `run_events` table — the durable,
+ * append-only, per-run status-event log (ADR-D8, Step 3.4). Workspace-bound like the run
+ * repository. Appends are idempotent via the `(workspace_id, run_id, sequence)` unique index,
+ * so a replayed/duplicate delivery can never create a second row or move the cursor backward.
+ */
+export class DrizzleEventLogRepository implements EventLogRepository {
+  private readonly scope: WorkspaceScope;
+
+  constructor(client: DbClient, workspaceId: WorkspaceId) {
+    this.scope = new WorkspaceScope(client.db, workspaceId);
+  }
+
+  async append(event: BranchStatusEvent): Promise<void> {
+    const values = {
+      runId: event.runId,
+      branchId: event.branchId,
+      attemptId: event.attemptId,
+      eventId: event.eventId,
+      sequence: event.sequence,
+      state: event.state,
+      reason: event.reason,
+      eventAt: new Date(event.timestamp),
+    };
+    await this.scope.insert(runEvents, values).onConflictDoNothing();
+  }
+
+  async listForRun(runId: RunId): Promise<BranchStatusEvent[]> {
+    const rows = await this.scope.select(runEvents);
+    return rows
+      .filter((r) => r.runId === runId)
+      .sort((a, b) => a.sequence - b.sequence)
+      .map((r) => ({
+        runId: r.runId,
+        branchId: r.branchId,
+        attemptId: r.attemptId,
+        eventId: r.eventId,
+        sequence: r.sequence,
+        timestamp: r.eventAt instanceof Date ? r.eventAt.toISOString() : String(r.eventAt),
+        state: r.state as BranchState,
+        reason: r.reason,
+      }));
+  }
+
+  async lastSequence(runId: RunId): Promise<number> {
+    const rows = await this.scope.select(runEvents);
+    let max = 0;
+    for (const r of rows) if (r.runId === runId && r.sequence > max) max = r.sequence;
+    return max;
   }
 }

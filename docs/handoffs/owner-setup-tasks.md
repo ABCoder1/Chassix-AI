@@ -138,3 +138,60 @@ tunable later; confirm when convenient:
 - Final MetaboAnalystR version tag and the metabolomics output unit (`peak_area` vs. concentration).
 
 None of these block development; defaults are already wired behind the `FakeExecutor`.
+
+---
+
+## 6. Appendix — where each environment variable comes from
+
+All of these are **server-side only**; never commit `.env`. Variables are grouped by source.
+
+### Google Cloud (`GCP_*`, `GCS_BUCKET`, `GOOGLE_APPLICATION_CREDENTIALS`) — via `gcloud`
+
+```bash
+# Project id + a region
+gcloud projects list                       # pick/confirm your project
+gcloud config set project PROJECT_ID
+gcloud config get-value project            # -> GCP_PROJECT_ID
+gcloud compute regions list                # pick one, e.g. us-central1 -> GCP_REGION
+
+# Storage bucket (name only in .env, no gs://)
+gcloud storage buckets create gs://chassix-<unique> --location=GCP_REGION --project=PROJECT_ID
+gcloud storage buckets list                # -> GCS_BUCKET (the name after gs://)
+
+# Service account + key -> GOOGLE_APPLICATION_CREDENTIALS
+gcloud iam service-accounts create chassix-runner \
+  --display-name="Chassix runner" --project=PROJECT_ID
+SA=chassix-runner@PROJECT_ID.iam.gserviceaccount.com
+gcloud projects add-iam-policy-binding PROJECT_ID --member="serviceAccount:$SA" --role="roles/batch.jobsEditor"
+gcloud projects add-iam-policy-binding PROJECT_ID --member="serviceAccount:$SA" --role="roles/artifactregistry.reader"
+gcloud projects add-iam-policy-binding PROJECT_ID --member="serviceAccount:$SA" --role="roles/logging.logWriter"
+gcloud storage buckets add-iam-policy-binding gs://GCS_BUCKET --member="serviceAccount:$SA" --role="roles/storage.objectAdmin"
+gcloud iam service-accounts keys create ~/chassix-sa.json --iam-account=$SA
+# -> GOOGLE_APPLICATION_CREDENTIALS=/absolute/path/to/chassix-sa.json
+```
+
+- **Local dev shortcut:** instead of a key file, run `gcloud auth application-default login` and leave
+  `GOOGLE_APPLICATION_CREDENTIALS` blank — Google SDKs pick up your Application Default Credentials.
+- **`GCS_HMAC_*` (optional):** only if you point an S3-compatible client at GCS instead of the native
+  SDK: `gcloud storage hmac create $SA` prints the access key + secret.
+
+### SpaceTimeDB (`SPACETIME_*`) — you already published to `chassix-realtime`
+
+- `SPACETIME_MODULE` = the database/module name you published = **`chassix-realtime`**.
+- `SPACETIME_URI` = the host your module lives on. For Maincloud it is **`wss://maincloud.spacetimedb.com`**;
+  for a local self-host it is `ws://localhost:3000`. Confirm configured servers with `spacetime server list`.
+- `SPACETIME_TOKEN` = a client auth token (optional for anonymous/dev). Get your current identity token
+  with `spacetime login show --token` (run `spacetime login --help` to confirm the flag on your CLI
+  version). Leave blank to connect with an anonymous identity.
+- Sanity-check the published module with `spacetime list` and the dashboard URL you have.
+
+### Nextflow (`NEXTFLOW_*`) — not needed
+
+- We execute analyses via **GCP Batch** (`workflows/`), not a Nextflow server, so `NEXTFLOW_ENDPOINT`
+  and `NEXTFLOW_TOKEN` stay **blank**. Only fill them if you later stand up Nextflow/Seqera Platform
+  (then: `NEXTFLOW_ENDPOINT` = that API URL, `NEXTFLOW_TOKEN` = a personal access token from it).
+
+### Already set
+
+- `DATABASE_URL` — Supabase **Session pooler** URI (port 5432). `ANTHROPIC_API_KEY`, `APIFY_API_TOKEN`,
+  `ANTHROPIC_MODEL` — see §4. `JWT_SECRET` — any long random string (`openssl rand -hex 32`).
