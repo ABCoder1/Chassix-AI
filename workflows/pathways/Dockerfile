@@ -13,7 +13,17 @@ FROM bioconductor/bioconductor_docker:RELEASE_3_19
 # against it (BH is header-only, so this is a fast copy; update=FALSE below keeps it pinned).
 RUN R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/BH/BH_1.81.0-1.tar.gz', repos=NULL, type='source')"
 
-RUN R -e "options(warn=2); BiocManager::install(c('clusterProfiler','org.EcK12.eg.db'), update=FALSE, ask=FALSE); install.packages('jsonlite', repos='https://cloud.r-project.org')"
+# BiocManager pulls large annotation packages (e.g. GO.db ~27 MB); a flaky/truncated download
+# otherwise aborts the build ("downloaded length != reported length"). Use a long timeout and
+# retry up to 3x (already-installed packages are skipped, so each retry resumes), then verify the
+# targets are actually installed — rather than escalating every transient download warning to an error.
+RUN R -e "options(timeout = 3600); \
+  has <- function(p) all(p %in% rownames(installed.packages())); \
+  pkgs <- c('clusterProfiler', 'org.EcK12.eg.db'); \
+  for (i in 1:3) { if (has(pkgs)) break; tryCatch(BiocManager::install(pkgs, update = FALSE, ask = FALSE), error = function(e) message('attempt ', i, ' failed: ', conditionMessage(e))); if (!has(pkgs)) Sys.sleep(5) }; \
+  if (!has(pkgs)) quit(status = 1); \
+  for (i in 1:3) { if (has('jsonlite')) break; try(install.packages('jsonlite', repos = 'https://cloud.r-project.org')) }; \
+  if (!has('jsonlite')) quit(status = 1)"
 
 RUN mkdir -p /opt/chassix/common /opt/chassix/pathways
 COPY common/ /opt/chassix/common/

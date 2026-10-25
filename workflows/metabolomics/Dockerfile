@@ -9,15 +9,23 @@ FROM bioconductor/bioconductor_docker:RELEASE_3_19
 # Pin BH to the last C++11-compatible release first (header-only, fast; kept pinned by update=FALSE).
 RUN R -e "install.packages('https://cran.r-project.org/src/contrib/Archive/BH/BH_1.81.0-1.tar.gz', repos=NULL, type='source')"
 
-# XCMS + MSnbase from Bioconductor; jsonlite + remotes from CRAN.
-RUN R -e "options(warn=2); BiocManager::install(c('xcms','MSnbase'), update=FALSE, ask=FALSE); install.packages(c('jsonlite','remotes'), repos='https://cloud.r-project.org')"
+# XCMS + MSnbase from Bioconductor; jsonlite + remotes from CRAN. Long timeout + retry so a
+# flaky/truncated download of a large package does not abort the build; verify the targets installed.
+RUN R -e "options(timeout = 3600); \
+  has <- function(p) all(p %in% rownames(installed.packages())); \
+  pkgs <- c('xcms', 'MSnbase', 'jsonlite', 'remotes'); \
+  for (i in 1:3) { if (has(pkgs)) break; tryCatch({ BiocManager::install(c('xcms','MSnbase'), update = FALSE, ask = FALSE); install.packages(c('jsonlite','remotes'), repos = 'https://cloud.r-project.org') }, error = function(e) message('attempt ', i, ' failed: ', conditionMessage(e))); if (!has(pkgs)) Sys.sleep(5) }; \
+  if (!has(pkgs)) quit(status = 1)"
 
-# MetaboAnalystR downstream stats/annotation. Its dependency set is large; install
-# the documented deps first, then the package from GitHub at a pinned tag.
-# (Network access is required AT BUILD TIME only; the analysis script makes no
-# network calls. Pin <TAG> to a MetaboAnalystR release for reproducibility.)
-RUN R -e "options(warn=1); BiocManager::install(c('impute','pcaMethods','globaltest','GlobalAncova','Rgraphviz','preprocessCore','genefilter','sva','limma','KEGGgraph','siggenes','BiocParallel','MSnbase','multtest','RBGL','edgeR','fgsea'), update=FALSE, ask=FALSE)" \
-    && R -e "remotes::install_github('xia-lab/MetaboAnalystR', ref='v4.0.0', dependencies=TRUE, upgrade='never')"
+# MetaboAnalystR downstream stats/annotation. Its dependency set is large; install the documented
+# deps first (long timeout + retry for the many big annotation downloads), then the package from
+# GitHub at a pinned tag. (Network is required AT BUILD TIME only; the analysis script makes none.)
+RUN R -e "options(timeout = 3600); \
+  deps <- c('impute','pcaMethods','globaltest','GlobalAncova','Rgraphviz','preprocessCore','genefilter','sva','limma','KEGGgraph','siggenes','BiocParallel','MSnbase','multtest','RBGL','edgeR','fgsea'); \
+  has <- function(p) all(p %in% rownames(installed.packages())); \
+  for (i in 1:3) { if (has(deps)) break; tryCatch(BiocManager::install(deps, update = FALSE, ask = FALSE), error = function(e) message('attempt ', i, ' failed: ', conditionMessage(e))); if (!has(deps)) Sys.sleep(5) }; \
+  if (!has(deps)) quit(status = 1)" \
+    && R -e "options(timeout = 3600); remotes::install_github('xia-lab/MetaboAnalystR', ref='v4.0.0', dependencies=TRUE, upgrade='never'); if (!('MetaboAnalystR' %in% rownames(installed.packages()))) quit(status = 1)"
 
 RUN mkdir -p /opt/chassix/common /opt/chassix/metabolomics
 COPY common/ /opt/chassix/common/
