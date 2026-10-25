@@ -24,6 +24,11 @@ user starts a study; each emits an **analysis-bundle fragment** that conforms to
 `flux/` is the **yield-prediction** branch: FBA/pFBA produces both a flux
 distribution and predicted product yields (`kind: "predicted"`).
 
+There is deliberately **no `perturbation/` workflow**: "Transcriptomics / perturbation" is one
+branch (DESeq2 differential expression across perturbation conditions _is_ the perturbation
+analysis), so `transcriptomics/` covers it. A plan whose branch is named `perturbation` or
+`transcriptomics_perturbation` is resolved to the `transcriptomics` workflow by the executor.
+
 ## Shared helper (`common/`)
 
 - `emit_bundle.py` — the single, stdlib-only assembler. Fills `run` / `organism`

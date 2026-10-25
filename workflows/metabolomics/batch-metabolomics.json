@@ -19,7 +19,7 @@
                 "CHASSIX_WORKFLOW_ID": "metabolomics",
                 "CHASSIX_WORKFLOW_VERSION": "WORKFLOW_VERSION",
                 "CHASSIX_CONDITION_ID": "CONDITION_ID",
-                "CHASSIX_ORGANISM_CHASSIS": "bacterium",
+                "CHASSIX_ORGANISM_CHASSIS": "CHASSIS_ID",
                 "CHASSIX_ORGANISM_TAXON_ID": "TAXON_ID",
                 "CHASSIX_ORGANISM_TAXON_NAME": "TAXON_NAME",
                 "CHASSIX_ORGANISM_STRAIN_ID": "STRAIN_ID",

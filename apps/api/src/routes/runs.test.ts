@@ -316,3 +316,37 @@ describe("GET events (SSE) — headers, replay, disconnect ≠ cancel (Step 3.4)
     controller.abort();
   });
 });
+
+describe("launch tags branches with run organism/condition (per-run tagging)", () => {
+  it("merges run-level organism/condition into every branch manifest", async () => {
+    const app = track(buildApp());
+    const { workspaceId, cookies } = await seedWorkspaceWithRoles(app);
+    const launched = await app.inject({
+      method: "POST",
+      url: `/workspaces/${workspaceId}/runs`,
+      headers: { cookie: cookies.computational_biologist },
+      payload: {
+        ...launchBody("idem-tag"),
+        organism: {
+          chassisId: "yeast",
+          taxonName: "Saccharomyces cerevisiae",
+          strainName: "S288C",
+        },
+        condition: { id: "heat-37c", temperatureC: 37 },
+      },
+    });
+    expect(launched.statusCode).toBe(201);
+    const runId = launched.json().runId;
+
+    const snap = await app.inject({
+      method: "GET",
+      url: `/workspaces/${workspaceId}/runs/${runId}`,
+      headers: { cookie: cookies.scientist },
+    });
+    const params = snap.json().branches[0].manifest.parameters;
+    expect(params.organism.taxonName).toBe("Saccharomyces cerevisiae");
+    expect(params.organism.chassisId).toBe("yeast");
+    expect(params.condition.id).toBe("heat-37c");
+    expect(params.condition.temperatureC).toBe(37);
+  });
+});

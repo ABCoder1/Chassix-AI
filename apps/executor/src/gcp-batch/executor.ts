@@ -16,6 +16,22 @@ import {
 } from "./template.js";
 
 /**
+ * Branch name → workflow directory. "Transcriptomics / perturbation" is ONE branch (the DESeq2
+ * differential-expression workflow IS the perturbation analysis), so a plan naming its branch
+ * `perturbation` / `transcriptomics_perturbation` resolves to the `transcriptomics` workflow — there
+ * is deliberately no separate `perturbation` workflow.
+ */
+const WORKFLOW_DIR_ALIAS: Readonly<Record<string, string>> = {
+  perturbation: "transcriptomics",
+  transcriptomicsperturbation: "transcriptomics",
+};
+
+function workflowDirFor(branch: string): string {
+  const key = branch.toLowerCase().replace(/[^a-z]/g, "");
+  return WORKFLOW_DIR_ALIAS[key] ?? branch;
+}
+
+/**
  * Live GCP Batch executor (ADR-D4). The only code path that submits real analyses to Google Cloud:
  * for each branch it renders `workflows/<branch>/batch-<branch>.json` with the run's values and
  * creates a Batch job; `poll` maps the job state; `cancel` deletes the job. The Batch API is reached
@@ -35,7 +51,8 @@ export class GcpBatchExecutor implements ExecutorAdapter {
 
   async submit(manifest: RunManifest): Promise<ExecutorSubmission> {
     const branch = manifest.branch;
-    const templatePath = join(this.#config.workflowsDir, branch, `batch-${branch}.json`);
+    const dir = workflowDirFor(branch);
+    const templatePath = join(this.#config.workflowsDir, dir, `batch-${dir}.json`);
     let template: unknown;
     try {
       template = JSON.parse(readFileSync(templatePath, "utf8"));

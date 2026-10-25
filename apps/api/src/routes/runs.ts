@@ -38,11 +38,35 @@ const branchSpecSchema = z.object({
   command: z.string().min(1),
 });
 
+/**
+ * Per-run organism + condition (PRD §C/§E). Specified ONCE at the run level and merged into every
+ * branch's `parameters` below, so each frozen branch manifest carries them — which is what tags the
+ * GCP Batch jobs (executor substitutions) and the analysis-bundle provenance (bundle producer). A
+ * branch may still override them via its own `parameters.organism` / `parameters.condition`.
+ */
+const organismSchema = z.object({
+  chassisId: z.enum(["yeast", "bacterium", "archaeon", "other"]).optional(),
+  taxonId: z.string().optional(),
+  taxonName: z.string().optional(),
+  strainId: z.string().optional(),
+  strainName: z.string().optional(),
+});
+const conditionSchema = z.object({
+  id: z.string().min(1),
+  temperatureC: z.number().optional(),
+  pH: z.number().optional(),
+  salinityMolL: z.number().optional(),
+  media: z.string().optional(),
+  oxygenation: z.string().optional(),
+});
+
 const launchSchema = z.object({
   /** Client idempotency key — a repeated key returns the SAME run, never a second submission. */
   idempotencyKey: z.string().min(1),
   projectId: z.string().min(1),
   planId: z.string().min(1),
+  organism: organismSchema.optional(),
+  condition: conditionSchema.optional(),
   branches: z.array(branchSpecSchema).min(1),
 });
 
@@ -109,12 +133,17 @@ export const registerRunRoutes = (
       }
       const workspaceId = req.workspace!.workspaceId;
       const { orchestrator } = provider.getBundle(workspaceId);
+      // Run-level organism/condition become per-branch defaults (a branch's own parameters win), so
+      // every frozen manifest carries them → Batch jobs + bundle provenance are tagged per run.
+      const runParams: Record<string, unknown> = {};
+      if (parsed.data.organism) runParams.organism = parsed.data.organism;
+      if (parsed.data.condition) runParams.condition = parsed.data.condition;
       // Drop an absent branchId rather than passing `undefined` (exactOptionalPropertyTypes).
       const branches = parsed.data.branches.map((b) => ({
         ...(b.branchId ? { branchId: b.branchId } : {}),
         name: b.name,
         inputs: b.inputs,
-        parameters: b.parameters,
+        parameters: { ...runParams, ...b.parameters },
         toolVersions: b.toolVersions,
         referenceVersions: b.referenceVersions,
         command: b.command,

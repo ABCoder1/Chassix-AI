@@ -43,6 +43,7 @@ export function substitutionsFor(manifest: RunManifest, config: GcpBatchConfig):
     RUN_ID: manifest.runId,
     WORKFLOW_VERSION: str(params.workflowVersion) || manifest.manifestHash.slice(0, 12),
     CONDITION_ID: str(condition.id) || "condition",
+    CHASSIS_ID: str(organism.chassisId) || "other",
     TAXON_ID: str(organism.taxonId),
     TAXON_NAME: str(organism.taxonName) || "unspecified",
     STRAIN_ID: str(organism.strainId),

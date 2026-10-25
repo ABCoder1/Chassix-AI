@@ -98,6 +98,7 @@ describe("substitutionsFor", () => {
     expect(subs.RUN_ID).toBe("run-abcdef12-3456");
     expect(subs.TAXON_NAME).toBe("Escherichia coli");
     expect(subs.CONDITION_ID).toBe("aerobic-37c");
+    expect(subs.CHASSIS_ID).toBe("bacterium");
     expect(substitutionsFor(manifest("flux") as RunManifest, config).STRAIN_ID).toBe("");
   });
 });
@@ -139,6 +140,16 @@ describe("GcpBatchExecutor", () => {
 
     await exec.cancel("projects/my-proj/locations/us-east1/jobs/j1");
     expect(client.deleted).toEqual(["projects/my-proj/locations/us-east1/jobs/j1"]);
+  });
+
+  it("resolves a 'perturbation' branch to the transcriptomics workflow template", async () => {
+    const client = new FakeBatchClient();
+    const exec = new GcpBatchExecutor({ client, config });
+    await exec.submit(manifest("perturbation"));
+    const job = JSON.stringify(client.created[0]!.job);
+    expect(job).toContain("chassix/transcriptomics:latest");
+    expect(job).toContain('"CHASSIX_ORGANISM_CHASSIS":"bacterium"');
+    expect(job).not.toContain("CHASSIS_ID");
   });
 
   it("throws a clear error for a branch with no template", async () => {
