@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@chassix/analysis-bundle": "workspace:*",
+    "@chassix/datasets": "workspace:*",
     "@chassix/db": "workspace:*",
     "@chassix/executor": "workspace:*",
     "@chassix/planner": "workspace:*",

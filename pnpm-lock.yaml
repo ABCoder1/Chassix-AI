@@ -35,6 +35,9 @@ importers:
       '@chassix/analysis-bundle':
         specifier: workspace:*
         version: link:../../packages/analysis-bundle
+      '@chassix/datasets':
+        specifier: workspace:*
+        version: link:../datasets
       '@chassix/db':
         specifier: workspace:*
         version: link:../../packages/db

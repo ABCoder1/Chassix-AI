@@ -5,8 +5,11 @@ export { GOAL_INTERPRETATION_SYSTEM } from "./prompt.js";
 
 // Step 2.1 — host literature retrieval (citation-first, behind RetrievalProvider).
 export * from "./retrieval/index.js";
+export * from "./retrieval/caching-retrieval.js";
 // Step 2.2 — versioned, inspectable host ranking rubric + scorer.
 export * from "./ranking/index.js";
+// Step 2.3 — host discovery (RAG): survey → rank candidate hosts.
+export * from "./discovery.js";
 
 import { type Planner } from "./planner.js";
 import { ClaudePlanner } from "./claude-planner.js";

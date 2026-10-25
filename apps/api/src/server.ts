@@ -10,7 +10,15 @@ import { registerAuthRoutes } from "./routes/auth.js";
 import { registerWorkspaceRoutes } from "./routes/workspaces.js";
 import { registerRunRoutes } from "./routes/runs.js";
 import { registerGoalRoutes } from "./routes/goals.js";
-import { createPlanner, type Planner } from "@chassix/planner";
+import { registerDiscoveryRoutes } from "./routes/discovery.js";
+import {
+  createPlanner,
+  CachingRetrievalProvider,
+  FixtureRetrievalProvider,
+  type Planner,
+  type RetrievalProvider,
+} from "@chassix/planner";
+import { DatasetService, FixtureRepositoryAdapter } from "@chassix/datasets";
 import {
   createRunOrchestratorProvider,
   providerFromBundle,
@@ -41,6 +49,10 @@ export interface BuildServerOptions {
   bundleSource?: BundleSource;
   /** Goal-interpretation planner. Defaults to the live Claude planner when keyed, else the fake. */
   planner?: Planner;
+  /** Literature-retrieval provider for discovery. Defaults to a cached fixture provider. */
+  retrieval?: RetrievalProvider;
+  /** Dataset discovery service. Defaults to a fixture-backed service. */
+  datasetService?: DatasetService;
 }
 
 /**
@@ -83,9 +95,17 @@ export function buildServer(options: BuildServerOptions = {}): FastifyInstance {
   const planner = options.planner ?? createPlanner();
   const plannerLive = options.planner ? false : Boolean(process.env.ANTHROPIC_API_KEY);
 
+  // Discovery (RAG): literature survey (cached) + candidate hosts/datasets. Fixture-backed by
+  // default (illustrative); a live Apify retriever (ADR-D9) can be injected behind the interface.
+  const retrieval =
+    options.retrieval ?? new CachingRetrievalProvider(new FixtureRetrievalProvider());
+  const datasetService =
+    options.datasetService ?? new DatasetService(new FixtureRepositoryAdapter());
+
   registerAuthRoutes(app, { repos, sessions, guards });
   registerWorkspaceRoutes(app, { repos, guards });
   registerGoalRoutes(app, { planner, live: plannerLive });
+  registerDiscoveryRoutes(app, { retrieval, datasets: datasetService, live: false });
   registerRunRoutes(app, {
     guards,
     provider: runProvider,
